@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nulah.RSS.App", "Nulah.RSS.App\Nulah.RSS.App.csproj", "{302E3BFD-B11B-4D63-9C84-5E0FBC17DC01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{302E3BFD-B11B-4D63-9C84-5E0FBC17DC01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{302E3BFD-B11B-4D63-9C84-5E0FBC17DC01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{302E3BFD-B11B-4D63-9C84-5E0FBC17DC01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{302E3BFD-B11B-4D63-9C84-5E0FBC17DC01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
