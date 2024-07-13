@@ -1,6 +1,6 @@
-﻿namespace Nulah.RSS.Core.Models;
+﻿namespace Nulah.RSS.Data.Entities;
 
-public class FeedDetail
+internal sealed class Feed : BaseEntity
 {
 	public string Title { get; set; } = null!;
 	public string? ImageUrl { get; set; }

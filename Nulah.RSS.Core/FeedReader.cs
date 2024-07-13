@@ -1,10 +1,11 @@
 ﻿using System.ServiceModel.Syndication;
 using System.Xml;
 using Nulah.RSS.Core.Models;
+using Nulah.RSS.Domain.Interfaces;
 
 namespace Nulah.RSS.Core;
 
-public class FeedReader
+public class FeedReader : IFeedReader
 {
 	/// <summary>
 	/// Attempts to parse the feed located at the given location. The location can be a remote URL or locally accessible file.
@@ -77,7 +78,7 @@ public class FeedReader
 		return items;
 	}
 
-	private string? GetAuthorFromSyndicationItem(SyndicationItem syndicationItem)
+	private static string? GetAuthorFromSyndicationItem(SyndicationItem syndicationItem)
 	{
 		// For ArsTechnica, DevTo, and atom feeds that use the http://purl.org/dc/elements/1.1/ name space (often wordpress)
 		if (syndicationItem.ElementExtensions.FirstOrDefault(x => x.OuterName == "creator")?.GetObject<string>() is { } creator)
@@ -125,7 +126,7 @@ public class FeedReader
 	/// <param name="feedLocation"></param>
 	/// <returns></returns>
 	/// <exception cref="ArgumentNullException"></exception>
-	private FeedDetail LoadFeedDetail(string feedLocation)
+	private static FeedDetail LoadFeedDetail(string feedLocation)
 	{
 		if (string.IsNullOrEmpty(feedLocation))
 		{

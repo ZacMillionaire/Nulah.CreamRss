@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2F9629E2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nulah.RSS.Core.UnitTests", "Nulah.RSS.Core.UnitTests\Nulah.RSS.Core.UnitTests.csproj", "{B7D324A2-1DD9-403E-BAA4-BEEFA8FC86B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nulah.RSS.Data", "Nulah.RSS.Data\Nulah.RSS.Data.csproj", "{BD5C123B-3327-4DF7-AD67-AC2631AF78D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nulah.RSS.Domain", "Nulah.RSS.Domain\Nulah.RSS.Domain.csproj", "{6A61519B-31BD-48B0-9F6E-052DC6E3CA24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +36,14 @@ Global
 		{B7D324A2-1DD9-403E-BAA4-BEEFA8FC86B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7D324A2-1DD9-403E-BAA4-BEEFA8FC86B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7D324A2-1DD9-403E-BAA4-BEEFA8FC86B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD5C123B-3327-4DF7-AD67-AC2631AF78D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD5C123B-3327-4DF7-AD67-AC2631AF78D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD5C123B-3327-4DF7-AD67-AC2631AF78D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD5C123B-3327-4DF7-AD67-AC2631AF78D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A61519B-31BD-48B0-9F6E-052DC6E3CA24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A61519B-31BD-48B0-9F6E-052DC6E3CA24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A61519B-31BD-48B0-9F6E-052DC6E3CA24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A61519B-31BD-48B0-9F6E-052DC6E3CA24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B7D324A2-1DD9-403E-BAA4-BEEFA8FC86B5} = {2F9629E2-62C0-4FD6-B1D6-1367072D4DFF}
