@@ -5,15 +5,15 @@ public class LoadFeedDetailsTests
 	[Fact]
 	public void Load_BlankRssLocation_Should_ThrowException()
 	{
-		var rssReader = new RssReader();
-		Assert.Throws<ArgumentNullException>(() => rssReader.LoadRssDetails(""));
+		var rssReader = new FeedReader();
+		Assert.Throws<ArgumentNullException>(() => rssReader.ParseFeedDetails(""));
 	}
 	
 	[Fact]
 	public void Load_ArsTechnicaFeedDetails_Should_HaveTitleImageUriDescription()
 	{
-		var rssReader = new RssReader();
-		var rssDetail = rssReader.LoadRssDetails("./TestFiles/SampleRssFeeds/ArsTechnicaAllContent.rss");
+		var rssReader = new FeedReader();
+		var rssDetail = rssReader.ParseFeedDetails("./TestFiles/SampleRssFeeds/ArsTechnicaAllContent.rss");
 		Assert.NotNull(rssDetail);
 		
 		Assert.NotNull(rssDetail.Title);
@@ -27,8 +27,8 @@ public class LoadFeedDetailsTests
 	[Fact]
 	public void Load_GitHubFeedDetails_Should_HaveTitle()
 	{
-		var rssReader = new RssReader();
-		var rssDetail = rssReader.LoadRssDetails("./TestFiles/SampleRssFeeds/GitHubZacMillionaire.atom");
+		var rssReader = new FeedReader();
+		var rssDetail = rssReader.ParseFeedDetails("./TestFiles/SampleRssFeeds/GitHubZacMillionaire.atom");
 		Assert.NotNull(rssDetail);
 		
 		Assert.NotNull(rssDetail.Title);
@@ -41,8 +41,8 @@ public class LoadFeedDetailsTests
 	[Fact]
 	public void Load_DevToFeedDetails_Should_HaveTitleAndDescription()
 	{
-		var rssReader = new RssReader();
-		var rssDetail = rssReader.LoadRssDetails("./TestFiles/SampleRssFeeds/DevTo.rss");
+		var rssReader = new FeedReader();
+		var rssDetail = rssReader.ParseFeedDetails("./TestFiles/SampleRssFeeds/DevTo.rss");
 		Assert.NotNull(rssDetail);
 		
 		Assert.NotNull(rssDetail.Title);
@@ -55,8 +55,8 @@ public class LoadFeedDetailsTests
 	[Fact]
 	public void Load_WebToonsTowerOfGodFeedDetails_Should_HaveTitleImageUriDescription()
 	{
-		var rssReader = new RssReader();
-		var rssDetail = rssReader.LoadRssDetails("./TestFiles/SampleRssFeeds/WebToonsTowerOfGod.rss");
+		var rssReader = new FeedReader();
+		var rssDetail = rssReader.ParseFeedDetails("./TestFiles/SampleRssFeeds/WebToonsTowerOfGod.rss");
 		Assert.NotNull(rssDetail);
 		
 		Assert.NotNull(rssDetail.Title);

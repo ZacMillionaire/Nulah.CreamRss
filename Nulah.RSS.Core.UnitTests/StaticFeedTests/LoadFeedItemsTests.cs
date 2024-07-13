@@ -7,15 +7,15 @@ public class LoadFeedItemsTests
 	[Fact]
 	public void Load_BlankRssLocation_Should_ThrowException()
 	{
-		var rssReader = new RssReader();
-		Assert.Throws<ArgumentNullException>(() => rssReader.LoaddRssItems(""));
+		var rssReader = new FeedReader();
+		Assert.Throws<ArgumentNullException>(() => rssReader.ParseFeedItems(""));
 	}
 
 	[Fact]
 	public void Load_ArsTechnicaFeedItems_Should_HaveAllProperties()
 	{
-		var rssReader = new RssReader();
-		var rssItems = rssReader.LoaddRssItems("./TestFiles/SampleRssFeeds/ArsTechnicaAllContent.rss");
+		var rssReader = new FeedReader();
+		var rssItems = rssReader.ParseFeedItems("./TestFiles/SampleRssFeeds/ArsTechnicaAllContent.rss");
 		Assert.NotNull(rssItems);
 		Assert.Equal(20, rssItems.Count);
 		Assert.All(rssItems, AssertAllItemPropertiesNotNull);
@@ -24,8 +24,8 @@ public class LoadFeedItemsTests
 	[Fact]
 	public void Load_GitHubFeedItems_Should_HaveAllProperties_Except_Summary()
 	{
-		var rssReader = new RssReader();
-		var rssItems = rssReader.LoaddRssItems("./TestFiles/SampleRssFeeds/GitHubZacMillionaire.atom");
+		var rssReader = new FeedReader();
+		var rssItems = rssReader.ParseFeedItems("./TestFiles/SampleRssFeeds/GitHubZacMillionaire.atom");
 		Assert.NotNull(rssItems);
 		Assert.Equal(6, rssItems.Count);
 
@@ -44,8 +44,8 @@ public class LoadFeedItemsTests
 	[Fact]
 	public void Load_DevToFeedItems_Should_HaveAllProperties()
 	{
-		var rssReader = new RssReader();
-		var rssItems = rssReader.LoaddRssItems("./TestFiles/SampleRssFeeds/DevTo.rss");
+		var rssReader = new FeedReader();
+		var rssItems = rssReader.ParseFeedItems("./TestFiles/SampleRssFeeds/DevTo.rss");
 		Assert.NotNull(rssItems);
 		Assert.Equal(12, rssItems.Count);
 		Assert.All(rssItems, AssertAllItemPropertiesNotNull);
@@ -54,21 +54,21 @@ public class LoadFeedItemsTests
 	[Fact]
 	public void Load_WebToonsTowerOfGodFeedItems_Should_HaveAllProperties()
 	{
-		var rssReader = new RssReader();
-		var rssItems = rssReader.LoaddRssItems("./TestFiles/SampleRssFeeds/WebToonsTowerOfGod.rss");
+		var rssReader = new FeedReader();
+		var rssItems = rssReader.ParseFeedItems("./TestFiles/SampleRssFeeds/WebToonsTowerOfGod.rss");
 		Assert.NotNull(rssItems);
 		Assert.Equal(20, rssItems.Count);
 		Assert.All(rssItems, AssertAllItemPropertiesNotNull);
 	}
 
 
-	private void AssertAllItemPropertiesNotNull(RssItem rssItem)
+	private void AssertAllItemPropertiesNotNull(FeedItem feedItem)
 	{
-		Assert.NotNull(rssItem.Title);
-		Assert.NotNull(rssItem.Url);
-		Assert.NotNull(rssItem.Content);
-		Assert.NotNull(rssItem.Summary);
-		Assert.NotNull(rssItem.Author);
-		Assert.NotEqual(DateTimeOffset.MinValue, rssItem.Published);
+		Assert.NotNull(feedItem.Title);
+		Assert.NotNull(feedItem.Url);
+		Assert.NotNull(feedItem.Content);
+		Assert.NotNull(feedItem.Summary);
+		Assert.NotNull(feedItem.Author);
+		Assert.NotEqual(DateTimeOffset.MinValue, feedItem.Published);
 	}
 }

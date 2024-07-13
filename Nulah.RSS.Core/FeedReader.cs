@@ -4,24 +4,24 @@ using Nulah.RSS.Core.Models;
 
 namespace Nulah.RSS.Core;
 
-public class RssReader
+public class FeedReader
 {
 	/// <summary>
-	/// Attempts to load the feed located at the given location. The location can be a remote URL or locally accessible file.
+	/// Attempts to parse the feed located at the given location. The location can be a remote URL or locally accessible file.
 	/// <para>
 	/// Any failure to load the feed from the location (such as network issues or files that can't be found)
 	/// will throw an exception that should be handled
 	/// </para>
 	/// </summary>
-	/// <param name="rssLocation">Remote URL or file path</param>
+	/// <param name="feedLocation">Remote URL or file path</param>
 	/// <returns></returns>
-	public RssDetail LoadRssDetails(string rssLocation)
+	public FeedDetail ParseFeedDetails(string feedLocation)
 	{
-		return LoadRssDetail(rssLocation);
+		return LoadFeedDetail(feedLocation);
 	}
 
 	/// <summary>
-	/// Returns all RssItems for a feed by given location. Empty or null values will throw an exception
+	/// Returns all <see cref="FeedItem"/> for a feed by given location. Empty or null values will throw an exception.
 	/// <para>
 	/// Any failure to load the feed from the location (such as network issues or files that can't be found)
 	/// will throw an exception that should be handled.
@@ -29,7 +29,7 @@ public class RssReader
 	/// </summary>
 	/// <param name="rssLocation"></param>
 	/// <returns></returns>
-	public List<RssItem> LoaddRssItems(string rssLocation)
+	public List<FeedItem> ParseFeedItems(string rssLocation)
 	{
 		if (string.IsNullOrEmpty(rssLocation))
 		{
@@ -39,11 +39,11 @@ public class RssReader
 		using var reader = XmlReader.Create(rssLocation);
 		var syndicationFeed = SyndicationFeed.Load(reader);
 
-		var items = new List<RssItem>();
+		var items = new List<FeedItem>();
 
 		foreach (var syndicationItem in syndicationFeed.Items)
 		{
-			var item = new RssItem()
+			var item = new FeedItem()
 			{
 				Title = syndicationItem.Title?.Text ?? "TITLE MISSING",
 				Url = syndicationItem.ElementExtensions.FirstOrDefault(x => x.OuterName == "url")?.GetObject<string>()
@@ -54,7 +54,7 @@ public class RssReader
 				Author = GetAuthorFromSyndicationItem(syndicationItem)
 			};
 
-			// Some rss feeds have their content encoded, so we attempt to retrieve it in a different way
+			// Some feeds have their content encoded, so we attempt to retrieve it in a different way
 			if (syndicationItem.ElementExtensions.FirstOrDefault(x => x.OuterNamespace == "http://purl.org/rss/1.0/modules/content/")
 			    is { } encodedContent)
 			{
@@ -119,17 +119,23 @@ public class RssReader
 		return default;
 	}
 
-	private RssDetail LoadRssDetail(string rssLocation)
+	/// <summary>
+	/// Retrieves the feed from the given location and returns the details if successful. Throws any exceptions otherwise
+	/// </summary>
+	/// <param name="feedLocation"></param>
+	/// <returns></returns>
+	/// <exception cref="ArgumentNullException"></exception>
+	private FeedDetail LoadFeedDetail(string feedLocation)
 	{
-		if (string.IsNullOrEmpty(rssLocation))
+		if (string.IsNullOrEmpty(feedLocation))
 		{
-			throw new ArgumentNullException(nameof(rssLocation));
+			throw new ArgumentNullException(nameof(feedLocation));
 		}
 
-		using var reader = XmlReader.Create(rssLocation);
+		using var reader = XmlReader.Create(feedLocation);
 		var syndicationFeed = SyndicationFeed.Load(reader);
 
-		return new RssDetail()
+		return new FeedDetail()
 		{
 			Title = syndicationFeed.Title?.Text ?? "TITLE MISSING",
 			ImageUrl = syndicationFeed.ImageUrl?.AbsoluteUri,

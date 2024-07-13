@@ -1,6 +1,6 @@
 ﻿namespace Nulah.RSS.Core.Models;
 
-public class RssItem
+public class FeedItem
 {
 	public string Title { get; set; } = null!;
 	public string Url { get; set; } = null!;
