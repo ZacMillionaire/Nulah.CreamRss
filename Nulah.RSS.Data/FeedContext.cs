@@ -7,6 +7,7 @@ namespace Nulah.RSS.Data;
 public class FeedContext : DbContext
 {
 	internal DbSet<Feed> Feeds { get; set; }
+	private readonly TimeProvider _timeProvider = TimeProvider.System;
 
 	public FeedContext()
 	{
@@ -14,6 +15,16 @@ public class FeedContext : DbContext
 
 	public FeedContext(DbContextOptions<FeedContext> options) : base(options)
 	{
+	}
+
+	/// <summary>
+	/// Used for testing so times can be controlled
+	/// </summary>
+	/// <param name="timeProvider"></param>
+	/// <param name="options"></param>
+	public FeedContext(TimeProvider timeProvider, DbContextOptions<FeedContext> options) : base(options)
+	{
+		_timeProvider = timeProvider;
 	}
 
 	public override int SaveChanges()
@@ -43,7 +54,7 @@ public class FeedContext : DbContext
 			);
 
 		// Entities added/modified in the same batch should have identical timestamps
-		var nowUtc = DateTime.UtcNow;
+		var nowUtc = _timeProvider.GetUtcNow();
 
 		foreach (var entityEntry in entries)
 		{
@@ -55,7 +66,7 @@ public class FeedContext : DbContext
 			}
 		}
 	}
-	
+
 	/// <summary>
 	/// Method called when building migrations from command line to create a database in a default location.
 	/// <para>
@@ -65,7 +76,6 @@ public class FeedContext : DbContext
 	/// <param name="options"></param>
 	protected override void OnConfiguring(DbContextOptionsBuilder options)
 	{
-		Debugger.Launch();
 		// If we're called from the cli, configure the data source to be somewhere just so we can build migrations.
 		// Any proper context creation should be calling the option builder constructor with its own
 		// data source location so this should always be true.

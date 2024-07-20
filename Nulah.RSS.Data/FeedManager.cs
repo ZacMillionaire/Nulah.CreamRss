@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Nulah.RSS.Core.Models;
 using Nulah.RSS.Data.Entities;
 using Nulah.RSS.Domain.Interfaces;
+using Nulah.RSS.Domain.Models;
 
 namespace Nulah.RSS.Data;
 
@@ -14,16 +14,18 @@ public class FeedManager : IFeedManager
 		_context = context;
 	}
 
+	/// <summary>
+	/// Creates or updates a <see cref="Feed"/> with the given <see cref="FeedDetail"/>.
+	/// </summary>
+	/// <param name="feedDetail"></param>
+	/// <returns></returns>
 	public async Task<FeedDetail> SaveFeedDetail(FeedDetail feedDetail)
 	{
 		var feed = await GetFeedById(feedDetail.Id) ?? new Feed();
-
-		feed = new Feed()
-		{
-			Description = feedDetail.Description,
-			Title = feedDetail.Title,
-			ImageUrl = feedDetail.ImageUrl
-		};
+		
+		feed.Description = feedDetail.Description;
+		feed.Title = feedDetail.Title;
+		feed.ImageUrl = feedDetail.ImageUrl;
 
 		// If this is a new item add it to the context
 		if (feed.Id == 0)
@@ -43,7 +45,9 @@ public class FeedManager : IFeedManager
 			Description = feed.Description,
 			Id = feed.Id,
 			Title = feed.Title,
-			ImageUrl = feed.ImageUrl
+			ImageUrl = feed.ImageUrl,
+			CreatedUtc = feed.CreatedUtc,
+			UpdatedUtc = feed.UpdatedUtc,
 		};
 	}
 

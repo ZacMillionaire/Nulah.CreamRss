@@ -7,6 +7,6 @@ internal class BaseEntity
 	[Key]
 	public int Id { get; set; }
 
-	public DateTime CreatedUtc { get; internal set; }
-	public DateTime UpdatedUtc { get; internal set; }
+	public DateTimeOffset CreatedUtc { get; internal set; }
+	public DateTimeOffset UpdatedUtc { get; internal set; }
 }
