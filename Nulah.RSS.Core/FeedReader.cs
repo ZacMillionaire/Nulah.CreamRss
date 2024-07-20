@@ -1,7 +1,7 @@
 ﻿using System.ServiceModel.Syndication;
 using System.Xml;
-using Nulah.RSS.Core.Models;
 using Nulah.RSS.Domain.Interfaces;
+using Nulah.RSS.Domain.Models;
 
 namespace Nulah.RSS.Core;
 
