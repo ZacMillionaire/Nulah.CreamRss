@@ -1,4 +1,4 @@
-﻿namespace Nulah.RSS.Core.Models;
+﻿namespace Nulah.RSS.Domain.Models;
 
 public class FeedItem
 {

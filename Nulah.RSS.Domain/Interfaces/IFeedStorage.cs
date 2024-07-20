@@ -1,4 +1,4 @@
-﻿using Nulah.RSS.Core.Models;
+﻿using Nulah.RSS.Domain.Models;
 
 namespace Nulah.RSS.Domain.Interfaces;
 
