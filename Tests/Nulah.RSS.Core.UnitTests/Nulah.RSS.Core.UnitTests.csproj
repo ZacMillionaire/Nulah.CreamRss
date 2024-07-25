@@ -25,7 +25,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Nulah.RSS.Core\Nulah.RSS.Core.csproj" />
+      <ProjectReference Include="..\..\Nulah.RSS.Core\Nulah.RSS.Core.csproj" />
+      <ProjectReference Include="..\..\Nulah.RSS.Data\Nulah.RSS.Data.csproj" />
     </ItemGroup>
 
     <ItemGroup>
