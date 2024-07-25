@@ -13,16 +13,7 @@ public class FeedStorage : IFeedStorage
 		_feedManager = feedManager;
 	}
 
-	/// <summary>
-	/// Creates or Updates the given <paramref name="feedDetail"/> if Id is given.
-	/// <para>
-	/// Validation errors will be contained within the <see cref="ValidationException.Data"/>
-	/// property of the thrown exception.
-	/// </para>
-	/// </summary>
-	/// <param name="feedDetail"></param>
-	/// <returns></returns>
-	/// <exception cref="ValidationException"></exception>
+	/// <inheritdoc />
 	public async Task<FeedDetail> SaveFeedDetails(FeedDetail feedDetail)
 	{
 		var context = new ValidationContext(feedDetail, null, null);
@@ -36,5 +27,11 @@ public class FeedStorage : IFeedStorage
 		}
 
 		return await _feedManager.SaveFeedDetail(feedDetail);
+	}
+
+	/// <inheritdoc />
+	public async Task<FeedDetail?> GetFeedDetail(int feedId)
+	{
+		return await _feedManager.GetFeedDetail(feedId);
 	}
 }

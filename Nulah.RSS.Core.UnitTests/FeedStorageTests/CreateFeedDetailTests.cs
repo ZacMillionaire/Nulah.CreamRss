@@ -19,7 +19,7 @@ public class CreateFeedDetailTests : IClassFixture<InMemoryTestFixture>
 		var testTimeOffset = new DateTimeOffset(1990, 1, 1, 0, 0, 0, TimeSpan.Zero);
 		var timeProvider = new FakeTimeProvider(testTimeOffset);
 
-		var feedStorage = new FeedStorage(_fixture.CreateManager(timeProvider));
+		var feedStorage = _fixture.CreateFeedStorage(timeProvider);
 
 		var newFeedDetail = new FeedDetail()
 		{
@@ -45,7 +45,7 @@ public class CreateFeedDetailTests : IClassFixture<InMemoryTestFixture>
 		var testTimeOffset = new DateTimeOffset(1990, 1, 1, 0, 0, 0, TimeSpan.Zero);
 		var timeProvider = new FakeTimeProvider(testTimeOffset);
 
-		var feedStorage = new FeedStorage(_fixture.CreateManager(timeProvider));
+		var feedStorage = _fixture.CreateFeedStorage(timeProvider);
 
 		// This test should result in the Id, CreatedUtc and UpdatedUtc properties being ignored and set by the
 		// appropriate manager class
@@ -77,7 +77,7 @@ public class CreateFeedDetailTests : IClassFixture<InMemoryTestFixture>
 		var testTimeOffset = new DateTimeOffset(1990, 1, 1, 0, 0, 0, TimeSpan.Zero);
 		var timeProvider = new FakeTimeProvider(testTimeOffset);
 
-		var feedStorage = new FeedStorage(_fixture.CreateManager(timeProvider));
+		var feedStorage = _fixture.CreateFeedStorage(timeProvider);
 
 		var newFeedDetail = new FeedDetail()
 		{

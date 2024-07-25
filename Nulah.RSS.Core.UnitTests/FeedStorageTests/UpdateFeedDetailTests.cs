@@ -20,7 +20,7 @@ public class UpdateFeedDetailTests : IClassFixture<InMemoryTestFixture>
 		var testTimeOffset = new DateTimeOffset(1992, 1, 1, 0, 0, 0, TimeSpan.Zero);
 		var timeProvider = new FakeTimeProvider(testTimeOffset);
 
-		var feedStorage = new FeedStorage(_fixture.CreateManager(timeProvider));
+		var feedStorage = _fixture.CreateFeedStorage(timeProvider);
 
 		// Create a new FeedDetail
 		var newFeedDetail = new FeedDetail()

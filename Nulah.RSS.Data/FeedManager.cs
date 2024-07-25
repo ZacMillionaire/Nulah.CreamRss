@@ -22,7 +22,7 @@ public class FeedManager : IFeedManager
 	public async Task<FeedDetail> SaveFeedDetail(FeedDetail feedDetail)
 	{
 		var feed = await GetFeedById(feedDetail.Id) ?? new Feed();
-		
+
 		feed.Description = feedDetail.Description;
 		feed.Title = feedDetail.Title;
 		feed.ImageUrl = feedDetail.ImageUrl;
@@ -38,6 +38,25 @@ public class FeedManager : IFeedManager
 		return FeedToFeedDetail(feed);
 	}
 
+	/// <summary>
+	/// Returns a <see cref="FeedDetail"/> by the specified <paramref name="feedId"/>. Returns null if no feed is found.
+	/// </summary>
+	/// <param name="feedId"></param>
+	/// <returns></returns>
+	public async Task<FeedDetail?> GetFeedDetail(int feedId)
+	{
+		var feed = await GetFeedById(feedId);
+
+		return feed == null
+			? null
+			: FeedToFeedDetail(feed);
+	}
+
+	/// <summary>
+	/// Converts a given <see cref="Feed"/> to a <see cref="FeedDetail"/>
+	/// </summary>
+	/// <param name="feed"></param>
+	/// <returns></returns>
 	private static FeedDetail FeedToFeedDetail(Feed feed)
 	{
 		return new FeedDetail()
@@ -51,9 +70,14 @@ public class FeedManager : IFeedManager
 		};
 	}
 
+	/// <summary>
+	/// Returns the specified <see cref="Feed"/> by Id, or null if not found or <paramref name="feedDetailId"/> is less than 1
+	/// </summary>
+	/// <param name="feedDetailId"></param>
+	/// <returns></returns>
 	private async Task<Feed?> GetFeedById(int feedDetailId)
 	{
-		if (feedDetailId == 0)
+		if (feedDetailId < 0)
 		{
 			return null;
 		}
