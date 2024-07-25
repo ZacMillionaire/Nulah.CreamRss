@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Time.Testing;
-using Nulah.RSS.Domain.Interfaces;
 using Nulah.RSS.Domain.Models;
 
 namespace Nulah.RSS.Core.UnitTests.FeedStorageTests;
@@ -9,6 +8,7 @@ public class GetFeedDetailTests : IClassFixture<InMemoryTestFixture>, IAsyncLife
 	private readonly InMemoryTestFixture _fixture;
 	private readonly string _databaseName = "GetFeedDetailsTests";
 	private readonly DateTimeOffset _testTimeOffset = new(1990, 1, 1, 0, 0, 0, TimeSpan.Zero);
+	private readonly int _testFeedsToCreate = 10;
 
 	/// <summary>
 	/// Returns a new <see cref="FakeTimeProvider"/> set to the same value of _testTimeOffset.
@@ -29,7 +29,7 @@ public class GetFeedDetailTests : IClassFixture<InMemoryTestFixture>, IAsyncLife
 
 		Assert.Null(fetchedFeed);
 	}
-	
+
 	[Fact]
 	public async void Get_FeedByNegativeId_Should_ReturnNull()
 	{
@@ -46,7 +46,7 @@ public class GetFeedDetailTests : IClassFixture<InMemoryTestFixture>, IAsyncLife
 
 		var feedStorage = _fixture.CreateFeedStorage(timeProvider, _databaseName);
 
-		for (var i = 1; i <= 10; i++)
+		for (var i = 1; i <= _testFeedsToCreate; i++)
 		{
 			var fetchedFeed = await feedStorage.GetFeedDetail(i);
 
@@ -63,6 +63,25 @@ public class GetFeedDetailTests : IClassFixture<InMemoryTestFixture>, IAsyncLife
 		}
 	}
 
+	[Fact]
+	public async void Get_FeedDetailsList_Should_ReturnAllFeeds()
+	{
+		var feedStorage = _fixture.CreateFeedStorage(null, _databaseName);
+		var feeds = await feedStorage.GetFeedDetails();
+
+		Assert.Equal(_testFeedsToCreate, feeds.Count);
+	}
+
+	[Fact]
+	public async void Get_FeedDetailsList_WithNoFeedDetailsSaved_Should_ReturnEmptyList()
+	{
+		// Omit the database name to test against an empty database
+		var feedStorage = _fixture.CreateFeedStorage(null);
+		var feeds = await feedStorage.GetFeedDetails();
+
+		Assert.Equal(0, feeds.Count);
+	}
+
 	/// <summary>
 	/// Creates seed data for get feed detail tests
 	/// </summary>
@@ -72,7 +91,7 @@ public class GetFeedDetailTests : IClassFixture<InMemoryTestFixture>, IAsyncLife
 		var feedStorage = _fixture.CreateFeedStorage(testTimeProvider, _databaseName);
 
 		// Generate 10 feed details from 1 .. 10
-		for (var i = 1; i <= 10; i++)
+		for (var i = 1; i <= _testFeedsToCreate; i++)
 		{
 			// Create it with the current value of i to pretend to have unique values
 			var newFeedDetail = new FeedDetail()

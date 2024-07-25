@@ -52,6 +52,20 @@ public class FeedManager : IFeedManager
 			: FeedToFeedDetail(feed);
 	}
 
+	/// <inheritdoc />
+	public async Task<List<FeedDetail>> GetFeedDetails()
+	{
+		var feeds = await GetFeedsByCriteria();
+
+		if (feeds.Count == 0)
+		{
+			return new List<FeedDetail>();
+		}
+
+		return feeds.Select(FeedToFeedDetail)
+			.ToList();
+	}
+
 	/// <summary>
 	/// Converts a given <see cref="Feed"/> to a <see cref="FeedDetail"/>
 	/// </summary>
@@ -83,5 +97,19 @@ public class FeedManager : IFeedManager
 		}
 
 		return await _context.Feeds.FirstOrDefaultAsync(x => x.Id == feedDetailId);
+	}
+
+	/// <summary>
+	/// Returns all <see cref="Feed"/> that exist, by the given TODO: Criteria
+	/// <para>
+	///	Guaranteed to return a <see cref="List{T}"/>, but is not guaranteed to contain any elements.
+	/// </para>
+	/// </summary>
+	/// <returns></returns>
+	private async Task<List<Feed>> GetFeedsByCriteria( /*TODO: Implement criteria later*/)
+	{
+		return await _context.Feeds
+			// TODO: criteria stuff here
+			.ToListAsync();
 	}
 }

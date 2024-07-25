@@ -20,4 +20,13 @@ public interface IFeedStorage
 	/// <param name="feedId"></param>
 	/// <returns></returns>
 	Task<FeedDetail?> GetFeedDetail(int feedId);
+
+	/// <summary>
+	/// Returns all <see cref="FeedDetail"/> that exists.
+	/// <para>
+	///	Guaranteed to return a <see cref="List{T}"/> of <see cref="FeedDetail"/>, but not guaranteed to contain any elements
+	/// </para>
+	/// </summary>
+	/// <returns></returns>
+	Task<List<FeedDetail>> GetFeedDetails();
 }

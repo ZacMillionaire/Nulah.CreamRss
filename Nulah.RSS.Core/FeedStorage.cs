@@ -34,4 +34,10 @@ public class FeedStorage : IFeedStorage
 	{
 		return await _feedManager.GetFeedDetail(feedId);
 	}
+
+	/// <inheritdoc />
+	public async Task<List<FeedDetail>> GetFeedDetails()
+	{
+		return await _feedManager.GetFeedDetails();
+	}
 }
