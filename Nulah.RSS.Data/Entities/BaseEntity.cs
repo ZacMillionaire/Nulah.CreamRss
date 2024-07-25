@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Nulah.RSS.Data.Entities;
 
+[ExcludeFromCodeCoverage]
 internal class BaseEntity
 {
 	[Key]

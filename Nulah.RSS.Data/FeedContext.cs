@@ -1,9 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Nulah.RSS.Data.Entities;
 
 namespace Nulah.RSS.Data;
 
+[ExcludeFromCodeCoverage]
 public class FeedContext : DbContext
 {
 	internal DbSet<Feed> Feeds { get; set; }
