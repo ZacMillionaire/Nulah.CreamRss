@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.Extensions.Time.Testing;
 using Nulah.RSS.Domain.Models;
+using Nulah.RSS.Test.Shared;
 
 namespace Nulah.RSS.Core.UnitTests.FeedStorageTests;
 

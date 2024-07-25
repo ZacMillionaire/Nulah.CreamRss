@@ -1,11 +1,12 @@
-﻿using Nulah.RSS.Data;
+﻿using Nulah.RSS.Core;
+using Nulah.RSS.Data;
 using Nulah.RSS.Domain.Interfaces;
 
-namespace Nulah.RSS.Core.UnitTests.FeedStorageTests;
+namespace Nulah.RSS.Test.Shared;
 
 public class InMemoryTestFixture
 {
-	private readonly InMemoryDatabase _database;
+	private readonly InMemoryTestDatabase _testDatabase;
 
 	/// <summary>
 	/// Creates a manager with a database context that has a time provider bound to the given time provider. This should
@@ -24,7 +25,7 @@ public class InMemoryTestFixture
 	///	</param>
 	/// <returns></returns>
 	private IFeedManager CreateFeedManager(TimeProvider? timeProvider, string? databaseName = null)
-		=> new FeedManager(_database.CreateContext(timeProvider, databaseName));
+		=> new FeedManager(_testDatabase.CreateContext(timeProvider, databaseName));
 
 	/// <summary>
 	/// Returns a <see cref="IFeedStorage"/> with a preset <see cref="IFeedManager"/>.
@@ -41,7 +42,7 @@ public class InMemoryTestFixture
 	///	left null each call will use a fresh context
 	///	</param>
 	/// <returns></returns>
-	internal IFeedStorage CreateFeedStorage(TimeProvider? timeProvider, string? databaseName = null)
+	public IFeedStorage CreateFeedStorage(TimeProvider? timeProvider, string? databaseName = null)
 		=> new FeedStorage(CreateFeedManager(timeProvider, databaseName));
 
 	/// <summary>
@@ -51,10 +52,10 @@ public class InMemoryTestFixture
 	/// test fixtures.
 	/// </para>
 	/// </summary>
-	internal bool DataSeeded;
+	public bool DataSeeded;
 
 	public InMemoryTestFixture()
 	{
-		_database = new InMemoryDatabase();
+		_testDatabase = new InMemoryTestDatabase();
 	}
 }

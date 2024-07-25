@@ -2,14 +2,14 @@
 using Microsoft.Extensions.Time.Testing;
 using Nulah.RSS.Data;
 
-namespace Nulah.RSS.Core.UnitTests;
+namespace Nulah.RSS.Test.Shared;
 
-public class InMemoryDatabase
+public class InMemoryTestDatabase
 {
 	// 
 	private readonly DateTimeOffset _baseDateTime = new(2000, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
-	public InMemoryDatabase()
+	public InMemoryTestDatabase()
 	{
 		var context = CreateContext();
 		// Delete existing db before creating a new one

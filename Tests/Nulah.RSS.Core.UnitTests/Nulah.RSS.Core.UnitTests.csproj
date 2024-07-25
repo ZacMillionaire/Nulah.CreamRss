@@ -10,7 +10,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.7" />
         <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" Version="8.7.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0"/>
         <PackageReference Include="xunit" Version="2.4.2"/>
@@ -27,6 +26,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Nulah.RSS.Core\Nulah.RSS.Core.csproj" />
       <ProjectReference Include="..\..\Nulah.RSS.Data\Nulah.RSS.Data.csproj" />
+      <ProjectReference Include="..\Nulah.RSS.Test.Shared\Nulah.RSS.Test.Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>

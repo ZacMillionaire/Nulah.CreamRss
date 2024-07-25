@@ -2,6 +2,7 @@
 using Nulah.RSS.Data;
 using Nulah.RSS.Domain.Interfaces;
 using Nulah.RSS.Domain.Models;
+using Nulah.RSS.Test.Shared;
 
 namespace Nulah.RSS.Core.UnitTests.FeedStorageTests;
 
