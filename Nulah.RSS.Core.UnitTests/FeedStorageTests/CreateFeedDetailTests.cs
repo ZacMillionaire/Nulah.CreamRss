@@ -35,8 +35,8 @@ public class CreateFeedDetailTests : IClassFixture<InMemoryTestFixture>
 		Assert.Equal(newFeedDetail.Title, createdFeedDetail.Title);
 		Assert.Equal(newFeedDetail.Description, createdFeedDetail.Description);
 		Assert.Equal(newFeedDetail.ImageUrl, createdFeedDetail.ImageUrl);
-		Assert.Equal(testTimeOffset, createdFeedDetail.CreatedUtc);
-		Assert.Equal(testTimeOffset, createdFeedDetail.UpdatedUtc);
+		Assert.Equal(timeProvider.GetUtcNow(), createdFeedDetail.CreatedUtc);
+		Assert.Equal(timeProvider.GetUtcNow(), createdFeedDetail.UpdatedUtc);
 	}
 
 	[Fact]
@@ -69,15 +69,14 @@ public class CreateFeedDetailTests : IClassFixture<InMemoryTestFixture>
 		Assert.NotEqual(newFeedDetail.Id, createdFeedDetail.Id);
 		Assert.NotEqual(newFeedDetail.CreatedUtc, createdFeedDetail.CreatedUtc);
 		Assert.NotEqual(newFeedDetail.UpdatedUtc, createdFeedDetail.UpdatedUtc);
+		Assert.Equal(timeProvider.GetUtcNow(), createdFeedDetail.CreatedUtc);
+		Assert.Equal(timeProvider.GetUtcNow(), createdFeedDetail.UpdatedUtc);
 	}
 
 	[Fact]
 	public async void Create_FeedDetail_Without_Title_ShouldThrowValidationException()
 	{
-		var testTimeOffset = new DateTimeOffset(1990, 1, 1, 0, 0, 0, TimeSpan.Zero);
-		var timeProvider = new FakeTimeProvider(testTimeOffset);
-
-		var feedStorage = _fixture.CreateFeedStorage(timeProvider);
+		var feedStorage = _fixture.CreateFeedStorage(null);
 
 		var newFeedDetail = new FeedDetail()
 		{
