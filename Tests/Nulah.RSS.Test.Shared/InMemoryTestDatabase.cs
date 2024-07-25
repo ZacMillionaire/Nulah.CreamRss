@@ -9,14 +9,6 @@ public class InMemoryTestDatabase
 	// 
 	private readonly DateTimeOffset _baseDateTime = new(2000, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
-	public InMemoryTestDatabase()
-	{
-		var context = CreateContext();
-		// Delete existing db before creating a new one
-		context.Database.EnsureDeleted();
-		context.Database.EnsureCreated();
-	}
-
 	///  <summary>
 	///  Creates an in-memory database context with the provided <paramref name="timeProvider"/>.
 	///  <para>
