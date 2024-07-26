@@ -56,6 +56,7 @@ public class GetFeedDetailTests : IClassFixture<InMemoryTestFixture>, IAsyncLife
 			Assert.Equal($"test title {i}", fetchedFeed.Title);
 			Assert.Equal($"test description {i}", fetchedFeed.Description);
 			Assert.Equal($"test url {i}", fetchedFeed.ImageUrl);
+			Assert.Equal($"test location {i}", fetchedFeed.Location);
 			Assert.Equal(timeProvider.GetUtcNow(), fetchedFeed.CreatedUtc);
 			Assert.Equal(timeProvider.GetUtcNow(), fetchedFeed.UpdatedUtc);
 
@@ -99,10 +100,11 @@ public class GetFeedDetailTests : IClassFixture<InMemoryTestFixture>, IAsyncLife
 			{
 				Description = $"test description {i}",
 				Title = $"test title {i}",
-				ImageUrl = $"test url {i}"
+				ImageUrl = $"test url {i}",
+				Location = $"test location {i}"
 			};
 
-			var createdFeedDetail = await feedStorage.SaveFeedDetails(newFeedDetail);
+			var createdFeedDetail = await feedStorage.CreateFeedDetail(newFeedDetail);
 
 			Assert.NotNull(createdFeedDetail);
 			Assert.Equal(i, createdFeedDetail.Id);

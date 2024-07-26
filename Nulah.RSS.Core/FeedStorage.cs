@@ -14,7 +14,7 @@ public class FeedStorage : IFeedStorage
 	}
 
 	/// <inheritdoc />
-	public async Task<FeedDetail> SaveFeedDetails(FeedDetail feedDetail)
+	public async Task<FeedDetail> CreateFeedDetail(FeedDetail feedDetail)
 	{
 		var context = new ValidationContext(feedDetail, null, null);
 		var validationErrors = new List<ValidationResult>();
@@ -26,7 +26,29 @@ public class FeedStorage : IFeedStorage
 			};
 		}
 
-		return await _feedManager.SaveFeedDetail(feedDetail);
+		return await _feedManager.CreateFeedDetail(feedDetail);
+	}
+
+	/// <inheritdoc />
+	public async Task<FeedDetail> UpdateFeedDetail(FeedDetail feedDetail)
+	{
+		var context = new ValidationContext(feedDetail, null, null);
+		var validationErrors = new List<ValidationResult>();
+		if (!Validator.TryValidateObject(feedDetail, context, validationErrors, true))
+		{
+			// Add a validation here where the Id needs to be greater than 0
+			if (feedDetail.Id <= 0)
+			{
+				validationErrors.Add(new ValidationResult("Id must be greater than 0", new[] { nameof(feedDetail.Id) }));
+			}
+
+			throw new ValidationException("FeedDetail is invalid")
+			{
+				Data = { { "ValidationErrors", validationErrors } }
+			};
+		}
+
+		return await _feedManager.UpdateFeedDetail(feedDetail);
 	}
 
 	/// <inheritdoc />

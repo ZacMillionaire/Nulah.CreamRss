@@ -1,5 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Data;
+using System.Data.Entity.Core;
+using Microsoft.EntityFrameworkCore;
 using Nulah.RSS.Data.Entities;
+using Nulah.RSS.Domain.Exceptions;
 using Nulah.RSS.Domain.Interfaces;
 using Nulah.RSS.Domain.Models;
 
@@ -14,24 +17,51 @@ public class FeedManager : IFeedManager
 		_context = context;
 	}
 
-	/// <summary>
-	/// Creates or updates a <see cref="Feed"/> with the given <see cref="FeedDetail"/>.
-	/// </summary>
-	/// <param name="feedDetail"></param>
-	/// <returns></returns>
-	public async Task<FeedDetail> SaveFeedDetail(FeedDetail feedDetail)
+	/// <inheritdoc/>
+	public async Task<FeedDetail> CreateFeedDetail(FeedDetail feedDetail)
 	{
-		var feed = await GetFeedById(feedDetail.Id) ?? new Feed();
+		// If we found a feed by location, abort as feeds are distinct by their source location
+		if (await GetFeedByLocation(feedDetail.Location) != null)
+		{
+			throw new ArgumentException($"""Feed location "{feedDetail.Location}" already exists""");
+		}
+
+		var feed = new Feed
+		{
+			Description = feedDetail.Description,
+			Title = feedDetail.Title,
+			ImageUrl = feedDetail.ImageUrl,
+			Location = feedDetail.Location
+		};
+
+		_context.Feeds.Add(feed);
+
+		await _context.SaveChangesAsync();
+
+		return FeedToFeedDetail(feed);
+	}
+
+	public async Task<FeedDetail> UpdateFeedDetail(FeedDetail feedDetail)
+	{
+		var feed = await GetFeedById(feedDetail.Id);
+
+		if (feed == null)
+		{
+			throw new FeedNotFoundException($"No feed found with the specified Id: {feedDetail.Id}");
+		}
+
+		// Check to see if we have any other feeds with the incoming location, and if we do, throw an exception
+		// if the Id of the returned existing feed does not match the incoming Id
+		if (await GetFeedByLocation(feedDetail.Location) is { } existingByLocation
+		    && existingByLocation.Id != feed.Id)
+		{
+			throw new FeedLocationInUseException($"""Feed location "{feedDetail.Location}" already exists by another feed: {existingByLocation.Id}""");
+		}
 
 		feed.Description = feedDetail.Description;
 		feed.Title = feedDetail.Title;
 		feed.ImageUrl = feedDetail.ImageUrl;
-
-		// If this is a new item add it to the context
-		if (feed.Id == 0)
-		{
-			_context.Feeds.Add(feed);
-		}
+		feed.Location = feedDetail.Location;
 
 		await _context.SaveChangesAsync();
 
@@ -79,6 +109,7 @@ public class FeedManager : IFeedManager
 			Id = feed.Id,
 			Title = feed.Title,
 			ImageUrl = feed.ImageUrl,
+			Location = feed.Location,
 			CreatedUtc = feed.CreatedUtc,
 			UpdatedUtc = feed.UpdatedUtc,
 		};
@@ -97,6 +128,16 @@ public class FeedManager : IFeedManager
 		}
 
 		return await _context.Feeds.FirstOrDefaultAsync(x => x.Id == feedDetailId);
+	}
+
+	/// <summary>
+	/// Returns the specified <see cref="Feed"/> by Location, or null if not found
+	/// </summary>
+	/// <param name="location"></param>
+	/// <returns></returns>
+	private async Task<Feed?> GetFeedByLocation(string location)
+	{
+		return await _context.Feeds.FirstOrDefaultAsync(x => x.Location == location);
 	}
 
 	/// <summary>

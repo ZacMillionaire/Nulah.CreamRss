@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Nulah.RSS.Domain.Exceptions;
 using Nulah.RSS.Domain.Models;
 
 namespace Nulah.RSS.Domain.Interfaces;
@@ -6,16 +6,21 @@ namespace Nulah.RSS.Domain.Interfaces;
 public interface IFeedManager
 {
 	/// <summary>
-	/// Creates or Updates the given <paramref name="feedDetail"/> if Id is given.
-	/// <para>
-	/// Validation errors will be contained within the <see cref="ValidationException.Data"/>
-	/// property of the thrown exception.
-	/// </para>
+	/// Creates the given <paramref name="feedDetail"/> and returns a <see cref="FeedDetail"/> with database populated values.
 	/// </summary>
 	/// <param name="feedDetail"></param>
 	/// <returns></returns>
-	/// <exception cref="ValidationException"></exception>
-	Task<FeedDetail> SaveFeedDetail(FeedDetail feedDetail);
+	/// <exception cref="ArgumentException">Thrown if a feed already exists by <see cref="FeedDetail.Location"/></exception>
+	Task<FeedDetail> CreateFeedDetail(FeedDetail feedDetail);
+
+	/// <summary>
+	/// Updates an existing <see cref="FeedDetail"/> by Id.
+	/// </summary>
+	/// <param name="feedDetail"></param>
+	/// <returns></returns>
+	/// <exception cref="FeedNotFoundException">No existing feed found by Id</exception>
+	/// <exception cref="FeedLocationInUseException">Another feed was found with the incoming Location, and it's not the same as the feed being updated</exception>
+	Task<FeedDetail> UpdateFeedDetail(FeedDetail feedDetail);
 
 	/// <summary>
 	/// Returns a <see cref="FeedDetail"/> by the specified <paramref name="feedId"/>. Returns null if no feed is found.
