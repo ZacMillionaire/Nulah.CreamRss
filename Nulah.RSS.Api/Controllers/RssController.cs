@@ -1,8 +1,6 @@
 ﻿using System.ServiceModel.Syndication;
 using System.Xml;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Nulah.RSS.Core;
 using Nulah.RSS.Domain.Interfaces;
 using Nulah.RSS.Domain.Models;
 

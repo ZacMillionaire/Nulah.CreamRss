@@ -19,7 +19,7 @@ public class FeedReader : IFeedReader
 	/// </summary>
 	/// <param name="feedLocation">Remote URL or file path</param>
 	/// <returns></returns>
-	public FeedDetail ParseFeedDetails(string feedLocation)
+	public FeedDetail ParseFeedDetails(string? feedLocation)
 	{
 		return LoadFeedDetail(feedLocation);
 	}
@@ -129,7 +129,7 @@ public class FeedReader : IFeedReader
 	/// <param name="feedLocation"></param>
 	/// <returns></returns>
 	/// <exception cref="ArgumentNullException">Thrown if <see cref="feedLocation"/> is null or empty</exception>
-	private static FeedDetail LoadFeedDetail(string feedLocation)
+	private static FeedDetail LoadFeedDetail(string? feedLocation)
 	{
 		// Shortcut any checks done by XmlReader and fail early if we don't have a location
 		if (string.IsNullOrWhiteSpace(feedLocation))
