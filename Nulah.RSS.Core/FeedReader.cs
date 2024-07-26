@@ -10,8 +10,11 @@ public class FeedReader : IFeedReader
 	/// <summary>
 	/// Attempts to parse the feed located at the given location. The location can be a remote URL or locally accessible file.
 	/// <para>
+	/// Any title or description values will be trimmed of any whitespace
+	/// </para>
+	/// <para>
 	/// Any failure to load the feed from the location (such as network issues or files that can't be found)
-	/// will throw an exception that should be handled
+	/// will throw an exception that should be handled.
 	/// </para>
 	/// </summary>
 	/// <param name="feedLocation">Remote URL or file path</param>
@@ -121,13 +124,14 @@ public class FeedReader : IFeedReader
 	}
 
 	/// <summary>
-	/// Retrieves the feed from the given location and returns the details if successful. Throws any exceptions otherwise
+	/// Retrieves the feed from the given location and returns the details if successful. Throws any exceptions otherwise.
 	/// </summary>
 	/// <param name="feedLocation"></param>
 	/// <returns></returns>
-	/// <exception cref="ArgumentNullException"></exception>
+	/// <exception cref="ArgumentNullException">Thrown if <see cref="feedLocation"/> is null or empty</exception>
 	private static FeedDetail LoadFeedDetail(string feedLocation)
 	{
+		// Shortcut any checks done by XmlReader and fail early if we don't have a location
 		if (string.IsNullOrEmpty(feedLocation))
 		{
 			throw new ArgumentNullException(nameof(feedLocation));
@@ -136,11 +140,12 @@ public class FeedReader : IFeedReader
 		using var reader = XmlReader.Create(feedLocation);
 		var syndicationFeed = SyndicationFeed.Load(reader);
 
+		// We normalise feed details with text fields to have no leading or trailing spaces
 		return new FeedDetail()
 		{
-			Title = syndicationFeed.Title?.Text ?? "TITLE MISSING",
+			Title = syndicationFeed.Title?.Text.Trim() ?? "TITLE MISSING",
 			ImageUrl = syndicationFeed.ImageUrl?.AbsoluteUri,
-			Description = syndicationFeed.Description?.Text
+			Description = syndicationFeed.Description?.Text.Trim()
 		};
 	}
 }
