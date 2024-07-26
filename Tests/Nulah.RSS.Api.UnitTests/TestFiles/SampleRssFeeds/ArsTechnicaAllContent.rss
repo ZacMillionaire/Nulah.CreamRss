@@ -1,0 +1,797 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" 
+xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" version="2.0">
+
+    <channel>
+        <title>Ars Technica - All content</title>
+        <atom:link href="https://arstechnica.com/feed/" rel="self" type="application/rss+xml"/>
+        <link>https://arstechnica.com</link>
+        <description>All Ars Technica stories</description>
+        <lastBuildDate>Thu, 11 Jul 2024 23:01:49 +0000</lastBuildDate>
+        <language>en-US</language>
+        <sy:updatePeriod>
+            hourly	</sy:updatePeriod>
+        <sy:updateFrequency>
+            1	</sy:updateFrequency>
+        <generator>https://wordpress.org/?v=6.0.3</generator>
+
+        <image>
+            <url>https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480-32x32.png</url>
+            <title>Ars Technica</title>
+            <link>https://arstechnica.com</link>
+            <width>32</width>
+            <height>32</height>
+        </image>
+        <item>
+            <title>Lion brothers in search of mates just set a record for longest known swim</title>
+            <link>https://arstechnica.com/?p=2035440</link>
+            <comments>https://arstechnica.com/science/2024/07/these-african-lions-swam-a-record-breaking-1-5-km-to-find-a-mate/#comments</comments>
+
+            <dc:creator><![CDATA[Jennifer Ouellette]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 22:02:41 +0000</pubDate>
+            <category><![CDATA[Science]]></category>
+            <category><![CDATA[animal behavior]]></category>
+            <category><![CDATA[animals]]></category>
+            <category><![CDATA[Ecology]]></category>
+            <category><![CDATA[lions]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2035440</guid>
+
+            <description><![CDATA[Brothers Jacob and Tibu braved hungry hippos and crocodiles to make the crossing. ]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/lion1-800x533.jpg" alt="two lions, one sitting, one standing">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/lion1.jpg" class="enlarge-link" data-height="800" data-width="1200">Enlarge</a> <span class="sep">/</span> The intrepid three-legged lion Jacob and his brother Tibu prepare for a hunt. (credit: Alexander Braczkowski)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>On February 4, scientists monitoring lion populations in Uganda captured nighttime thermal drone footage of two lions—brothers dubbed Jacob and Tibu by the Uganda Wildlife Authority—swimming across the predator-infested Kazinga Channel connecting two lakes, most likely to find mates. While there have been prior reports of lions swimming short distances, Jacob and Tibu covered about 1.5 kilometers (nearly one mile)—the longest swim yet recorded, according to a <a href="https://onlinelibrary.wiley.com/doi/10.1002/ece3.11597#:~:text=The%20heat%20signatures%20of%20two,event%20recorded%20for%20the%20species.">new paper</a> published in the journal Ecology and Evolution.</p>
+<p>"The fact that [Jacob] and his brother Tibu have managed to survive as long as they have in a national park that has experienced significant human pressures and high poaching rates is a feat in itself—our science has shown this population has nearly halved in just five years," <a href="https://www.eurekalert.org/news-releases/1050429?">said co-author Alexander Braczkowski</a> of Griffith University, who has been working with the government of Uganda since 2017 <a href="https://volcanoessafaris.com/update-on-the-2023-volcanoes-safaris-partnership-trust-african-lion-and-carnivore-survey-in-queen-elizabeth-national-park/">to monitor</a> the lion population in the area. "His swim, across a channel filled with high densities of hippos and crocodiles, is a record-breaker and is a truly amazing show of resilience in the face of such risk.”</p>
+<p>Jacob and Tibu's impressive feat is likely the result of increased pressure from human encroachment, according to Braczkowski. He co-authored a <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1002/2688-8319.12015">2020 paper</a> proposing a novel census technique that could be used more broadly as an early warning of lion declines. Their method revealed a worrying movement parameter for both male and female lions in Uganda's Queen Elizabeth National Park, where the home range increased to 3.27 km (a 400 percent increase) for males and 2.22 km (a 100 percent increase) for females—likely a response to systematic prey depletion due to poaching, for example. And the sex ratio was dangerously skewed: one male to 0.75 females, a highly unusual occurrence.</p></div><p><a href="https://arstechnica.com/?p=2035440#p3">Read 6 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2035440&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/science/2024/07/these-african-lions-swam-a-record-breaking-1-5-km-to-find-a-mate/feed/</wfw:commentRss>
+            <slash:comments>13</slash:comments>
+
+
+        </item>
+        <item>
+            <title>First “Miss AI” contest sparks ire for pushing unrealistic beauty standards</title>
+            <link>https://arstechnica.com/?p=2036414</link>
+            <comments>https://arstechnica.com/information-technology/2024/07/first-miss-ai-contest-sparks-ire-for-pushing-unrealistic-beauty-standards/#comments</comments>
+
+            <dc:creator><![CDATA[Benj Edwards]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 21:45:20 +0000</pubDate>
+            <category><![CDATA[AI]]></category>
+            <category><![CDATA[Biz & IT]]></category>
+            <category><![CDATA[AI-generated images]]></category>
+            <category><![CDATA[deepfakes]]></category>
+            <category><![CDATA[Dr. Margaret Mitchell]]></category>
+            <category><![CDATA[Dr. Sasha Luccioni]]></category>
+            <category><![CDATA[fanvue]]></category>
+            <category><![CDATA[Hugging Face]]></category>
+            <category><![CDATA[image synthesis]]></category>
+            <category><![CDATA[influencer]]></category>
+            <category><![CDATA[influencers]]></category>
+            <category><![CDATA[machine learning]]></category>
+            <category><![CDATA[Miss AI]]></category>
+            <category><![CDATA[social media]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036414</guid>
+
+            <description><![CDATA[Influencer platform's controversial contest awarded prizes to three nonexistent people.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/ai_beauty_pageant_winner-800x450.jpg" alt="An AI-generated image of " miss ai award winner layli and an unidentified ai-generated woman beside her.>
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/ai_beauty_pageant_winner.jpg" class="enlarge-link" data-height="675" data-width="1200">Enlarge</a> <span class="sep">/</span> An AI-generated image of "Miss AI" award winner "Kenza Layli" (left) and an unidentified AI-generated woman beside her. (credit: <a rel="nofollow" class="caption-link" href="https://www.instagram.com/p/C9K3pwtCwJI/?hl=en">Kenza.Layli / Instagram</a>)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>An influencer platform called Fanvue recently announced the results of its first "<a href="https://miss-ai.webflow.io/">Miss AI</a>" pageant, which sought to judge AI-generated social media influencers and also doubled as a convenient publicity stunt. The "winner" is a fictional Instagram influencer from Morocco named <a href="https://www.instagram.com/kenza.layli/">Kenza Layli</a> with more than 200,000 followers, but the pageant is already attracting criticism from women in the AI space.</p>
+
+<p>"Yet another stepping stone on the road to objectifying women with AI," Hugging Face AI researcher <a href="https://www.sashaluccioni.com/about/">Dr. Sasha Luccioni</a> told Ars Technica. "As a woman working in this field, I'm unsurprised but disappointed."</p>
+<p>Instances of AI-generated Instagram influencers have <a href="https://nymag.com/intelligencer/2024/01/ai-is-coming-for-the-influencers.html">reportedly</a> been on the rise since freely available image synthesis tools like <a href="https://arstechnica.com/information-technology/2022/12/thanks-to-ai-its-probably-time-to-take-your-photos-off-the-internet/">Stable Diffusion</a> have made it easy to generate an unlimited quantity of provocative images of women on demand. And techniques like <a href="https://arstechnica.com/gadgets/2023/03/making-faces-how-to-train-an-ai-on-your-face-to-create-silly-portraits/">Dreambooth</a> allow fine-tuning an AI model on a specific subject (including an AI-generated one) to place it in different settings.</p></div><p><a href="https://arstechnica.com/?p=2036414#p3">Read 10 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036414&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/information-technology/2024/07/first-miss-ai-contest-sparks-ire-for-pushing-unrealistic-beauty-standards/feed/</wfw:commentRss>
+            <slash:comments>40</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Elon Musk calls for “criminal prosecution” of X ad boycott perpetrators</title>
+            <link>https://arstechnica.com/?p=2036575</link>
+            <comments>https://arstechnica.com/tech-policy/2024/07/elon-musk-calls-for-criminal-prosecution-of-x-ad-boycott-perpetrators/#comments</comments>
+
+            <dc:creator><![CDATA[Ashley Belanger]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 21:28:00 +0000</pubDate>
+            <category><![CDATA[Policy]]></category>
+            <category><![CDATA[brand safety]]></category>
+            <category><![CDATA[content moderation]]></category>
+            <category><![CDATA[content monetization]]></category>
+            <category><![CDATA[Elon Musk]]></category>
+            <category><![CDATA[garm]]></category>
+            <category><![CDATA[global alliance for responsible media]]></category>
+            <category><![CDATA[online advertising]]></category>
+            <category><![CDATA[Twitter]]></category>
+            <category><![CDATA[X]]></category>
+            <category><![CDATA[x corp]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036575</guid>
+
+            <description><![CDATA[Congress accused advertisers group of colluding to tank X's revenue.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/GettyImages-2151277790-800x534.jpg" alt="Elon Musk calls for “criminal prosecution” of X ad boycott perpetrators">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/GettyImages-2151277790.jpg" class="enlarge-link" data-height="683" data-width="1024">Enlarge</a> (credit: <a rel="nofollow" class="caption-link" href="https://www.gettyimages.com/detail/news-photo/elon-musk-co-founder-of-tesla-and-spacex-and-owner-of-x-news-photo/2151277790?adppopup=true">Apu Gomes / Stringer | Getty Images News</a>)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>After the House of Representatives Committee on the Judiciary released a <a href="https://judiciary.house.gov/media/press-releases/how-worlds-biggest-brands-seek-control-online-speech">report</a> accusing the Global Alliance for Responsible Media (GARM) of colluding with companies to censor conservative voices online, Elon Musk chimed in. In a <a href="https://x.com/elonmusk/status/1811360296218341403">post</a> on X (formerly Twitter), Musk wrote that X "has no choice but to file suit against the perpetrators and collaborators" behind an advertiser boycott on his platform.</p>
+<p>"Hopefully, some states will consider criminal prosecution," Musk wrote, leading several X users to suggest that Musk wants it to be illegal for brands to refuse to advertise on X.</p>
+<p>Among other allegations, Congress' report claimed that GARM—which is part of the World Federation of Advertisers (WFA), whose members "represent roughly 90 percent of global advertising spend, or almost one trillion dollars annually"—directed advertisers to boycott Twitter shortly after Musk took over the platform.</p></div><p><a href="https://arstechnica.com/?p=2036575#p3">Read 29 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036575&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/tech-policy/2024/07/elon-musk-calls-for-criminal-prosecution-of-x-ad-boycott-perpetrators/feed/</wfw:commentRss>
+            <slash:comments>99</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Shady company relaunches popular old tech blogs, steals writers’ identities</title>
+            <link>https://arstechnica.com/?p=2036525</link>
+            <comments>https://arstechnica.com/ai/2024/07/ilounge-and-the-unofficial-apple-weblog-are-back-as-unethical-ai-content-farms/#comments</comments>
+
+            <dc:creator><![CDATA[Samuel Axon]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 21:07:48 +0000</pubDate>
+            <category><![CDATA[AI]]></category>
+            <category><![CDATA[Apple]]></category>
+            <category><![CDATA[Tech]]></category>
+            <category><![CDATA[Christina Warren]]></category>
+            <category><![CDATA[iLounge]]></category>
+            <category><![CDATA[large language models]]></category>
+            <category><![CDATA[LLMs]]></category>
+            <category><![CDATA[SEO]]></category>
+            <category><![CDATA[The Unofficial Apple Weblog]]></category>
+            <category><![CDATA[TUAW]]></category>
+            <category><![CDATA[Web Orange Limited]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036525</guid>
+
+            <description><![CDATA[This doesn't just threaten writers' work—it has a corrosive effect on the web.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/fake-ai-writer-mask-800x450.jpg" alt="A woman removes a mask">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/fake-ai-writer-mask.jpg" class="enlarge-link" data-height="1440" data-width="2560">Enlarge</a> <span class="sep">/</span> Professional writers' names were attached to AI content they had nothing to do with. (credit: Aurich Lawson | Getty Images | Christina Warren)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>In one of the most egregiously unethical uses of AI we've seen, a web advertising company has re-created some defunct, classic tech blogs like The Unofficial Apple Weblog (TUAW) and iLounge by mimicking the bylines of the websites' former writers and publishing AI-generated content under their names.</p>
+<p><a href="https://www.theverge.com/2024/7/10/24195858/tuaw-unofficial-apple-tech-blog-ai-web-orange-khan">The Verge reported</a> on the fiasco in detail, including speaking to Christina Warren, a former writer for TUAW who now works at GitHub. Warren <a href="https://www.threads.net/@film_girl/post/C9Nq7jLS6A_">took to the social media platform Threads</a> yesterday to point out that someone had re-launched TUAW at its original domain and populated it with fake content allegedly written by her and other past TUAW staff. Some of the content simply reworded articles that originally appeared on TUAW, while other articles tied real writers' names to new, AI-generated articles about current events.</p>
+<p>(Disclosure: I worked with Warren at Mashable several years ago, and before that, I also worked at the original parent company of TUAW.)</p></div><p><a href="https://arstechnica.com/?p=2036525#p3">Read 15 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036525&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/ai/2024/07/ilounge-and-the-unofficial-apple-weblog-are-back-as-unethical-ai-content-farms/feed/</wfw:commentRss>
+            <slash:comments>26</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Exim vulnerability affecting 1.5 million servers lets attackers attach malicious files</title>
+            <link>https://arstechnica.com/?p=2036607</link>
+            <comments>https://arstechnica.com/security/2024/07/more-than-1-5-million-email-servers-running-exim-vulnerable-to-critical-attacks/#comments</comments>
+
+            <dc:creator><![CDATA[Dan Goodin]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 20:47:26 +0000</pubDate>
+            <category><![CDATA[Biz & IT]]></category>
+            <category><![CDATA[Security]]></category>
+            <category><![CDATA[email]]></category>
+            <category><![CDATA[exim]]></category>
+            <category><![CDATA[exploits]]></category>
+            <category><![CDATA[vulnerabilities]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036607</guid>
+
+            <description><![CDATA[Based on past attacks, It wouldn’t be surprising to see active targeting this time too.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2023/07/exploit-vulnerability-security-800x450.jpg" alt="Exim vulnerability affecting 1.5 million servers lets attackers attach malicious files">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2023/07/exploit-vulnerability-security.jpg" class="enlarge-link" data-height="563" data-width="1000">Enlarge</a> </p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>More than 1.5 million email servers are vulnerable to attacks that can deliver executable attachments to user accounts, security researchers said.</p>
+<p>The servers run versions of the Exim mail transfer agent that are vulnerable to a critical vulnerability that <a href="%E2%80%8B%E2%80%8Bhttps://bugs.exim.org/show_bug.cgi?id=3099#c4">came to light</a> 10 days ago. Tracked as CVE-2024-39929 and carrying a severity rating of 9.1 out of 10, the vulnerability makes it trivial for threat actors to bypass protections that normally prevent the sending of attachments that install apps or execute code. Such protections are a first line of defense against malicious emails designed to install malware on end-user devices.</p>
+<h2>A serious security issue</h2>
+<p>“I can confirm this bug,” Exim project team member Heiko Schlittermann wrote on a bug-tracking site. “It looks like a serious security issue to me.”</p></div><p><a href="https://arstechnica.com/?p=2036607#p3">Read 4 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036607&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/security/2024/07/more-than-1-5-million-email-servers-running-exim-vulnerable-to-critical-attacks/feed/</wfw:commentRss>
+            <slash:comments>3</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Giant salamander species found in what was thought to be an icy ecosystem</title>
+            <link>https://arstechnica.com/?p=2036337</link>
+            <comments>https://arstechnica.com/science/2024/07/giant-salamander-fossils-show-early-tetrapods-survived-longer-than-expected/#comments</comments>
+
+            <dc:creator><![CDATA[Jacek Krywko]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 20:00:08 +0000</pubDate>
+            <category><![CDATA[Science]]></category>
+            <category><![CDATA[Biology]]></category>
+            <category><![CDATA[Ecology]]></category>
+            <category><![CDATA[evolution]]></category>
+            <category><![CDATA[extinction]]></category>
+            <category><![CDATA[paleontology]]></category>
+            <category><![CDATA[salamander]]></category>
+            <category><![CDATA[tetrapods]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036337</guid>
+
+            <description><![CDATA[Found after its kind were thought extinct, and where it was thought to be too cold.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/image-5-800x533.jpeg" alt="A black background with a brown fossil at the center, consisting of the head and a portion of the vertebral column.">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/image-5-scaled.jpeg" class="enlarge-link" data-height="1707" data-width="2560">Enlarge</a> (credit: C. Marsicano)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p><em>Gaiasia jennyae</em>, a newly discovered freshwater apex predator with a body length reaching 4.5 meters, lurked in the swamps and lakes around 280 million years ago. Its wide, flattened head had powerful jaws full of huge fangs, ready to capture any prey unlucky enough to swim past.</p>
+<p>The problem is, to the best of our knowledge, it shouldn’t have been that large, should have been extinct tens of millions of years before the time it apparently lived, and shouldn’t have been found in northern Namibia. “<em>Gaiasia</em> is the first really good look we have at an entirely different ecosystem we didn’t expect to find,” says Jason Pardo, a postdoctoral fellow at Field Museum of Natural History in Chicago. Pardo is co-author of a study on the <em>Gaiasia jennyae</em> discovery recently published in Nature.</p>
+<h2>Common ancestry</h2>
+<p>“Tetrapods were the animals that crawled out of the water around 380 million years ago, maybe a little earlier,” Pardo explains. These ancient creatures, also known as stem tetrapods, were the common ancestors of modern reptiles, amphibians, mammals, and birds. “Those animals lived up to what we call the end of Carboniferous, about 370–300 million years ago. Few made it through, and they lasted longer, but they mostly went extinct around 370 million ago,” he adds.</p></div><p><a href="https://arstechnica.com/?p=2036337#p3">Read 10 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036337&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/science/2024/07/giant-salamander-fossils-show-early-tetrapods-survived-longer-than-expected/feed/</wfw:commentRss>
+            <slash:comments>14</slash:comments>
+
+
+        </item>
+        <item>
+            <title>DVDs are dying right as streaming has made them appealing again</title>
+            <link>https://arstechnica.com/?p=2036466</link>
+            <comments>https://arstechnica.com/gadgets/2024/07/dvds-are-dying-right-as-streaming-has-made-them-appealing-again/#comments</comments>
+
+            <dc:creator><![CDATA[Scharon Harding]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 19:13:08 +0000</pubDate>
+            <category><![CDATA[Tech]]></category>
+            <category><![CDATA[Blu-ray]]></category>
+            <category><![CDATA[dvd]]></category>
+            <category><![CDATA[streaming]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036466</guid>
+
+            <description><![CDATA[You don't know what you've got till it's gone. ]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/GettyImages-2160126739-800x534.jpg" alt="A Redbox kiosk">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/GettyImages-2160126739.jpg" class="enlarge-link" data-height="683" data-width="1024">Enlarge</a> <span class="sep">/</span> A Redbox movie rental kiosk stands outside a CVS store. (credit: <a rel="nofollow" class="caption-link" href="https://www.gettyimages.com/detail/news-photo/redbox-movie-rental-kiosk-stands-outside-a-cvs-store-on-news-photo/2160126739">Getty</a>)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>Since 2004, red DVD rental kiosks posted near entrances of grocery stores and the like tempted shoppers with movie (and <a href="https://arstechnica.com/gaming/2019/12/mourning-the-end-of-the-video-game-rental-era/">until 2019, video game</a>) disc rentals. But the last 24,000 of Redbox's kiosks are going away, as Redbox's parent company moved to chapter 7 liquidation bankruptcy this week. The end of Redbox marks another death knell for the DVD industry at a time when volatile streaming services are making physical media appealing again.</p>
+<h2>Redbox shutting down</h2>
+<p>Chicken Soup for the Soul Entertainment, which owns Redbox, filed for chapter 11 bankruptcy on June 29. But on Wednesday, Judge Thomas M. Horan of the US Bankruptcy Court for the District of Delaware approved a conversion to chapter 7, signaling the liquidation of business, per <a href="https://deadline.com/2024/07/redbox-liquidation-bankruptcy-chicken-soup-for-the-soul-chapter-7-1236006525/">Deadline</a>. Redbox's remaining 24,000 kiosks will close, and 1,000 workers will be laid off (severance and back pay eligibility are under review, and a bankruptcy trustee will investigate if trust funds intended for employees were misappropriated).</p>
+<p>Chicken Soup bought Redbox for $375 million in 2022 and is $970 million in debt. It will also be shuttering its Redbox, Crackle, and Popcornflix streaming services.</p></div><p><a href="https://arstechnica.com/?p=2036466#p3">Read 9 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036466&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/gadgets/2024/07/dvds-are-dying-right-as-streaming-has-made-them-appealing-again/feed/</wfw:commentRss>
+            <slash:comments>164</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Frozen mammoth skin retained its chromosome structure</title>
+            <link>https://arstechnica.com/?p=2036352</link>
+            <comments>https://arstechnica.com/science/2024/07/frozen-mammoth-skin-retained-its-chromosome-structure/#comments</comments>
+
+            <dc:creator><![CDATA[John Timmer]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 17:58:34 +0000</pubDate>
+            <category><![CDATA[Science]]></category>
+            <category><![CDATA[ancient DNA]]></category>
+            <category><![CDATA[Biology]]></category>
+            <category><![CDATA[evolution]]></category>
+            <category><![CDATA[Genetics]]></category>
+            <category><![CDATA[Genomics]]></category>
+            <category><![CDATA[mammoths]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036352</guid>
+
+            <description><![CDATA[Features as small as 50 nanometers preserved in a 50,000-year-old sample.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/GettyImages-1527432247-800x448.jpg" alt="Artist's depiction of a large mammoth with brown fur and huge, curving tusks in an icy, tundra environment.">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/GettyImages-1527432247.jpg" class="enlarge-link" data-height="1296" data-width="2312">Enlarge</a> (credit: <a rel="nofollow" class="caption-link" href="https://www.gettyimages.com/detail/illustration/mammoth-illustration-royalty-free-illustration/1527432247?phrase=mammoth">LEONELLO CALVETTI/SCIENCE PHOTO LIBRARY</a>)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>One of the challenges of working with ancient DNA samples is that damage accumulates over time, breaking up the structure of the double helix into ever smaller fragments. In the samples we've worked with, these fragments scatter and mix with contaminants, making reconstructing a genome a large technical challenge.</p>
+<p>But a dramatic paper released on Thursday shows that this isn't always true. Damage does create progressively smaller fragments of DNA over time. But, if they're trapped in the right sort of material, they'll stay right where they are, essentially preserving some key features of ancient chromosomes even as the underlying DNA decays. Researchers have now used that to detail the chromosome structure of mammoths, with some implications for how these mammals regulated some key genes.</p>
+<h2>DNA meets Hi-C</h2>
+<p>The backbone of DNA's double helix consists of alternating sugars and phosphates, chemically linked together (the bases of DNA are chemically linked to these sugars). Damage from things like radiation can break these chemical linkages, with fragmentation increasing over time. When samples reach the age of something like a Neanderthal, very few fragments are longer than 100 base pairs. Since chromosomes are millions of base pairs long, it was thought that this would inevitably destroy their structure, as many of the fragments would simply diffuse away.</p></div><p><a href="https://arstechnica.com/?p=2036352#p3">Read 18 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036352&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/science/2024/07/frozen-mammoth-skin-retained-its-chromosome-structure/feed/</wfw:commentRss>
+            <slash:comments>24</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Can you do better than top-level AI models on these basic vision tests?</title>
+            <link>https://arstechnica.com/?p=2036427</link>
+            <comments>https://arstechnica.com/ai/2024/07/can-you-do-better-than-top-level-ai-models-on-these-basic-vision-tests/#comments</comments>
+
+            <dc:creator><![CDATA[Kyle Orland]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 16:35:34 +0000</pubDate>
+            <category><![CDATA[AI]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036427</guid>
+
+            <description><![CDATA[Abstract analysis that is trivial for humans often stymies GPT-4o, Gemini, and Sonnet.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/GettyImages-1283438928-800x374.jpg" alt="Whatever you do, don't ask the AI how many horizontal lines are in this image.">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/GettyImages-1283438928.jpg" class="enlarge-link" data-height="1184" data-width="2531">Enlarge</a> <span class="sep">/</span> Whatever you do, don't ask the AI how many horizontal lines are in this image. (credit: Getty Images)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>In the last couple of years, we've seen <a href="https://arstechnica.com/information-technology/2023/03/microsoft-unveils-kosmos-1-an-ai-language-model-with-visual-perception-abilities/">amazing</a> <a href="https://arstechnica.com/information-technology/2023/09/chatgpt-goes-multimodal-with-image-recognition-and-speech-synthesis/">advancements</a> in AI systems when it comes to <a href="https://arstechnica.com/information-technology/2023/07/report-openai-holding-back-gpt-4-image-features-on-fears-of-privacy-issues/">recognizing</a> and <a href="https://arstechnica.com/information-technology/2023/03/microsoft-unveils-kosmos-1-an-ai-language-model-with-visual-perception-abilities/">analyzing</a> the contents of complicated images. But a new paper highlights how many state-of-the-art "vision learning Models" (VLMs) often fail at simple, low-level visual analysis tasks that are trivially easy for a human.</p>
+<p>In the provocatively titled pre-print paper <a href="https://arxiv.org/abs/2407.06581">"Vision language models are <em>blind</em>"</a> (which has <a href="https://arxiv.org/pdf/2407.06581">a PDF version</a> that includes a dark sunglasses emoji <em>in the title</em>), researchers from Auburn University and the University of Alberta create eight simple visual acuity tests with objectively correct answers. These range from identifying how often two colored lines intersect to identifying which letter in a long word has been circled to counting how many nested shapes exist in an image (representative examples and results can be <a href="https://vlmsareblind.github.io/">viewed on the research team's webpage</a>).</p>
+  <ul class="gallery shortcode-gallery gallery-wide">
+          <li>
+        <div class="gallery-item-content">
+          <div class="gallery-image"><img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/Screenshot-2024-07-11-115243-980x270.png" alt=""></div>
+          <p>
+            If you can solve these kinds of puzzles, you may have better visual reasoning than state-of-the-art AIs.                          [credit:
+                              <a href="https://arxiv.org/abs/2407.06581">Rahmanzadehgervi, Bolton, Taesiri, Nguyen.</a>
+                            ]
+                      </p>
+        </div>
+      </li>
+      </ul>
+
+<p>Crucially, these tests are <a href="https://github.com/anguyen8/vision-llms-are-blind">generated by custom code</a> and don't rely on pre-existing images or tests that could be found on the public Internet, thereby "minimiz[ing] the chance that VLMs can solve by memorization," according to the researchers. The tests also "require minimal to zero world knowledge" beyond basic 2D shapes, making it difficult for the answer to be inferred from "textual question and choices alone" (which has been <a href="https://arxiv.org/abs/2403.20330">identified as an issue for some other visual AI benchmarks</a>).</p></div><p><a href="https://arstechnica.com/?p=2036427#p3">Read 5 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036427&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/ai/2024/07/can-you-do-better-than-top-level-ai-models-on-these-basic-vision-tests/feed/</wfw:commentRss>
+            <slash:comments>53</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Arm tweaks AMD’s FSR to bring battery-saving GPU upscaling to phones and tablets</title>
+            <link>https://arstechnica.com/?p=2036378</link>
+            <comments>https://arstechnica.com/gaming/2024/07/arm-gets-into-graphics-upscaling-promises-up-to-1-5x-faster-gpu-performance/#comments</comments>
+
+            <dc:creator><![CDATA[Andrew Cunningham]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 16:22:34 +0000</pubDate>
+            <category><![CDATA[Gaming]]></category>
+            <category><![CDATA[Tech]]></category>
+            <category><![CDATA[ARM]]></category>
+            <category><![CDATA[fsr]]></category>
+            <category><![CDATA[upscaling]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036378</guid>
+
+            <description><![CDATA[Arm "Accuracy Super Resolution" is optimized for power use and integrated GPUs.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/night_quarter_arm_asr_x2-800x400.jpeg" alt='An Arm sample image meant to show off its new "Accuracy Super Resolution" upscaling tech.'>
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/night_quarter_arm_asr_x2.jpeg" class="enlarge-link" data-height="1024" data-width="2048">Enlarge</a> <span class="sep">/</span> An Arm sample image meant to show off its new "Accuracy Super Resolution" upscaling tech. (credit: Arm)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>Some of the best Arm processors come from companies like Apple and Qualcomm, which license Arm's processor instruction set but create their own custom or semi-custom CPU designs. But Arm continues to plug away on its own CPU and GPU architectures and related technologies, and the company has announced that it's <a href="https://community.arm.com/arm-community-blogs/b/graphics-gaming-and-vr-blog/posts/introducing-arm-accuracy-super-resolution?utm_source=twitter&amp;utm_medium=social-organic&amp;utm_content=blog&amp;utm_campaign=mk04_client_na">getting into the crowded field of graphics upscaling technology</a>.</p>
+<p>Arm's Accuracy Super Resolution (ASR) is a temporal upscaler that is based on AMD's open source FidelityFX Super Resolution 2, which Arm says allows developers to "benefit from the familiar API and configuration options." (This <a href="https://gpuopen.com/gdc-presentations/2023/GDC-2023-Temporal-Upscaling.pdf">AMD presentation from GDC 2023</a> gets into some of the differences between different kinds of upscalers.)</p>
+<p>AMD's FSR and Nvidia's DLSS on gaming PCs are mostly sold as a way to boost graphical fidelity—increasing frame rates beyond 60 fps or rendering "4K" images on graphics cards that are too slow to do those things natively, for example. But since Arm devices are still (<a href="https://support.apple.com/en-us/116943">mostly</a>, <a href="https://arstechnica.com/gadgets/2024/07/surface-pro-11-and-laptop-7-review-an-apple-silicon-moment-for-windows/">for now</a>) phones and tablets, Arm is leaning into the potential power savings that are possible with lower GPU use. A less-busy GPU also runs cooler, reducing the likelihood of thermal throttling; Arm mentions reduced throttling as a benefit of ASR, though it doesn't say how much of ASR's performance advantage over FSR is attributable to reduced throttling.</p></div><p><a href="https://arstechnica.com/?p=2036378#p3">Read 6 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036378&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/gaming/2024/07/arm-gets-into-graphics-upscaling-promises-up-to-1-5x-faster-gpu-performance/feed/</wfw:commentRss>
+            <slash:comments>19</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Apple settles EU probe by opening up its mobile payments system</title>
+            <link>https://arstechnica.com/?p=2036401</link>
+            <comments>https://arstechnica.com/tech-policy/2024/07/apple-will-soon-allow-rival-wallets-to-replace-apple-pay-as-default-in-eu/#comments</comments>
+
+            <dc:creator><![CDATA[Ashley Belanger]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 15:47:55 +0000</pubDate>
+            <category><![CDATA[Apple]]></category>
+            <category><![CDATA[Policy]]></category>
+            <category><![CDATA[apple]]></category>
+            <category><![CDATA[Apple Pay]]></category>
+            <category><![CDATA[Digital Markets Act]]></category>
+            <category><![CDATA[European Commission]]></category>
+            <category><![CDATA[european union]]></category>
+            <category><![CDATA[Face ID]]></category>
+            <category><![CDATA[iphone]]></category>
+            <category><![CDATA[mobile payments]]></category>
+            <category><![CDATA[mobile wallet]]></category>
+            <category><![CDATA[near field communication]]></category>
+            <category><![CDATA[NFC]]></category>
+            <category><![CDATA[NFC payment]]></category>
+            <category><![CDATA[online security]]></category>
+            <category><![CDATA[payments technology]]></category>
+            <category><![CDATA[touch and go]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036401</guid>
+
+            <description><![CDATA[iPhone users will get more choices to make "touch-and-go" payments in the EU.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/GettyImages-1440372146-800x533.jpg" alt="Apple settles EU probe by opening up its mobile payments system">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/GettyImages-1440372146.jpg" class="enlarge-link" data-height="1414" data-width="2121">Enlarge</a> (credit: <a rel="nofollow" class="caption-link" href="https://www.gettyimages.com/detail/photo/hand-of-woman-doing-contactless-payment-while-royalty-free-image/1440372146?phrase=apple+pay&amp;adppopup=true">Maskot | Maskot</a>)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>In two weeks, iPhone users in the European Union will be able to use any mobile wallet they like to complete "tap and go" payments with the ease of using Apple Pay.</p>
+<p>The change comes as part of a settlement with the European Commission (EC), which investigated Apple for potentially shutting out rivals by denying access to the "Near Field Communication" (NFC) technology on its devices that enables the "tap and go" feature. Apple did not develop this technology, which is free for developers, the EC said, and going forward, Apple agreed to not charge developers fees to provide the NFC functionality on its devices.</p>
+<p>In a <a href="https://ec.europa.eu/commission/presscorner/detail/en/speech_24_3746">press release</a>, the EC's executive vice president, Margrethe Vestager, said that Apple's commitments in the settlement address the commission's "preliminary concerns that Apple may have illegally restricted competition for mobile wallets on iPhones."</p></div><p><a href="https://arstechnica.com/?p=2036401#p3">Read 14 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036401&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/tech-policy/2024/07/apple-will-soon-allow-rival-wallets-to-replace-apple-pay-as-default-in-eu/feed/</wfw:commentRss>
+            <slash:comments>86</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Intuit’s AI gamble: Mass layoff of 1,800 paired with hiring spree</title>
+            <link>https://arstechnica.com/?p=2036383</link>
+            <comments>https://arstechnica.com/information-technology/2024/07/intuits-ai-gamble-mass-layoff-of-1800-paired-with-hiring-spree/#comments</comments>
+
+            <dc:creator><![CDATA[Benj Edwards]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 15:37:36 +0000</pubDate>
+            <category><![CDATA[AI]]></category>
+            <category><![CDATA[Biz & IT]]></category>
+            <category><![CDATA[AI layoffs]]></category>
+            <category><![CDATA[AI reorganization]]></category>
+            <category><![CDATA[Intuit]]></category>
+            <category><![CDATA[Intuit Assist]]></category>
+            <category><![CDATA[machine learning]]></category>
+            <category><![CDATA[Sasan Goodarzi]]></category>
+            <category><![CDATA[taxes]]></category>
+            <category><![CDATA[TurboTax]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036383</guid>
+
+            <description><![CDATA[Intuit CEO: "Companies that aren’t prepared to take advantage of [AI] will fall behind."]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/intuit_header-800x450.jpg" alt="Signage for financial software company Intuit at the company's headquarters in the Silicon Valley town of Mountain View, California, August 24, 2016.">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/intuit_header.jpg" class="enlarge-link" data-height="675" data-width="1200">Enlarge</a> (credit: <a rel="nofollow" class="caption-link" href="https://www.gettyimages.com/detail/news-photo/signage-for-financial-software-company-intuit-at-the-news-photo/597456540">Getty Images</a>)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>On Wednesday, Intuit CEO Sasan Goodarzi <a href="https://www.intuit.com/blog/news-social/investing-in-our-future/">announced</a> in a letter to the company that it would be laying off 1,800 employees—about 10 percent of its workforce of around 18,000—while simultaneously planning to hire the same number of new workers as part of a major restructuring effort purportedly focused on AI.</p>
+
+<p>"As I’ve shared many times, the era of AI is one of the most significant technology shifts of our lifetime," <a href="https://www.intuit.com/blog/news-social/investing-in-our-future/">wrote</a> Goodarzi in a blog post on Intuit's website. "This is truly an extraordinary time—AI is igniting global innovation at an incredible pace, transforming every industry and company in ways that were unimaginable just a few years ago. Companies that aren’t prepared to take advantage of this AI revolution will fall behind and, over time, will no longer exist."</p>
+<p>The CEO says Intuit is in a position of strength and that the layoffs are not cost-cutting related, but they allow the company to "allocate additional investments to our most critical areas to support our customers and drive growth." With new hires, the company expects its overall headcount to grow in its 2025 fiscal year.</p></div><p><a href="https://arstechnica.com/?p=2036383#p3">Read 5 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036383&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/information-technology/2024/07/intuits-ai-gamble-mass-layoff-of-1800-paired-with-hiring-spree/feed/</wfw:commentRss>
+            <slash:comments>158</slash:comments>
+
+
+        </item>
+        <item>
+            <title>To help with climate change, carbon capture will have to evolve</title>
+            <link>https://arstechnica.com/?p=2036280</link>
+            <comments>https://arstechnica.com/science/2024/07/to-help-with-climate-change-carbon-capture-will-have-to-evolve/#comments</comments>
+
+            <dc:creator><![CDATA[Knowable Magazine]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 11:11:13 +0000</pubDate>
+            <category><![CDATA[Science]]></category>
+            <category><![CDATA[carbon capture]]></category>
+            <category><![CDATA[climate change]]></category>
+            <category><![CDATA[syndication]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036280</guid>
+
+            <description><![CDATA[The technologies are useful tools but have yet to move us away from fossil fuels.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2022/05/GettyImages-1392295686-800x533.jpg" alt="Image of a facility filled with green-colored tubes.">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2022/05/GettyImages-1392295686.jpg" class="enlarge-link" data-height="1414" data-width="2121">Enlarge</a> <span class="sep">/</span> Bioreactors that host algae would be one option for carbon sequestration—as long as the carbon is stored somehow. (credit: <a rel="nofollow" class="caption-link" href="https://www.gettyimages.com/detail/photo/tubular-algae-bioreactors-fixing-co2-to-produce-royalty-free-image/1392295686?adppopup=true">Getty Images</a>)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>More than 200 kilometers off Norway’s coast in the North Sea sits the world’s first offshore carbon capture and storage project. Built in 1996, the Sleipner project strips carbon dioxide from natural gas—largely made up of methane—to make it marketable. But instead of releasing the CO<sub>2</sub> into the atmosphere, the greenhouse gas is buried.</p>
+<p>The effort stores around 1 million metric tons of CO<sub>2 </sub>per year—and is praised by many as a pioneering success in global attempts to cut greenhouse gas emissions.</p>
+<p>Last year, total global CO<sub>2</sub> emissions hit an all-time high of around 35.8 billion tons, or gigatons. At these levels, scientists estimate, we have roughly six years left before we emit so much CO<sub>2</sub> that global warming will consistently exceed 1.5° Celsius above average preindustrial temperatures, an internationally agreed-upon limit. (Notably, the <a href="https://climate.copernicus.eu/surface-air-temperature-june-2024">global average temperature</a> for the past 12 months has exceeded this threshold.)</p></div><p><a href="https://arstechnica.com/?p=2036280#p3">Read 31 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036280&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/science/2024/07/to-help-with-climate-change-carbon-capture-will-have-to-evolve/feed/</wfw:commentRss>
+            <slash:comments>73</slash:comments>
+
+
+        </item>
+        <item>
+            <title>NASA update on Starliner thruster issues: This is fine</title>
+            <link>https://arstechnica.com/?p=2036270</link>
+            <comments>https://arstechnica.com/space/2024/07/starliner-still-doesnt-have-a-return-date-as-nasa-tests-overheating-thrusters/#comments</comments>
+
+            <dc:creator><![CDATA[Stephen Clark]]></dc:creator>
+            <pubDate>Thu, 11 Jul 2024 00:30:12 +0000</pubDate>
+            <category><![CDATA[Science]]></category>
+            <category><![CDATA[Space]]></category>
+            <category><![CDATA[Boeing]]></category>
+            <category><![CDATA[commercial crew]]></category>
+            <category><![CDATA[human spaceflight]]></category>
+            <category><![CDATA[international space station]]></category>
+            <category><![CDATA[NASA]]></category>
+            <category><![CDATA[starliner]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036270</guid>
+
+            <description><![CDATA[“What we want to know is that the thrusters can perform," Starliner's pilot says.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/53774161340_6f1e6d6570_5k-2-800x449.jpg" alt="Boeing's Starliner spacecraft on final approach to the International Space Station last month.">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/53774161340_6f1e6d6570_5k-2.jpg" class="enlarge-link" data-height="1011" data-width="1800">Enlarge</a> <span class="sep">/</span> Boeing's Starliner spacecraft on final approach to the International Space Station last month. (credit: <a rel="nofollow" class="caption-link" href="https://www.flickr.com/photos/nasa2explore/53774161340/in/album-72177720301582949/">NASA</a>)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>Before clearing Boeing's Starliner crew capsule to depart the International Space Station and head for Earth, NASA managers want to ensure the spacecraft's problematic control thrusters can help guide the ship's two-person crew home.</p>
+<p>The two astronauts who launched June 5 on the Starliner spacecraft's first crew test flight agree with the managers, although they said Wednesday that they're comfortable with flying the capsule back to Earth if there's any emergency that might require evacuation of the space station.</p>
+<p>NASA astronauts Butch Wilmore and Suni Williams were supposed to return to Earth weeks ago, but managers are keeping them at the station as engineers continue probing thruster problems and helium leaks that have plagued the mission since its launch.</p></div><p><a href="https://arstechnica.com/?p=2036270#p3">Read 28 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036270&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/space/2024/07/starliner-still-doesnt-have-a-return-date-as-nasa-tests-overheating-thrusters/feed/</wfw:commentRss>
+            <slash:comments>284</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Latest Apple Arcade additions show Apple is looking backward, not forward</title>
+            <link>https://arstechnica.com/?p=2036212</link>
+            <comments>https://arstechnica.com/gaming/2024/07/indie-hit-vampire-survivors-lands-on-apple-arcade-with-the-ads-stripped-out/#comments</comments>
+
+            <dc:creator><![CDATA[Samuel Axon]]></dc:creator>
+            <pubDate>Wed, 10 Jul 2024 21:56:52 +0000</pubDate>
+            <category><![CDATA[Apple]]></category>
+            <category><![CDATA[Gaming]]></category>
+            <category><![CDATA[apple]]></category>
+            <category><![CDATA[Apple Arcade]]></category>
+            <category><![CDATA[Temple Run]]></category>
+            <category><![CDATA[vampire survivors]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036212</guid>
+
+            <description><![CDATA[Opinion: Games that were popular in 2011 or even 2022 won't move the needle for Apple.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/vampiresurvivors-800x453.png" alt="A screenshot of Vampire Survivors on the iPhone">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/vampiresurvivors.png" class="enlarge-link" data-height="663" data-width="1170">Enlarge</a> <span class="sep">/</span> <em>Vampire Survivors</em> on the iPhone. It doesn't look like much, but it sure is addictive. (credit: Samuel Axon)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>Apple recently announced new games coming to Apple Arcade, its gaming subscription service for iPhones, iPads, Macs, Apple TVs, and Vision Pro headsets. The headlining title is <a href="https://arstechnica.com/gaming/2022/10/vampire-survivors-a-cheap-minimalistic-indie-game-is-my-game-of-the-year/"><em>Vampire Survivors</em></a>, an indie hit that combined the gameplay of bullet hell shooters and the addictive quality of clickers to become a mega sensation two years ago. Also coming is <em>Temple Run: Legends</em>, an updated take on the popular game from 2011.</p>
+<p><em>Vampire Survivors</em> was already available on the App Store, but it was ad-supported, with the option to spend money in-app to get additional content. The Apple Arcade version, dubbed <em>Vampire Survivors+</em>, is more akin to the PC or Xbox versions that don't have ads. Both paid expansions will be included at no additional charge.</p>
+<p>Meanwhile, <em>Temple Run: Legends</em> is a completely new game (not just a remake of the original <em>Temple Run</em>) that bucks the "endless runner" genre label by breaking its gameplay into individual levels—though there will be some kind of optional endless mode, too.</p></div><p><a href="https://arstechnica.com/?p=2036212#p3">Read 8 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036212&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/gaming/2024/07/indie-hit-vampire-survivors-lands-on-apple-arcade-with-the-ads-stripped-out/feed/</wfw:commentRss>
+            <slash:comments>101</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Threat actors exploited Windows 0-day for more than a year before Microsoft fixed it</title>
+            <link>https://arstechnica.com/?p=2036304</link>
+            <comments>https://arstechnica.com/security/2024/07/threat-actors-exploited-windows-0-day-for-more-than-a-year-before-microsoft-fixed-it/#comments</comments>
+
+            <dc:creator><![CDATA[Dan Goodin]]></dc:creator>
+            <pubDate>Wed, 10 Jul 2024 21:44:12 +0000</pubDate>
+            <category><![CDATA[Biz & IT]]></category>
+            <category><![CDATA[Security]]></category>
+            <category><![CDATA[microsoft]]></category>
+            <category><![CDATA[patches]]></category>
+            <category><![CDATA[vulnerabilities]]></category>
+            <category><![CDATA[zero days]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036304</guid>
+
+            <description><![CDATA[The goal of the exploits was to open Explorer and trick targets into running malicious code.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2023/06/malware-800x451.jpg" alt="Threat actors exploited Windows 0-day for more than a year before Microsoft fixed it">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2023/06/malware.jpg" class="enlarge-link" data-height="564" data-width="1000">Enlarge</a> (credit: Getty Images)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>Threat actors carried out zero-day attacks that targeted Windows users with malware for more than a year before Microsoft fixed the vulnerability that made them possible, researchers said Tuesday.</p>
+<p>The vulnerability, present in both Windows 10 and 11, causes devices to open Internet Explorer, a legacy browser that Microsoft <a href="https://blogs.windows.com/windowsexperience/2022/06/15/internet-explorer-11-has-retired-and-is-officially-out-of-support-what-you-need-to-know/">decommissioned</a> in 2022 after its aging code base made it increasingly susceptible to exploits. Following the move, Windows made it difficult, if not impossible, for normal actions to open the browser, which was first introduced in the mid-1990s.</p>
+<h2>Tricks old and new</h2>
+<p>Malicious code that exploits the vulnerability dates back to at least January 2023 and was circulating as recently as May this year, according to the researchers who discovered the vulnerability and reported it to Microsoft. The company <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2024-38112">fixed</a> the vulnerability, tracked as CVE-2024-CVE-38112, on Tuesday as part of its monthly patch release program. The vulnerability, which resided in the MSHTML engine of Windows, carried a severity rating of 7.0 out of 10.</p></div><p><a href="https://arstechnica.com/?p=2036304#p3">Read 7 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036304&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/security/2024/07/threat-actors-exploited-windows-0-day-for-more-than-a-year-before-microsoft-fixed-it/feed/</wfw:commentRss>
+            <slash:comments>70</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Court ordered penalties for 15 teens who created naked AI images of classmates</title>
+            <link>https://arstechnica.com/?p=2036279</link>
+            <comments>https://arstechnica.com/tech-policy/2024/07/court-ordered-penalties-for-15-teens-who-created-naked-ai-images-of-classmates/#comments</comments>
+
+            <dc:creator><![CDATA[Ashley Belanger]]></dc:creator>
+            <pubDate>Wed, 10 Jul 2024 20:31:39 +0000</pubDate>
+            <category><![CDATA[AI]]></category>
+            <category><![CDATA[Policy]]></category>
+            <category><![CDATA[ai child sex images]]></category>
+            <category><![CDATA[ai deepfakes]]></category>
+            <category><![CDATA[AI image generators]]></category>
+            <category><![CDATA[Artificial Intelligence]]></category>
+            <category><![CDATA[child sexual abuse materials]]></category>
+            <category><![CDATA[csam]]></category>
+            <category><![CDATA[face swapping]]></category>
+            <category><![CDATA[fake AI images]]></category>
+            <category><![CDATA[generative ai]]></category>
+            <category><![CDATA[nudity apps]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036279</guid>
+
+            <description><![CDATA[Teens ordered to attend classes on sex education and responsible use of AI.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/GettyImages-1493526669-800x534.jpg" alt="Court ordered penalties for 15 teens who created naked AI images of classmates">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/GettyImages-1493526669.jpg" class="enlarge-link" data-height="1414" data-width="2120">Enlarge</a> (credit: <a rel="nofollow" class="caption-link" href="https://www.gettyimages.com/detail/photo/side-view-portrait-of-young-girl-with-many-neon-royalty-free-image/1493526669?phrase=teenager++robot&amp;adppopup=true">master1305 | iStock / Getty Images Plus</a>)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>A Spanish youth court has <a href="https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/Imponen-la-medida-de-libertad-vigilada-durante-un-ano-a-los-15-menores-acusados-de-manipular-y-difundir-imagenes-de-menores-desnudas-en-Badajoz">sentenced</a> 15 minors to one year of probation after spreading AI-generated nude images of female classmates in two WhatsApp groups.</p>
+<p>The minors were charged with 20 counts of creating child sex abuse images and 20 counts of offenses against their victims’ moral integrity. In addition to probation, the teens will also be required to attend classes on gender and equality, as well as on the "responsible use of information and communication technologies," a press release from the Juvenile Court of Badajoz said.</p>
+<p>Many of the victims were too ashamed to speak up when the inappropriate fake images began spreading last year. Prior to the sentencing, a mother of one of the victims <a href="https://www.theguardian.com/world/article/2024/jul/09/spain-sentences-15-school-children-over-ai-generated-naked-images">told The Guardian</a> that girls like her daughter "were completely terrified and had tremendous anxiety attacks because they were suffering this in silence."</p></div><p><a href="https://arstechnica.com/?p=2036279#p3">Read 12 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036279&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/tech-policy/2024/07/court-ordered-penalties-for-15-teens-who-created-naked-ai-images-of-classmates/feed/</wfw:commentRss>
+            <slash:comments>203</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Republicans angry that ISPs receiving US grants must offer low-cost plans</title>
+            <link>https://arstechnica.com/?p=2036276</link>
+            <comments>https://arstechnica.com/tech-policy/2024/07/republicans-fight-plan-to-require-low-cost-broadband-service/#comments</comments>
+
+            <dc:creator><![CDATA[Jon Brodkin]]></dc:creator>
+            <pubDate>Wed, 10 Jul 2024 20:19:55 +0000</pubDate>
+            <category><![CDATA[Policy]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036276</guid>
+
+            <description><![CDATA[Law requires grantees to offer low-cost plans. GOP calls it "rate regulation."]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2022/09/getty-us-broadband-map-800x498.jpg" alt="Illustration of ones and zeroes overlaid on a US map.">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2022/09/getty-us-broadband-map.jpg" class="enlarge-link" data-height="1557" data-width="2500">Enlarge</a> (credit: Getty Images | Matt Anderson Photography)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>Republican lawmakers are fighting a Biden administration attempt to bring cheap broadband service to low-income people, claiming it is an illegal form of rate regulation. GOP leaders of the House Energy and Commerce Committee <a href="https://energycommerce.house.gov/posts/e-and-c-leaders-open-investigation-into-ntia-s-iija-bead-funding-deployment-citing-abnormal-lack-of-transparency-and-allegations-of-rate-regulation">announced an investigation</a> into the National Telecommunications and Information Administration (NTIA), which is administering the <a href="https://arstechnica.com/tech-policy/2023/06/us-allocates-42b-in-broadband-funding-find-out-how-much-your-state-will-get/">$42.45 billion Broadband Equity, Access, and Deployment (BEAD) program</a> that was approved by Congress in November 2021.</p>
+<p>"States have reported that the NTIA is directing them to set rates and conditioning approval of initial proposals on doing so. This undoubtedly constitutes rate regulation by the NTIA," states a letter to the NTIA from Committee Chair Cathy McMorris Rodgers (R-Wash.), Subcommittee on Communications and Technology Chair Bob Latta (R-Ohio), and Subcommittee on Oversight and Investigations Chair Morgan Griffith (R-Va.).</p>
+<p>As evidence, the letter points to a <a href="https://dhcd.virginia.gov/sites/default/files/DocX/vati/ntiacuringround2changes-virginiabeadvolume2.pdf">statement by Virginia</a> that described feedback received from the NTIA. The federal agency told Virginia that "the low-cost option must be established in the Initial proposal as an exact price or formula."</p></div><p><a href="https://arstechnica.com/?p=2036276#p3">Read 15 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036276&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/tech-policy/2024/07/republicans-fight-plan-to-require-low-cost-broadband-service/feed/</wfw:commentRss>
+            <slash:comments>169</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Three betas in, iOS 18 testers still can’t try out Apple Intelligence features</title>
+            <link>https://arstechnica.com/?p=2036215</link>
+            <comments>https://arstechnica.com/gadgets/2024/07/three-betas-in-ios-18-testers-still-cant-try-out-apple-intelligence-features/#comments</comments>
+
+            <dc:creator><![CDATA[Andrew Cunningham]]></dc:creator>
+            <pubDate>Wed, 10 Jul 2024 18:53:33 +0000</pubDate>
+            <category><![CDATA[AI]]></category>
+            <category><![CDATA[Apple]]></category>
+            <category><![CDATA[Tech]]></category>
+            <category><![CDATA[apple]]></category>
+            <category><![CDATA[ios 18]]></category>
+            <category><![CDATA[iPadOS 18]]></category>
+            <category><![CDATA[macOS 15]]></category>
+            <category><![CDATA[macos sequoia]]></category>
+            <category><![CDATA[Sequoia]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036215</guid>
+
+            <description><![CDATA[Apple has said some features will be available to test "this summer." ]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/06/Screenshot-2024-06-10-at-13.19.31-800x448.jpg" alt="Three betas in, iOS 18 testers still can’t try out Apple Intelligence features">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/06/Screenshot-2024-06-10-at-13.19.31-scaled.jpg" class="enlarge-link" data-height="1434" data-width="2560">Enlarge</a> (credit: Apple)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>The beta-testing cycle for Apple's latest operating system updates is in full swing—earlier this week, the third developer betas rolled out for iOS 18, iPadOS 18, macOS 15 Sequoia, and the rest of this fall's updates. The fourth developer beta ought to be out in a couple of weeks, and it's reasonably likely to coincide with the first betas that Apple offers to the full public (though the less-stable developer-only betas got significantly more public last year when Apple <a href="https://arstechnica.com/gadgets/2023/06/how-to-install-ios-17-and-macos-14-developer-betas-now-that-anyone-can-do-it/">stopped making people pay for a developer account to access them</a>).</p>
+<p>Many of the new updates' features are present and available to test, including <a href="https://arstechnica.com/gadgets/2024/06/my-favorite-macos-sequoia-feature-so-far-might-be-the-old-timey-mac-wallpaper/">cosmetic updates</a> and <a href="https://arstechnica.com/gadgets/2024/06/apple-quietly-improves-mac-virtualization-in-macos-15-sequoia/">under-the-hood improvements</a>. But none of Apple's much-hyped Apple Intelligence features are available to test in any form. MacRumors <a href="https://www.macrumors.com/2024/07/10/ios-18-beta-3-simulator-apple-intelligence/">reports</a> that Settings menus for the Apple Intelligence features have appeared in the Xcode Simulator for current versions of iOS 18 but, as of now, those settings still appear to be non-functional placeholders that don't actually do anything.</p>
+
+<p>That may change soon; Apple did say that the first wave of Apple Intelligence features would be available "this summer," and I would wager a small amount of money on the first ones being available in the public beta builds later this month. But the current state of the betas does reinforce <a href="https://www.bloomberg.com/news/newsletters/2023-10-22/what-is-apple-doing-in-ai-revamping-siri-search-apple-music-and-other-apps-lo1ffr7p">reporting</a> from Bloomberg's Mark Gurman that suggested Apple was "caught flat-footed" by the tech world's intense interest in generative AI.</p></div><p><a href="https://arstechnica.com/?p=2036215#p3">Read 2 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036215&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/gadgets/2024/07/three-betas-in-ios-18-testers-still-cant-try-out-apple-intelligence-features/feed/</wfw:commentRss>
+            <slash:comments>35</slash:comments>
+
+
+        </item>
+        <item>
+            <title>Congress apparently feels a need for “reaffirmation” of SLS rocket</title>
+            <link>https://arstechnica.com/?p=2036101</link>
+            <comments>https://arstechnica.com/space/2024/07/congress-apparently-feels-a-need-for-reaffirmation-of-sls-rocket/#comments</comments>
+
+            <dc:creator><![CDATA[Eric Berger]]></dc:creator>
+            <pubDate>Wed, 10 Jul 2024 18:32:28 +0000</pubDate>
+            <category><![CDATA[Science]]></category>
+            <category><![CDATA[Space]]></category>
+            <category><![CDATA[nasa.congress]]></category>
+            <category><![CDATA[sls rocket]]></category>
+            <category><![CDATA[space]]></category>
+            <guid isPermaLink="false">https://arstechnica.com/?p=2036101</guid>
+
+            <description><![CDATA[Because I'm tall enough, I'm orange enough, and doggone it, Senators like me.]]></description>
+            <content:encoded><![CDATA[<div id="rss-wrap">
+<figure class="intro-image intro-left">
+  <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/07/stuart-smalley-sls-rocket-800x450.jpg" alt="Stuart Smalley is here to help with daily affirmations of SLS.">
+      <p class="caption" style="font-size:0.8em"><a href="https://cdn.arstechnica.net/wp-content/uploads/2024/07/stuart-smalley-sls-rocket.jpg" class="enlarge-link" data-height="1080" data-width="1920">Enlarge</a> <span class="sep">/</span> Stuart Smalley is here to help with daily affirmations of SLS. (credit: Aurich Lawson | SNL)</p>  </figure>
+
+
+
+
+
+
+<div><a name="page-1"></a></div>
+<p>There is a curious section in the new congressional reauthorization bill for NASA that concerns the agency's large Space Launch System rocket.</p>
+<p>The section is titled "Reaffirmation of the Space Launch System," and in it Congress asserts its commitment to a flight rate of twice per year for the rocket. The reauthorization legislation, which cleared a House committee on Wednesday, also said NASA should identify other customers for the rocket.</p>
+<p>"The Administrator shall assess the demand for the Space Launch System by entities other than NASA and shall break out such demand according to the relevant Federal agency or nongovernment sector," the legislation states.</p></div><p><a href="https://arstechnica.com/?p=2036101#p3">Read 13 remaining paragraphs</a> | <a href="https://arstechnica.com/?p=2036101&comments=1">Comments</a></p>]]></content:encoded>
+
+            <wfw:commentRss>https://arstechnica.com/space/2024/07/congress-apparently-feels-a-need-for-reaffirmation-of-sls-rocket/feed/</wfw:commentRss>
+            <slash:comments>245</slash:comments>
+
+
+        </item>
+    </channel>
+</rss>

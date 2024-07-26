@@ -35,7 +35,7 @@ public class FeedReader : IFeedReader
 	/// <returns></returns>
 	public List<FeedItem> ParseFeedItems(string rssLocation)
 	{
-		if (string.IsNullOrEmpty(rssLocation))
+		if (string.IsNullOrWhiteSpace(rssLocation))
 		{
 			throw new ArgumentNullException(nameof(rssLocation));
 		}
@@ -132,7 +132,7 @@ public class FeedReader : IFeedReader
 	private static FeedDetail LoadFeedDetail(string feedLocation)
 	{
 		// Shortcut any checks done by XmlReader and fail early if we don't have a location
-		if (string.IsNullOrEmpty(feedLocation))
+		if (string.IsNullOrWhiteSpace(feedLocation))
 		{
 			throw new ArgumentNullException(nameof(feedLocation));
 		}

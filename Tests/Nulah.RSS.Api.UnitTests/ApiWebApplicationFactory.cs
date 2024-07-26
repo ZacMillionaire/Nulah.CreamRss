@@ -1,0 +1,49 @@
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Time.Testing;
+using Nulah.RSS.Data;
+using Nulah.RSS.Domain.Interfaces;
+using Nulah.RSS.Test.Shared;
+
+namespace Nulah.RSS.Api.UnitTests;
+
+public class ApiWebApplicationFactory : WebApplicationFactory<Program>
+{
+	public IConfiguration Configuration { get; private set; }
+
+	/// <summary>
+	/// Used to control the time provider for the created <see cref="FeedContext"/>. If null time will not advance and will be fixed in time
+	/// </summary>
+	public FakeTimeProvider? TimeProvider = null;
+
+	/// <summary>
+	/// Used to control the database name for the created <see cref="FeedContext"/>. If null (and by default), each client created from this
+	/// will use a unique in memory context. Specify a name if you wish to share context across test classes
+	/// </summary>
+	public string? DatabaseName = null;
+
+	protected override void ConfigureWebHost(IWebHostBuilder builder)
+	{
+		builder.ConfigureAppConfiguration(config =>
+		{
+			// Configuration = new ConfigurationBuilder()
+			// 	.AddJsonFile("integrationsettings.json")
+			// 	.Build();
+
+			//config.AddConfiguration(Configuration);
+		});
+
+		builder.ConfigureTestServices(services =>
+		{
+			services.AddDbContext<FeedContext>(_ =>
+				new InMemoryTestDatabase().CreateContext(TimeProvider, DatabaseName)
+			);
+			services.AddTransient<IFeedStorage>(_ =>
+				new InMemoryTestFixture().CreateFeedStorage(TimeProvider, DatabaseName)
+			);
+		});
+	}
+}
