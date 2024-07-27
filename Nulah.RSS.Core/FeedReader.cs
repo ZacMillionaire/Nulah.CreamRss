@@ -145,7 +145,8 @@ public class FeedReader : IFeedReader
 		{
 			Title = syndicationFeed.Title?.Text.Trim() ?? "TITLE MISSING",
 			ImageUrl = syndicationFeed.ImageUrl?.AbsoluteUri,
-			Description = syndicationFeed.Description?.Text.Trim()
+			Description = syndicationFeed.Description?.Text.Trim(),
+			Location = feedLocation
 		};
 	}
 }

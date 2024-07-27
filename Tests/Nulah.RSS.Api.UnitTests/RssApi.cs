@@ -87,12 +87,54 @@ public class RssApi
 	}
 
 	/// <summary>
-	/// Effectively serialises the given <see cref="FeedRequest"/> into a <see cref="StringContent"/> with a media type of
+	/// Saves a given feed detail and returns the same feed with database properties
+	/// </summary>
+	/// <param name="rssDetail"></param>
+	/// <returns></returns>
+	/// <exception cref="HttpRequestException"></exception>
+	public async Task<FeedDetail?> CreateRssFeedByDetail(FeedDetail rssDetail)
+	{
+		var client = _rssApiFactory.CreateClient(_webApplicationFactoryClientOptions);
+		var createdFeedDetail = await client.PostAsync(
+			"/rss/CreateFeedByDetail",
+			CreateFeedRequestContent(rssDetail)
+		);
+
+		// If we have a success code, deserialise the result and return it
+		if (createdFeedDetail.IsSuccessStatusCode)
+		{
+			return await DeserialiseResponse<FeedDetail>(createdFeedDetail);
+		}
+
+		// Otherwise throw a HttpRequestException with the detail and status code repeated
+		throw new HttpRequestException(await createdFeedDetail.Content.ReadAsStringAsync(), null, createdFeedDetail.StatusCode);
+	}
+
+	public async Task<FeedDetail> UpdateRssFeedByDetail(FeedDetail savedDetail)
+	{
+		var client = _rssApiFactory.CreateClient(_webApplicationFactoryClientOptions);
+		var updatedFeedDetail = await client.PostAsync(
+			"/rss/CreateFeedByDetail",
+			CreateFeedRequestContent(savedDetail)
+		);
+
+		// If we have a success code, deserialise the result and return it
+		if (updatedFeedDetail.IsSuccessStatusCode)
+		{
+			return await DeserialiseResponse<FeedDetail>(updatedFeedDetail);
+		}
+
+		// Otherwise throw a HttpRequestException with the detail and status code repeated
+		throw new HttpRequestException(await updatedFeedDetail.Content.ReadAsStringAsync(), null, updatedFeedDetail.StatusCode);
+	}
+
+	/// <summary>
+	/// Effectively serialises the given <see cref="T"/> into a <see cref="StringContent"/> with a media type of
 	/// application/json appropriate for sending as the body of a POST
 	/// </summary>
 	/// <param name="request"></param>
 	/// <returns></returns>
-	private static StringContent CreateFeedRequestContent(FeedRequest request)
+	private static StringContent CreateFeedRequestContent<T>(T request)
 	{
 		var content = JsonSerializer.Serialize(request);
 		return new StringContent(content, Encoding.UTF8, "application/json");

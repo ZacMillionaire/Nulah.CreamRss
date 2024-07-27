@@ -11,7 +11,7 @@ public class GitHubFeedTests : WebApiFixture
 	}
 
 	[Fact]
-	public async void AttemptToPreview_Feed_ShouldReturn_FeedDetailPreview()
+	public async void AttemptToPreview_FeedDetails_ShouldReturn_FeedDetailPreview()
 	{
 		var body = "./TestFiles/SampleRssFeeds/GitHubZacMillionaire.atom";
 		var rssDetail = await Api.PreviewRss(body);
@@ -25,7 +25,9 @@ public class GitHubFeedTests : WebApiFixture
 		Assert.NotNull(rssDetail.Title);
 		Assert.Null(rssDetail.ImageUrl);
 		Assert.Null(rssDetail.Description);
+		Assert.NotNull(rssDetail.Location);
 
 		Assert.Equal("GitHub Public Timeline Feed", rssDetail.Title);
+		Assert.Equal(body,rssDetail.Location);
 	}
 }

@@ -12,11 +12,13 @@ public class RssController : ControllerBase
 {
 	private readonly ILogger<RssController> _logger;
 	private readonly IFeedReader _feedReader;
+	private readonly IFeedStorage _feedStorage;
 
 	public RssController(IFeedReader feedReader, IFeedStorage feedStorage, ILogger<RssController> logger)
 	{
 		_logger = logger;
 		_feedReader = feedReader;
+		_feedStorage = feedStorage;
 	}
 
 	public class RssItem
@@ -57,6 +59,45 @@ public class RssController : ControllerBase
 		{
 			return new BadRequestObjectResult(ex.Message);
 		}
+	}
+
+	/// <summary>
+	/// Saves a given feed detail and returns the same feed with database properties populated.
+	/// <para>
+	/// If <see cref="FeedDetail.Id"/> is 0 a new feed detail will be created.
+	/// </para>
+	/// <para>
+	/// If a feed already exists by <see cref="FeedDetail.Location"/> and <see cref="FeedDetail.Id"/> is 0 or does not
+	/// match the <see cref="FeedDetail.Id"/> of the previously saved feed an exception will be thrown.
+	/// </para>
+	/// <para>
+	/// Repeated calls to this endpoint will update the given feedDetail by Id if it exists.
+	/// </para>
+	/// </summary>
+	/// <param name="feedDetail"></param>
+	/// <returns></returns>
+	[HttpPost]
+	[Route("[action]")]
+	public async Task<ActionResult<FeedDetail?>> CreateFeedByDetail([FromBody] FeedDetail feedDetail)
+	{
+		var newFeed = await _feedStorage.CreateFeedDetail(feedDetail);
+
+		return newFeed;
+	}
+
+	/// <summary>
+	/// First loads the feed from the given request, then saves and returns a <see cref="FeedDetail"/> with database properties populated.
+	/// <para>
+	/// If a feed already exists with the given location, it will be updated.
+	/// </para>
+	/// </summary>
+	/// <param name="feedRequest"></param>
+	/// <returns></returns>
+	[HttpPost]
+	[Route("[action]")]
+	public ActionResult<FeedDetail?> CreateFeed([FromBody] FeedRequest feedRequest)
+	{
+		throw new NotImplementedException();
 	}
 
 	[HttpPost]

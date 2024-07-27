@@ -11,7 +11,7 @@ public class WebToonsFeedTests : WebApiFixture
 	}
 
 	[Fact]
-	public async void AttemptToPreview_Feed_ShouldReturn_FeedDetailPreview()
+	public async void AttemptToPreview_FeedDetails_ShouldReturn_FeedDetailPreview()
 	{
 		var body = "./TestFiles/SampleRssFeeds/WebToonsTowerOfGod.rss";
 		var rssDetail = await Api.PreviewRss(body);
@@ -21,6 +21,8 @@ public class WebToonsFeedTests : WebApiFixture
 		Assert.NotNull(rssDetail.Title);
 		Assert.NotNull(rssDetail.ImageUrl);
 		Assert.NotNull(rssDetail.Description);
+		Assert.NotNull(rssDetail.Location);
+
 		Assert.Equal(0, rssDetail.Id);
 		Assert.Equal(DateTimeOffset.MinValue, rssDetail.CreatedUtc);
 		Assert.Equal(DateTimeOffset.MinValue, rssDetail.UpdatedUtc);
@@ -31,5 +33,6 @@ public class WebToonsFeedTests : WebApiFixture
 		Assert.Equal(
 			"What do you desire? Money and wealth? Honor and pride? Authority and power? Revenge? Or something that transcends them all? Whatever you desire—it's here.",
 			rssDetail.Description);
+		Assert.Equal(body,rssDetail.Location);
 	}
 }

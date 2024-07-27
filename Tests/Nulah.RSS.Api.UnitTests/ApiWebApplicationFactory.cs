@@ -15,9 +15,9 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
 	public IConfiguration Configuration { get; private set; }
 
 	/// <summary>
-	/// Used to control the time provider for the created <see cref="FeedContext"/>. If null time will not advance and will be fixed in time
+	/// Used to control the time provider for the created <see cref="FeedContext"/>. Defaults to a base value if not changed
 	/// </summary>
-	public FakeTimeProvider? TimeProvider = null;
+	public FakeTimeProvider TimeProvider = new(new(2010, 1, 1, 0, 0, 0, TimeSpan.Zero));
 
 	/// <summary>
 	/// Used to control the database name for the created <see cref="FeedContext"/>. If null (and by default), each client created from this

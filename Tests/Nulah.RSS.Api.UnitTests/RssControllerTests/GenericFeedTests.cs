@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using Microsoft.Extensions.Time.Testing;
+using Nulah.RSS.Domain.Models;
 
 namespace Nulah.RSS.Api.UnitTests.RssControllerTests;
 
@@ -65,5 +66,21 @@ public class GenericFeedTests : WebApiFixture
 		// We check the message content here to make sure we get a no host known message, however all we technically
 		// care about is a bad request status code
 		Assert.Equal($"No such host is known. ({invalidRssLocation.Host}:80)", exception.Message);
+	}
+
+
+	[Fact]
+	public async void AttemptToCreateFeedDetails_WithoutRequiredValues_Should_ThrowValidationExceptions()
+	{
+		var rssDetail = new FeedDetail();
+		Assert.NotNull(rssDetail);
+
+		var exception = await Assert.ThrowsAsync<HttpRequestException>(() => Api.CreateRssFeedByDetail(rssDetail));
+		Assert.Equal(HttpStatusCode.BadRequest, exception.StatusCode);
+		// We should check validation errors here but that json response looks like such a pain to create and maintain
+		// and object for that I only care if it comes back as a bad request for now.
+		// Other tests check that validation is correct so as long as they pass, this too passes by association.
+		// I may attempt to return a custom validation response with some middleware for this to return something a bit
+		// more maintainable or valuable to end users.
 	}
 }
