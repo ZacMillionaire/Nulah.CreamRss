@@ -82,6 +82,21 @@ public class FeedManager : IFeedManager
 			: FeedToFeedDetail(feed);
 	}
 
+
+	/// <summary>
+	/// Returns a <see cref="FeedDetail"/> by the specified <paramref name="feedLocation"/>. Returns null if no feed is found.
+	/// </summary>
+	/// <param name="feedLocation"></param>
+	/// <returns></returns>
+	public async Task<FeedDetail?> GetFeedDetail(string? feedLocation)
+	{
+		var feed = await GetFeedByLocation(feedLocation);
+
+		return feed == null
+			? null
+			: FeedToFeedDetail(feed);
+	}
+
 	/// <inheritdoc />
 	public async Task<List<FeedDetail>> GetFeedDetails()
 	{
@@ -135,8 +150,14 @@ public class FeedManager : IFeedManager
 	/// </summary>
 	/// <param name="location"></param>
 	/// <returns></returns>
-	private async Task<Feed?> GetFeedByLocation(string location)
+	private async Task<Feed?> GetFeedByLocation(string? location)
 	{
+		// Avoid a database call if location is not meaningful
+		if (string.IsNullOrWhiteSpace(location))
+		{
+			return null;
+		}
+
 		return await _context.Feeds.FirstOrDefaultAsync(x => x.Location == location);
 	}
 

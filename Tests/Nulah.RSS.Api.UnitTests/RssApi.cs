@@ -16,11 +16,6 @@ public class RssApi
 	public const string BaseAddress = "http://rss-test-api";
 	private readonly ApiWebApplicationFactory _rssApiFactory;
 
-	private readonly JsonSerializerOptions _jsonSerializerOptions = new()
-	{
-		PropertyNameCaseInsensitive = true
-	};
-
 	/// <summary>
 	/// Options to define the base address for the API to use for tests. Ideally in an effort to avoid duplicate
 	/// bindings to the same port, but who knows how true that will hold
@@ -113,7 +108,7 @@ public class RssApi
 
 	/// <summary>
 	/// Saves a given feed detail and returns the same feed with database properties.
-	/// Calls <see cref="RssController.CreateFeed"/>
+	/// Calls <see cref="RssController.CreateOrUpdateFeed"/>
 	/// </summary>
 	/// <param name="createFeedRequest"></param>
 	/// <returns></returns>
@@ -122,7 +117,7 @@ public class RssApi
 	{
 		var client = _rssApiFactory.CreateClient(_webApplicationFactoryClientOptions);
 		var createdFeedDetail = await client.PostAsync(
-			"/rss/CreateFeed",
+			"/rss/CreateOrUpdateFeed",
 			CreateFeedRequestContent(createFeedRequest)
 		);
 
@@ -137,7 +132,7 @@ public class RssApi
 	}
 
 	/// <summary>
-	/// Calls <see cref="RssController.UpdateFeedByDetail"/> and returns the result. This endpoint does save any data.
+	/// Calls <see cref="RssController.UpdateFeedByDetail"/> and returns the result. This endpoint does save data.
 	/// </summary>
 	/// <param name="savedDetail"></param>
 	/// <returns></returns>
@@ -204,6 +199,6 @@ public class RssApi
 			return default;
 		}
 
-		return await JsonSerializer.DeserializeAsync<T?>(await responseMessage.Content.ReadAsStreamAsync(), _jsonSerializerOptions);
+		return await JsonSerializer.DeserializeAsync<T?>(await responseMessage.Content.ReadAsStreamAsync(), ApiWebApplicationFactory.DefaultJsonSerializerOptions);
 	}
 }

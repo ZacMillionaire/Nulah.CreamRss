@@ -62,4 +62,11 @@ public class FeedStorage : IFeedStorage
 	{
 		return await _feedManager.GetFeedDetails();
 	}
+
+	/// <inheritdoc />
+	public async Task<FeedDetail?> GetFeedByLocation(string? feedRequestFeedLocation)
+	{
+		// TODO: expose this via API maybe
+		return await _feedManager.GetFeedDetail(feedRequestFeedLocation);
+	}
 }

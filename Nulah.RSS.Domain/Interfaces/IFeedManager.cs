@@ -37,4 +37,11 @@ public interface IFeedManager
 	/// </summary>
 	/// <returns></returns>
 	Task<List<FeedDetail>> GetFeedDetails();
+
+	/// <summary>
+	/// Returns a <see cref="FeedDetail"/> by the specified <paramref name="feedLocation"/>. Returns null if no feed is found.
+	/// </summary>
+	/// <param name="feedLocation"></param>
+	/// <returns></returns>
+	Task<FeedDetail?> GetFeedDetail(string? feedLocation);
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Time.Testing;
+using Nulah.RSS.Domain.Models;
 
 namespace Nulah.RSS.Api.UnitTests.RssControllerTests.ArsTechnica;
 
@@ -58,5 +59,139 @@ public class ArsTechnicaUpdateFeedTests : WebApiFixture
 		// make sure the updated time has changed
 		Assert.NotEqual(savedDetail.UpdatedUtc, updatedDetail.UpdatedUtc);
 		Assert.Equal(timeProvider.GetUtcNow(), updatedDetail.UpdatedUtc);
+	}
+
+	[Fact]
+	public async void AttemptToCreateFeedDetailsFromLocation_AfterUpdate_ShouldReturn_FeedDetailWithParsedDetails()
+	{
+		var body = "./TestFiles/SampleRssFeeds/ArsTechnicaAllContent.rss";
+
+		// This test requires a shared context between calls, so we make an api to share
+		// We also makesure the date time for this provider differs from the one set for the rest of tests to ensure we're asserting
+		// correct values
+		var timeProvider = new FakeTimeProvider(new(2022, 2, 2, 1, 2, 3, TimeSpan.Zero));
+		var createUpdateApi = new RssApi(new ApiWebApplicationFactory()
+		{
+			TimeProvider = timeProvider,
+			// Ensure that the context name is distinct from other tests in this class
+			DatabaseName = $"Ars-Technica-Api-Tests-{Guid.NewGuid()}"
+		});
+
+		// Advance time to avoid testing against the initial value
+		timeProvider.Advance(new TimeSpan(100));
+
+		var savedDetail = await createUpdateApi.CreateRssFeedByRequest(new FeedRequest()
+		{
+			FeedLocation = body
+		});
+
+		Assert.NotNull(savedDetail);
+		Assert.Equal(1, savedDetail.Id);
+
+		Assert.Equal("Ars Technica - All content", savedDetail.Title);
+		Assert.Equal("https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480-32x32.png", savedDetail.ImageUrl);
+		Assert.Equal("All Ars Technica stories", savedDetail.Description);
+		Assert.Equal(body, savedDetail.Location);
+
+		Assert.Equal(timeProvider.GetUtcNow(), savedDetail.CreatedUtc);
+		Assert.Equal(timeProvider.GetUtcNow(), savedDetail.UpdatedUtc);
+
+		// Update the feed with specific changes
+		timeProvider.Advance(new TimeSpan(100));
+
+		savedDetail.Description = "Updated description";
+
+		var updatedDetail = await createUpdateApi.UpdateRssFeedByDetail(savedDetail);
+
+		Assert.NotNull(updatedDetail);
+
+		// Make sure that the Id remained the same, and that the description has changed
+		Assert.Equal(savedDetail.Id, updatedDetail.Id);
+		Assert.Equal(savedDetail.Description, updatedDetail.Description);
+		Assert.Equal(savedDetail.CreatedUtc, updatedDetail.CreatedUtc);
+		// make sure the updated time has changed
+		Assert.NotEqual(savedDetail.UpdatedUtc, updatedDetail.UpdatedUtc);
+		Assert.Equal(timeProvider.GetUtcNow(), updatedDetail.UpdatedUtc);
+
+		// Advance time to reflect an updatedUtc
+		timeProvider.Advance(new TimeSpan(1, 0, 0));
+
+		// Attempting to create an RSS feed by request another time by matching location will update it, which in this
+		// case should revert the details back to the parsed feed
+		var updateDetailAttempt = await createUpdateApi.CreateRssFeedByRequest(new FeedRequest()
+		{
+			FeedLocation = body
+		});
+
+		Assert.NotNull(updateDetailAttempt);
+		Assert.Equal(1, updateDetailAttempt.Id);
+
+		Assert.Equal("Ars Technica - All content", updateDetailAttempt.Title);
+		Assert.Equal("https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480-32x32.png", updateDetailAttempt.ImageUrl);
+		Assert.Equal("All Ars Technica stories", updateDetailAttempt.Description);
+		Assert.Equal(body, updateDetailAttempt.Location);
+
+		// Created should match the initial create
+		Assert.Equal(savedDetail.CreatedUtc, updateDetailAttempt.CreatedUtc);
+		// Updated should reflect the advanced time
+		Assert.Equal(timeProvider.GetUtcNow(), updateDetailAttempt.UpdatedUtc);
+	}
+
+
+	[Fact]
+	public async void CreatingFeedByRequest_Twice_ShouldReturn_FeedDetailWithParsedDetails_WithNoUpdateChanged()
+	{
+		var body = "./TestFiles/SampleRssFeeds/ArsTechnicaAllContent.rss";
+
+		// This test requires a shared context between calls, so we make an api to share
+		// We also makesure the date time for this provider differs from the one set for the rest of tests to ensure we're asserting
+		// correct values
+		var timeProvider = new FakeTimeProvider(new(2022, 2, 2, 1, 2, 3, TimeSpan.Zero));
+		var createUpdateApi = new RssApi(new ApiWebApplicationFactory()
+		{
+			TimeProvider = timeProvider,
+			// Ensure that the context name is distinct from other tests in this class
+			DatabaseName = $"Ars-Technica-Api-Tests-Double-Create-{Guid.NewGuid()}"
+		});
+
+		// Advance time to avoid testing against the initial value
+		timeProvider.Advance(new TimeSpan(100));
+
+		var savedDetail = await createUpdateApi.CreateRssFeedByRequest(new FeedRequest()
+		{
+			FeedLocation = body
+		});
+
+		Assert.NotNull(savedDetail);
+		Assert.Equal(1, savedDetail.Id);
+
+		Assert.Equal("Ars Technica - All content", savedDetail.Title);
+		Assert.Equal("https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480-32x32.png", savedDetail.ImageUrl);
+		Assert.Equal("All Ars Technica stories", savedDetail.Description);
+		Assert.Equal(body, savedDetail.Location);
+
+		Assert.Equal(timeProvider.GetUtcNow(), savedDetail.CreatedUtc);
+		Assert.Equal(timeProvider.GetUtcNow(), savedDetail.UpdatedUtc);
+
+		// Advance time to reflect an updatedUtc
+		timeProvider.Advance(new TimeSpan(1, 0, 0));
+
+		// Calling this endpoint twice without any other changes to the feed otherwise should change nothing, including
+		// the updated time
+		var updateDetailAttempt = await createUpdateApi.CreateRssFeedByRequest(new FeedRequest()
+		{
+			FeedLocation = body
+		});
+
+		Assert.NotNull(updateDetailAttempt);
+		// Nothing about this should have changed and effectively we've just returned the existing feed detail
+		// by location
+		Assert.Equal(savedDetail.Id, updateDetailAttempt.Id);
+		Assert.Equal(savedDetail.Title, updateDetailAttempt.Title);
+		Assert.Equal(savedDetail.ImageUrl, updateDetailAttempt.ImageUrl);
+		Assert.Equal(savedDetail.Description, updateDetailAttempt.Description);
+		Assert.Equal(savedDetail.Location, updateDetailAttempt.Location);
+		Assert.Equal(savedDetail.CreatedUtc, updateDetailAttempt.CreatedUtc);
+		Assert.Equal(savedDetail.UpdatedUtc, updateDetailAttempt.UpdatedUtc);
 	}
 }

@@ -44,4 +44,11 @@ public interface IFeedStorage
 	/// </summary>
 	/// <returns></returns>
 	Task<List<FeedDetail>> GetFeedDetails();
+
+	/// <summary>
+	/// Returns a feed if one is found by the given location
+	/// </summary>
+	/// <param name="feedRequestFeedLocation"></param>
+	/// <returns></returns>
+	Task<FeedDetail?> GetFeedByLocation(string? feedRequestFeedLocation);
 }

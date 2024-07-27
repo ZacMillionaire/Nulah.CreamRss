@@ -112,13 +112,22 @@ public class RssController : ControllerBase
 	/// <returns></returns>
 	[HttpPost]
 	[Route("[action]")]
-	public async Task<ActionResult<FeedDetail?>> CreateFeed([FromBody] FeedRequest feedRequest)
+	public async Task<ActionResult<FeedDetail?>> CreateOrUpdateFeed([FromBody] FeedRequest feedRequest)
 	{
 		try
 		{
 			var feedDetail = _feedReader.ParseFeedDetails(feedRequest.FeedLocation);
-			var createdFeed = await _feedStorage.CreateFeedDetail(feedDetail);
-			return createdFeed;
+			// Check if we already have this feed by location, if we do we update it with the details we parsed previously
+			// effectively discarding _all_ previous details of this feed if they differ.
+			// TODO: This feels really gross and I might refactor this into a distinct create/update later, but it does work
+			if (await _feedStorage.GetFeedByLocation(feedRequest.FeedLocation) is { } existingByLocation)
+			{
+				// Set the Id to the existing location for downstream implementations
+				feedDetail.Id = existingByLocation.Id;
+				return await _feedStorage.UpdateFeedDetail(feedDetail);
+			}
+
+			return await _feedStorage.CreateFeedDetail(feedDetail);
 		}
 		catch (Exception ex) when (ex is FileNotFoundException or DirectoryNotFoundException)
 		{
@@ -134,12 +143,59 @@ public class RssController : ControllerBase
 		}
 	}
 
+	/// <summary>
+	/// Loads each given location, and if it doesn't exist, creates it, otherwise it will update it.
+	/// <para>
+	/// This result may contain errors but will still return 200 OK so it is up to the caller to check for any errors
+	/// </para>
+	/// </summary>
+	/// <param name="batchRequest"></param>
+	/// <returns></returns>
 	[HttpPost]
 	[Route("/batch/[controller]/[action]")]
 	public async Task<ActionResult<BatchFeedResult>> CreateFeed([FromBody] BatchFeedRequest batchRequest)
 	{
-		
-		throw new NotImplementedException();
+		var batchResult = new BatchFeedResult();
+		if (batchRequest.Locations.Count == 0)
+		{
+			batchResult.Errors.Add("No rss locations given to create");
+			// return to avoid a needless enumeration attempt below
+			return new BadRequestObjectResult(batchResult);
+		}
+
+		foreach (var feedLocation in batchRequest.Locations)
+		{
+			try
+			{
+				var feedDetail = _feedReader.ParseFeedDetails(feedLocation);
+				var createdFeed = await _feedStorage.CreateFeedDetail(feedDetail);
+				batchResult.CreatedFeeds.Add(createdFeed);
+			}
+			catch (Exception ex) when (ex is FileNotFoundException or DirectoryNotFoundException)
+			{
+				batchResult.Errors.Add($@"Unable to load feed from ""{feedLocation}""");
+			}
+			catch (Exception ex) when (ex is ArgumentNullException)
+			{
+				batchResult.Errors.Add("Feed location is required");
+			}
+			catch (Exception ex)
+			{
+				batchResult.Errors.Add(ex.Message);
+			}
+		}
+
+		// If we have errors and no created feeds, return a 400 bad request.
+		// What happens if we have _no_ errors and _no_ created feeds? Who knows but that isn't something I want to
+		// try and figure out how to replicate until someone does
+		if (batchResult.Errors.Count != 0 && batchResult.CreatedFeeds.Count == 0)
+		{
+			return new BadRequestObjectResult(batchResult);
+		}
+
+		// Otherwise if we have at least 1 created feed and 0 or more errors, return a 200 ok
+		// partial success is still a success as the caller is expected to check for errors
+		return Ok(batchResult);
 	}
 
 	[HttpPost]
