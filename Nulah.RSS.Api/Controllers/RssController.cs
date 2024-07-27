@@ -110,9 +110,26 @@ public class RssController : ControllerBase
 	/// <returns></returns>
 	[HttpPost]
 	[Route("[action]")]
-	public ActionResult<FeedDetail?> CreateFeed([FromBody] FeedRequest feedRequest)
+	public async Task<ActionResult<FeedDetail?>> CreateFeed([FromBody] FeedRequest feedRequest)
 	{
-		throw new NotImplementedException();
+		try
+		{
+			var feedDetail = _feedReader.ParseFeedDetails(feedRequest.FeedLocation);
+			var createdFeed = await _feedStorage.CreateFeedDetail(feedDetail);
+			return createdFeed;
+		}
+		catch (Exception ex) when (ex is FileNotFoundException or DirectoryNotFoundException)
+		{
+			return new BadRequestObjectResult($@"Unable to load feed from ""{feedRequest.FeedLocation}""");
+		}
+		catch (Exception ex) when (ex is ArgumentNullException)
+		{
+			return new BadRequestObjectResult("Feed location is required");
+		}
+		catch (Exception ex)
+		{
+			return new BadRequestObjectResult(ex.Message);
+		}
 	}
 
 	[HttpPost]

@@ -87,7 +87,8 @@ public class RssApi
 	}
 
 	/// <summary>
-	/// Saves a given feed detail and returns the same feed with database properties. Calls <see cref="RssController.CreateFeedByDetail"/>
+	/// Saves a given feed detail and returns the same feed with database properties.
+	/// Calls <see cref="RssController.CreateFeedByDetail"/>
 	/// </summary>
 	/// <param name="rssDetail"></param>
 	/// <returns></returns>
@@ -98,6 +99,31 @@ public class RssApi
 		var createdFeedDetail = await client.PostAsync(
 			"/rss/CreateFeedByDetail",
 			CreateFeedRequestContent(rssDetail)
+		);
+
+		// If we have a success code, deserialise the result and return it
+		if (createdFeedDetail.IsSuccessStatusCode)
+		{
+			return await DeserialiseResponse<FeedDetail?>(createdFeedDetail);
+		}
+
+		// Otherwise throw a HttpRequestException with the detail and status code repeated
+		throw new HttpRequestException(await createdFeedDetail.Content.ReadAsStringAsync(), null, createdFeedDetail.StatusCode);
+	}
+
+	/// <summary>
+	/// Saves a given feed detail and returns the same feed with database properties.
+	/// Calls <see cref="RssController.CreateFeed"/>
+	/// </summary>
+	/// <param name="createFeedRequest"></param>
+	/// <returns></returns>
+	/// <exception cref="HttpRequestException"></exception>
+	public async Task<FeedDetail?> CreateRssFeedByRequest(FeedRequest createFeedRequest)
+	{
+		var client = _rssApiFactory.CreateClient(_webApplicationFactoryClientOptions);
+		var createdFeedDetail = await client.PostAsync(
+			"/rss/CreateFeed",
+			CreateFeedRequestContent(createFeedRequest)
 		);
 
 		// If we have a success code, deserialise the result and return it

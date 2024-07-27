@@ -1,10 +1,11 @@
 ﻿using Microsoft.Extensions.Time.Testing;
+using Nulah.RSS.Domain.Models;
 
 namespace Nulah.RSS.Api.UnitTests.RssControllerTests.ArsTechnica;
 
-public class ArsTechnicaCreateFeedTests : WebApiFixture
+public class ArsTechnicaCreateWithDetailFeedTests : WebApiFixture
 {
-	public ArsTechnicaCreateFeedTests(ApiWebApplicationFactory fixture) : base(fixture)
+	public ArsTechnicaCreateWithDetailFeedTests(ApiWebApplicationFactory fixture) : base(fixture)
 	{
 		WebApiFactory.TimeProvider = new FakeTimeProvider(new(2024, 1, 1, 0, 0, 0, TimeSpan.Zero));
 		// All tests in this class will be against a fresh in-memory database context and will be isolated from each other.
