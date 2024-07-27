@@ -86,6 +86,21 @@ public class RssController : ControllerBase
 	}
 
 	/// <summary>
+	/// Updates a given feed detail matching on it's Id. If the location is being updated and matches another existing
+	/// feed an exception will be thrown.
+	/// </summary>
+	/// <param name="feedDetail"></param>
+	/// <returns></returns>
+	[HttpPost]
+	[Route("[action]")]
+	public async Task<ActionResult<FeedDetail?>> UpdateFeedByDetail([FromBody] FeedDetail feedDetail)
+	{
+		var updatedFeed = await _feedStorage.UpdateFeedDetail(feedDetail);
+
+		return updatedFeed;
+	}
+
+	/// <summary>
 	/// First loads the feed from the given request, then saves and returns a <see cref="FeedDetail"/> with database properties populated.
 	/// <para>
 	/// If a feed already exists with the given location, it will be updated.

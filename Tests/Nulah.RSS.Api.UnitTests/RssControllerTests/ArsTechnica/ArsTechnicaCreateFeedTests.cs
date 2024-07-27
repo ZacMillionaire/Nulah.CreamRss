@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.Time.Testing;
-using Nulah.RSS.Domain.Models;
 
-namespace Nulah.RSS.Api.UnitTests.RssControllerTests;
+namespace Nulah.RSS.Api.UnitTests.RssControllerTests.ArsTechnica;
 
-public class ArsTechnicaFeedTests : WebApiFixture
+public class ArsTechnicaCreateFeedTests : WebApiFixture
 {
-	public ArsTechnicaFeedTests(ApiWebApplicationFactory fixture) : base(fixture)
+	public ArsTechnicaCreateFeedTests(ApiWebApplicationFactory fixture) : base(fixture)
 	{
 		WebApiFactory.TimeProvider = new FakeTimeProvider(new(2024, 1, 1, 0, 0, 0, TimeSpan.Zero));
 		// All tests in this class will be against a fresh in-memory database context and will be isolated from each other.
@@ -59,34 +58,5 @@ public class ArsTechnicaFeedTests : WebApiFixture
 
 		Assert.Equal(WebApiFactory.TimeProvider.GetUtcNow(), savedDetail.CreatedUtc);
 		Assert.Equal(WebApiFactory.TimeProvider.GetUtcNow(), savedDetail.UpdatedUtc);
-	}
-
-	[Fact]
-	public async void AttemptToUpdateFeedDetails_ShouldReturn_FeedDetailWithUpdatedValues()
-	{
-		var body = "./TestFiles/SampleRssFeeds/ArsTechnicaAllContent.rss";
-		var rssDetail = await Api.PreviewRss(body);
-		Assert.NotNull(rssDetail);
-
-		// Advance time to avoid testing against the initial value
-		WebApiFactory.TimeProvider.Advance(new TimeSpan(100));
-
-		// Create an initial feed
-		var savedDetail = await Api.CreateRssFeedByDetail(rssDetail);
-
-		Assert.NotNull(savedDetail);
-		Assert.Equal(1, savedDetail.Id);
-
-		Assert.Equal("Ars Technica - All content", savedDetail.Title);
-		Assert.Equal("https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480-32x32.png", savedDetail.ImageUrl);
-		Assert.Equal("All Ars Technica stories", savedDetail.Description);
-		Assert.Equal(body, savedDetail.Location);
-
-		Assert.Equal(WebApiFactory.TimeProvider.GetUtcNow(), savedDetail.CreatedUtc);
-		Assert.Equal(WebApiFactory.TimeProvider.GetUtcNow(), savedDetail.UpdatedUtc);
-
-		savedDetail.Description = "Updated description";
-
-		var updatedDetail = await Api.UpdateRssFeedByDetail(savedDetail);
 	}
 }
