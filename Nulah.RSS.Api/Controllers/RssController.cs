@@ -62,7 +62,9 @@ public class RssController : ControllerBase
 	}
 
 	/// <summary>
-	/// Saves a given feed detail and returns the same feed with database properties populated.
+	/// Saves a given feed detail and returns the same feed with database properties populated. Feeds created this way
+	/// are assumed to be valid and exist (or the <see cref="FeedDetail"/> is the result of a call to <see cref="Preview"/>)
+	/// as they are being created with explicit details.
 	/// <para>
 	/// If <see cref="FeedDetail.Id"/> is 0 a new feed detail will be created.
 	/// </para>
@@ -130,6 +132,14 @@ public class RssController : ControllerBase
 		{
 			return new BadRequestObjectResult(ex.Message);
 		}
+	}
+
+	[HttpPost]
+	[Route("/batch/[controller]/[action]")]
+	public async Task<ActionResult<BatchFeedResult>> CreateFeed([FromBody] BatchFeedRequest batchRequest)
+	{
+		
+		throw new NotImplementedException();
 	}
 
 	[HttpPost]

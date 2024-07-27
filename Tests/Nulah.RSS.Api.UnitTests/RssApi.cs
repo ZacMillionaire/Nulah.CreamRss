@@ -160,6 +160,24 @@ public class RssApi
 		throw new HttpRequestException(await updatedFeedDetail.Content.ReadAsStringAsync(), null, updatedFeedDetail.StatusCode);
 	}
 
+	public async Task<BatchFeedResult?> CreateBatchFeeds(BatchFeedRequest batchFeedRequest)
+	{
+		var client = _rssApiFactory.CreateClient(_webApplicationFactoryClientOptions);
+		var batchFeedResult = await client.PostAsync(
+			"batch/Rss/CreateFeed",
+			CreateFeedRequestContent(batchFeedRequest)
+		);
+
+		// If we have a success code, deserialise the result and return it
+		if (batchFeedResult.IsSuccessStatusCode)
+		{
+			return await DeserialiseResponse<BatchFeedResult?>(batchFeedResult);
+		}
+
+		// Otherwise throw a HttpRequestException with the detail and status code repeated
+		throw new HttpRequestException(await batchFeedResult.Content.ReadAsStringAsync(), null, batchFeedResult.StatusCode);
+	}
+
 	/// <summary>
 	/// Effectively serialises the given <see cref="T"/> into a <see cref="StringContent"/> with a media type of
 	/// application/json appropriate for sending as the body of a POST
