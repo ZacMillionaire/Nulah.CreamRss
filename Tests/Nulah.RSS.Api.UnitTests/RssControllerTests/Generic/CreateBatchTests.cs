@@ -54,7 +54,7 @@ public class CreateBatchTests : WebApiFixture
 			Assert.Equal("Feed location is required", error);
 		});
 	}
-	
+
 	[Fact]
 	public async void BatchRequest_WithInvalidLocation_ShouldThrowHttpRequestException()
 	{
@@ -105,6 +105,7 @@ public class CreateBatchTests : WebApiFixture
 	[Fact]
 	public async void BatchRequest_WithValidAndInvalidLocations_Should_ReturnOkResult_WithCreatedFeedsAndErrors()
 	{
+		var invalidRssLocation = "nonexistant/file/path.rss";
 		// A request with valid and invalid feed locations will still return a 200 Ok, but will contain errors
 		var batchResult = await Api.CreateBatchFeeds(new BatchFeedRequest()
 		{
@@ -115,14 +116,16 @@ public class CreateBatchTests : WebApiFixture
 				"./TestFiles/SampleRssFeeds/DevTo.rss",
 				"./TestFiles/SampleRssFeeds/WebToonsTowerOfGod.rss",
 				"./TestFiles/SampleRssFeeds/GitHubZacMillionaire.atom",
-				"    "
+				"    ",
+				invalidRssLocation
 			]
 		});
 
 		Assert.NotNull(batchResult);
 
-		Assert.Single(batchResult.Errors);
-		Assert.Equal("Feed location is required", batchResult.Errors.First());
+		Assert.Equal(2, batchResult.Errors.Count);
+		Assert.Contains("Feed location is required", batchResult.Errors);
+		Assert.Contains($@"Unable to load feed from ""{invalidRssLocation}""", batchResult.Errors);
 
 		Assert.Equal(4, batchResult.CreatedFeeds.Count);
 		Assert.All(batchResult.CreatedFeeds, feedDetail =>
@@ -132,6 +135,7 @@ public class CreateBatchTests : WebApiFixture
 			Assert.Equal(WebApiFactory.TimeProvider.GetUtcNow(), feedDetail.UpdatedUtc);
 		});
 	}
-	
+
 	// TODO: test batch update when I discover a way to simulate an rss endpoint I can control/refactor it to be mockable
+	// TODO: test batch update when feeds have been updated otherwise - I'd do this now but I'm currently too lazy
 }
