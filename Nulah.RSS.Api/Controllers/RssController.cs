@@ -1,4 +1,5 @@
-﻿using System.ServiceModel.Syndication;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.ServiceModel.Syndication;
 using System.Xml;
 using Microsoft.AspNetCore.Mvc;
 using Nulah.RSS.Domain.Interfaces;
@@ -21,12 +22,11 @@ public class RssController : ControllerBase
 		_feedStorage = feedStorage;
 	}
 
-	public class RssItem
+	[HttpGet]
+	[Route("list")]
+	public async Task<ActionResult<List<FeedDetail>>> GetSavedFeeds()
 	{
-		public string Title { get; set; } = null!;
-		public string Url { get; set; } = null!;
-		public string? Summary { get; set; }
-		public string? Content { get; set; }
+		return await _feedStorage.GetFeedDetails();
 	}
 
 	/// <summary>
@@ -197,7 +197,18 @@ public class RssController : ControllerBase
 		// partial success is still a success as the caller is expected to check for errors
 		return Ok(batchResult);
 	}
-
+	
+	// Stuff I'm going to remove later but I'm using for reference
+	[ExcludeFromCodeCoverage]
+	public class RssItem
+	{
+		public string Title { get; set; } = null!;
+		public string Url { get; set; } = null!;
+		public string? Summary { get; set; }
+		public string? Content { get; set; }
+	}
+	
+	[ExcludeFromCodeCoverage]
 	[HttpPost]
 	[Route("[action]")]
 	public IEnumerable<RssItem> GetRssItems([FromBody] string url)

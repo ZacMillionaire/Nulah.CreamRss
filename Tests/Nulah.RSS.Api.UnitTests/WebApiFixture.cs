@@ -13,6 +13,15 @@ public abstract class WebApiFixture : IClassFixture<ApiWebApplicationFactory>
 
 	protected RssApi Api = null!;
 
+	/// <summary>
+	/// Used to track if data has been seeded for this fixture.
+	/// <para>
+	///	This value is only modified from the test class that changes it, and changes to this value will not impact other
+	/// test fixtures.
+	/// </para>
+	/// </summary>
+	protected bool DataSeeded;
+
 	protected WebApiFixture(ApiWebApplicationFactory fixture)
 	{
 		WebApiFactory = fixture;

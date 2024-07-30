@@ -34,6 +34,31 @@ public class RssApi
 		_rssApiFactory = apiClientFactory;
 	}
 
+
+	// TODO: comment this when fingers aren't frozen :(
+	public async Task<List<FeedDetail>> GetFeeds()
+	{
+		var client = _rssApiFactory.CreateClient(_webApplicationFactoryClientOptions);
+
+		var rssDetail = await client.GetAsync("/rss/list");
+
+		// If we have a success code, deserialise the result and return it
+		if (rssDetail.IsSuccessStatusCode)
+		{
+			// I'm suspect this may return null in the future so I want to make sure I catch it in a way not handled
+			// by tests so its obvious
+			if (await DeserialiseResponse<List<FeedDetail>>(rssDetail) is { } feeds)
+			{
+				return feeds;
+			}
+
+			throw new Exception("Unexpected null return should not be possible");
+		}
+
+		// Otherwise throw a HttpRequestException with the detail and status code repeated
+		throw new HttpRequestException(await rssDetail.Content.ReadAsStringAsync(), null, rssDetail.StatusCode);
+	}
+
 	/// <summary>
 	/// Calls <see cref="RssController.Preview"/> and returns the result. This endpoint does not save any data.
 	/// <para>
