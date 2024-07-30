@@ -93,12 +93,12 @@ public class FeedContext : DbContext
 	/// <param name="options"></param>
 	protected override void OnConfiguring(DbContextOptionsBuilder options)
 	{
-		// If we're called from the cli, configure the data source to be somewhere just so we can build migrations.
+		// If we're called from the cli, configure the data source to be in memory just so we can build migrations.
 		// Any proper context creation should be calling the option builder constructor with its own
 		// data source location so this should always be true.
 		if (!options.IsConfigured)
 		{
-			options.UseSqlite($"Data Source=./cli.db");
+			options.UseSqlite($"Data Source=:memory:");
 		}
 	}
 }

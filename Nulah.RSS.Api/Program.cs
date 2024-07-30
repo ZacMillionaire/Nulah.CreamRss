@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Nulah.RSS.Core;
 using Nulah.RSS.Data;
@@ -5,6 +6,7 @@ using Nulah.RSS.Domain.Interfaces;
 
 namespace Nulah.RSS.Api;
 
+[ExcludeFromCodeCoverage]
 public class Program
 {
 	private static readonly string CorsPolicyName = "CorsPolicy";
