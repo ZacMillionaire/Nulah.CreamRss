@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Nulah.RSS.Data.Entities;
 
@@ -44,6 +45,21 @@ public class FeedContext : DbContext
 	{
 		SetCreatedUpdatedForSavingEntities();
 		return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+	}
+
+	/// <summary>
+	/// This method ensures that migrations exist for debug as a convenience for devs (me) who are too lazy to create
+	/// an sqlite database and drop it into the right place or do some post build rubbish to copy over a file.
+	///
+	/// I don't want to maintain things like that and I have 0 problem with improving dev experience like this.
+	/// </summary>
+	[Conditional("DEBUG")]
+	public void EnsureExists()
+	{
+		// Ensure migrations are applied so any sql scripts are run
+		Database.Migrate();
+		// Then ensure that it actually created
+		Database.EnsureCreated();
 	}
 
 	private void SetCreatedUpdatedForSavingEntities()
