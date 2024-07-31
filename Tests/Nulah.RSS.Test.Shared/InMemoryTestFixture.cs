@@ -24,7 +24,7 @@ public class InMemoryTestFixture
 	///	left null each call will use a fresh context
 	///	</param>
 	/// <returns></returns>
-	private IFeedManager CreateFeedManager(TimeProvider? timeProvider, string? databaseName = null)
+	public IFeedManager CreateFeedManager(TimeProvider? timeProvider, string? databaseName = null)
 		=> new FeedManager(_testDatabase.CreateContext(timeProvider, databaseName));
 
 	/// <summary>

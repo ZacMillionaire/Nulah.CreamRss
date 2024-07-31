@@ -1,6 +1,4 @@
-﻿using System.Data;
-using System.Data.Entity.Core;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Nulah.RSS.Data.Entities;
 using Nulah.RSS.Domain.Exceptions;
 using Nulah.RSS.Domain.Interfaces;

@@ -81,7 +81,32 @@ public class GetFeedDetailTests : IClassFixture<InMemoryTestFixture>, IAsyncLife
 		var feedStorage = _fixture.CreateFeedStorage(null);
 		var feeds = await feedStorage.GetFeedDetails();
 
-		Assert.Equal(0, feeds.Count);
+		Assert.Empty(feeds);
+	}
+	
+	[Fact]
+	public async void Get_FeedDetailByLocation_WithManager_Without_Location_ShouldReturnNull()
+	{
+		var feedManager = _fixture.CreateFeedManager(null);
+
+		// Unlikely that default behaviour should get here (everything should go through IFeedStorage),
+		// but as that implementation may potentially run validations, we need to ensure that null or empty locations
+		// return null
+		var nullFeedDetail = await feedManager.GetFeedDetail(null);
+		Assert.Null(nullFeedDetail);
+	}
+	
+	
+	[Fact]
+	public async void Get_FeedDetailByLocation_WithManager_With_EmptyLocation_ShouldReturnNull()
+	{
+		var feedManager = _fixture.CreateFeedManager(null);
+
+		// Unlikely that default behaviour should get here (everything should go through IFeedStorage),
+		// but as that implementation may potentially run validations, we need to ensure that null or empty locations
+		// return null
+		var nullFeedDetail = await feedManager.GetFeedDetail("           ");
+		Assert.Null(nullFeedDetail);
 	}
 
 	/// <summary>
