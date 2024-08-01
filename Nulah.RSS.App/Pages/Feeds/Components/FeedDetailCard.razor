@@ -1,0 +1,19 @@
+﻿@using Nulah.RSS.Domain.Models
+<div class="feed-detail-card">
+    <div class="feed-detail-image">
+        <img src="@FeedDetail.ImageUrl" alt="Image for @FeedDetail.Title"/>
+    </div>
+    <div class="feed-detail-title">@FeedDetail.Title</div>
+    <div class="feed-detail-description">@FeedDetail.Description</div>
+    <div class="feed-detail-meta">
+        <div>@FeedDetail.CreatedUtc</div>
+        <div>@FeedDetail.UpdatedUtc</div>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public FeedDetail FeedDetail { get; set; } = null!;
+
+}

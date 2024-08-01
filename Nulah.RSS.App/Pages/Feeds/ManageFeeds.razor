@@ -1,0 +1,38 @@
+﻿@page "/Feeds/Manage"
+@using System.Runtime.InteropServices.JavaScript
+@using System.Xml
+<h3>Add Feed</h3>
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        try
+        {
+            //using var reader = XmlReader.Create("https://feeds.arstechnica.com/arstechnica/index");
+            await Task.Delay(1000);
+        }
+        catch (Exception ex)
+        {
+            throw;
+        }
+         await base.OnInitializedAsync();
+    }
+    
+    public class ConsoleWrapper
+    {
+        private readonly IJSRuntime _js;
+
+        public ConsoleWrapper(IJSRuntime js)
+        {
+            _js = js;
+        }
+
+        public async Task Log(string message)
+        {
+            await _js.InvokeVoidAsync("console.log", message);
+        }
+    }
+    
+}

@@ -1,0 +1,69 @@
+﻿@page "/Feeds"
+@using Nulah.RSS.App.Services
+@using Nulah.RSS.Domain.Models
+@using Nulah.RSS.App.Pages.Feeds.Components
+<h3>Feeds</h3>
+
+@if (_feedsLoading)
+{
+    <div>Loading feeds...</div>
+}
+else
+{
+    <button @onclick="RefreshFeeds">Refresh</button>
+    if (Feeds.Count == 0)
+    {
+        <div>You haven't yet added any feeds. Why not start now?</div>
+    }
+    else
+    {
+        <div class="feed-detail-grid">
+            @foreach (var feedDetail in Feeds)
+            {
+                <FeedDetailCard FeedDetail="@feedDetail"/>
+            }
+        </div>
+    }
+}
+
+@code {
+
+    [Inject]
+    protected FeedService FeedService { get; set; } = default!;
+
+    private List<FeedDetail> Feeds { get; set; } = [];
+
+    private bool _feedsLoading;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await FetchFeeds();
+
+        await base.OnInitializedAsync();
+    }
+
+    private async void RefreshFeeds()
+    {
+        await FetchFeeds(true);
+        StateHasChanged();
+    }
+
+    private async Task FetchFeeds(bool forceRefresh = false)
+    {
+        _feedsLoading = true;
+        try
+        {
+            var feeds = await FeedService.FetchFeeds(forceRefresh);
+            Feeds = feeds;
+        }
+        catch (Exception ex)
+        {
+            // do something with an error display but otherwise let things happen as they do
+        }
+        finally
+        {
+            _feedsLoading = false;
+        }
+    }
+
+}
