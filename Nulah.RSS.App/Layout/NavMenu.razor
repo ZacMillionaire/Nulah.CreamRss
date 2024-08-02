@@ -1,4 +1,6 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using Nulah.RSS.App.Services
+@using Nulah.RSS.Domain.Models
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">Nulah.RSS.App</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -14,6 +16,21 @@
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Feeds
             </NavLink>
         </div>
+        @if (_feedsLoading)
+        {
+            <div>loading...</div>
+        }
+        else
+        {
+            @foreach (var feedDetail in Feeds)
+            {
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="@($"/feeds/{feedDetail.Id}")" Match="NavLinkMatch.All">
+                        @feedDetail.Title
+                    </NavLink>
+                </div>
+            }
+        }
     </nav>
 </div>
 
@@ -25,6 +42,50 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    [Inject]
+    protected FeedService FeedService { get; set; } = default!;
+
+    private List<FeedDetail> Feeds { get; set; } = [];
+
+    private bool _feedsLoading;
+
+    protected override async Task OnInitializedAsync()
+    {
+        FeedService.FeedsLoading += FeedsLoading;
+        FeedService.FeedsLoaded += FeedsLoaded;
+        await FetchFeeds();
+
+        await base.OnInitializedAsync();
+    }
+
+    private void FeedsLoaded(object? sender, List<FeedDetail> e)
+    {
+        _feedsLoading = false;
+        Feeds = e;
+        StateHasChanged();
+    }
+
+    private void FeedsLoading(object? sender, EventArgs e)
+    {
+        _feedsLoading = true;
+        StateHasChanged();
+    }
+
+    private async Task FetchFeeds(bool forceRefresh = false)
+    {
+        try
+        {
+            var feeds = await FeedService.FetchFeeds(forceRefresh);
+            Feeds = feeds;
+        }
+        catch (Exception ex)
+        {
+            // do something with an error display but otherwise let things happen as they do
+            // Call feeds loaded to ensure state is still correct
+            FeedsLoaded(this, []);
+        }
     }
 
 }

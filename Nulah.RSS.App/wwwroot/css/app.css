@@ -105,6 +105,8 @@ code {
 :root {
     --site-background-light: rgb(255, 249, 235);
     --site-background-dark: rgb(255, 234, 208);
+    --site-border: rgb(166, 121, 69);
+    --font-colour: #452200;
 }
 
 html {
@@ -117,7 +119,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: var(--site-background-light);
-    color: #452200;
+    color: var(--font-colour);
 }
 
 * {

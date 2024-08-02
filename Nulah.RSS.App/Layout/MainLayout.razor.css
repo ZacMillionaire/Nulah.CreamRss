@@ -9,7 +9,7 @@
 /*}*/
 
 .sidebar {
-    border-right: 2px solid rgb(166, 121, 69);
+    border-right: 2px solid var(--site-border);
     background-image: linear-gradient(180deg,
     var(--site-background-light) 0%,
     var(--site-background-dark) 70%);

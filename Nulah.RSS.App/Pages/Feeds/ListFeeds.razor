@@ -37,20 +37,33 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        FeedService.FeedsLoading += FeedsLoading;
+        FeedService.FeedsLoaded += FeedsLoaded;
         await FetchFeeds();
 
         await base.OnInitializedAsync();
     }
 
+    private void FeedsLoaded(object? sender, List<FeedDetail> e)
+    {
+        _feedsLoading = false;
+        Feeds = e;
+        StateHasChanged();
+    }
+
+    private void FeedsLoading(object? sender, EventArgs e)
+    {
+        _feedsLoading = true;
+        StateHasChanged();
+    }
+
     private async void RefreshFeeds()
     {
         await FetchFeeds(true);
-        StateHasChanged();
     }
 
     private async Task FetchFeeds(bool forceRefresh = false)
     {
-        _feedsLoading = true;
         try
         {
             var feeds = await FeedService.FetchFeeds(forceRefresh);
@@ -59,10 +72,8 @@ else
         catch (Exception ex)
         {
             // do something with an error display but otherwise let things happen as they do
-        }
-        finally
-        {
-            _feedsLoading = false;
+            // Call feeds loaded to ensure state is still correct
+            FeedsLoaded(this, []);
         }
     }
 
