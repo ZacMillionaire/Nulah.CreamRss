@@ -124,6 +124,7 @@ public class FeedManager : IFeedManager
 			Id = feed.Id,
 			Title = feed.Title,
 			ImageUrl = feed.ImageUrl,
+			ImageData = ImageBlogToBase64(feed.ImageBlob),
 			ImageBlob = feed.ImageBlob,
 			Location = feed.Location,
 			CreatedUtc = feed.CreatedUtc,
@@ -174,5 +175,20 @@ public class FeedManager : IFeedManager
 		return await _context.Feeds
 			// TODO: criteria stuff here
 			.ToListAsync();
+	}
+
+	/// <summary>
+	/// Converts the given image data into a data image suitable for display
+	/// </summary>
+	/// <param name="imageBlob"></param>
+	/// <returns></returns>
+	private static string? ImageBlogToBase64(byte[]? imageBlob)
+	{
+		if (imageBlob == null)
+		{
+			return null;
+		}
+
+		return $"data:image/jpg;base64,{Convert.ToBase64String(imageBlob)}";
 	}
 }

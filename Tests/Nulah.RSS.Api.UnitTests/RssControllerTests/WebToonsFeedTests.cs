@@ -32,6 +32,7 @@ public class WebToonsFeedTests : WebApiFixture
 		Assert.NotNull(rssDetail.Title);
 		Assert.NotNull(rssDetail.ImageUrl);
 		Assert.NotNull(rssDetail.ImageBlob);
+		// Assert.NotNull(rssDetail.ImageData);
 		Assert.NotNull(rssDetail.Description);
 		Assert.NotNull(rssDetail.Location);
 
@@ -42,6 +43,7 @@ public class WebToonsFeedTests : WebApiFixture
 		Assert.Equal("Tower of God", rssDetail.Title);
 		Assert.Equal("https://swebtoon-phinf.pstatic.net/20230324_9/167961213201856COO_JPEG/7TowerOfGod_thumbnail_desktop.jpg", rssDetail.ImageUrl);
 		Assert.Equal(FeedImage, rssDetail.ImageBlob);
+		// Assert.Equal(TestHelpers.ImageToDataUri(rssDetail.ImageBlob), rssDetail.ImageData);
 		// The description has a space in the feed, but should be normalised to not
 		Assert.Equal(
 			"What do you desire? Money and wealth? Honor and pride? Authority and power? Revenge? Or something that transcends them all? Whatever you desire—it's here.",

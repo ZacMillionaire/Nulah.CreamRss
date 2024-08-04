@@ -11,4 +11,9 @@ public sealed class TestHelpers
 	{
 		return File.ReadAllBytes($"./TestFiles/SampleRssFeeds/Images/{imageName}");
 	}
+
+	public static string ImageToDataUri(byte[] imageBlob)
+	{
+		return $"data:image/jpg;base64,{Convert.ToBase64String(imageBlob)}";
+	}
 }

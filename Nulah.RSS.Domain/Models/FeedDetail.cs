@@ -9,7 +9,14 @@ public class FeedDetail
 	[Required(AllowEmptyStrings = false, ErrorMessage = "Title cannot be empty")]
 	public string Title { get; set; } = null!;
 
+	[Obsolete("Display images using ImageData. This property will not be available in future versions")]
 	public string? ImageUrl { get; set; }
+
+	/// <summary>
+	/// Data image representation of the ImageUrl
+	/// </summary>
+	public string? ImageData { get; set; }
+
 	public string? Description { get; set; }
 
 	/// <summary>
