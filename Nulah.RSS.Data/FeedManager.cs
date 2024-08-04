@@ -29,7 +29,8 @@ public class FeedManager : IFeedManager
 			Description = feedDetail.Description,
 			Title = feedDetail.Title,
 			ImageUrl = feedDetail.ImageUrl,
-			Location = feedDetail.Location
+			Location = feedDetail.Location,
+			ImageBlob = feedDetail.ImageBlob
 		};
 
 		_context.Feeds.Add(feed);
@@ -59,6 +60,7 @@ public class FeedManager : IFeedManager
 		feed.Description = feedDetail.Description;
 		feed.Title = feedDetail.Title;
 		feed.ImageUrl = feedDetail.ImageUrl;
+		feed.ImageBlob = feedDetail.ImageBlob;
 		feed.Location = feedDetail.Location;
 
 		await _context.SaveChangesAsync();
@@ -122,6 +124,7 @@ public class FeedManager : IFeedManager
 			Id = feed.Id,
 			Title = feed.Title,
 			ImageUrl = feed.ImageUrl,
+			ImageBlob = feed.ImageBlob,
 			Location = feed.Location,
 			CreatedUtc = feed.CreatedUtc,
 			UpdatedUtc = feed.UpdatedUtc,

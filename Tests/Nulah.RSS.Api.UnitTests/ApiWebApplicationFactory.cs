@@ -30,6 +30,11 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
 	public string? DatabaseName = null;
 
 	/// <summary>
+	/// Test controllable message handler used to register responses for specific urls
+	/// </summary>
+	public readonly MockAspHttpDelegationHandler TestHttpMessageHandler = new();
+
+	/// <summary>
 	/// Provides a default set of options for use when deserialising Api responses
 	/// </summary>
 	public static readonly JsonSerializerOptions DefaultJsonSerializerOptions = new()
@@ -50,6 +55,12 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
 
 		builder.ConfigureTestServices(services =>
 		{
+			// Really weird way to ensure we have controll over the requests the tests make to prevent calls out to the internet
+			services.AddHttpClient()
+				.ConfigureHttpClientDefaults(clientBuilder =>
+					clientBuilder.AddHttpMessageHandler(() => TestHttpMessageHandler)
+				);
+
 			// adapting from:
 			// https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-8.0#customize-webapplicationfactory
 			// remove the existing context configuration by removing the context itself, and the context options

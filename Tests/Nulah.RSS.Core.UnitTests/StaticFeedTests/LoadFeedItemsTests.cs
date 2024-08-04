@@ -4,6 +4,7 @@ namespace Nulah.RSS.Core.UnitTests.StaticFeedTests;
 
 public class LoadFeedItemsTests
 {
+	// Feed items doesn't use this client so it can literally be whatever and it won't matter
 	private readonly HttpClient _client = new ();
 	
 	[Fact]

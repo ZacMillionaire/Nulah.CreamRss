@@ -2,14 +2,38 @@
 using System.Text.Json;
 using Microsoft.Extensions.Time.Testing;
 using Nulah.RSS.Domain.Models;
+using Nulah.RSS.Test.Shared;
 
 namespace Nulah.RSS.Api.UnitTests.RssControllerTests.Generic;
 
 public class CreateBatchTests : WebApiFixture
 {
+	private readonly Dictionary<string, byte[]> FeedImages = new Dictionary<string, byte[]>()
+	{
+		{
+			"https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480-32x32.png",
+			TestHelpers.LoadImageResource("cropped-ars-logo-512_480-32x32.png")
+		},
+		{
+			"https://swebtoon-phinf.pstatic.net/20230324_9/167961213201856COO_JPEG/7TowerOfGod_thumbnail_desktop.jpg",
+			TestHelpers.LoadImageResource("7TowerOfGod_thumbnail_desktop.jpg")
+		}
+	};
+
 	public CreateBatchTests(ApiWebApplicationFactory fixture) : base(fixture)
 	{
 		WebApiFactory.TimeProvider = new FakeTimeProvider(new(2024, 1, 1, 0, 0, 0, TimeSpan.Zero));
+
+		// Register the response for a uri
+		foreach (var feedImage in FeedImages)
+		{
+			WebApiFactory.TestHttpMessageHandler.SetResponseForUri(
+				feedImage.Key,
+				feedImage.Value
+			);
+		}
+
+
 		Api = new RssApi(WebApiFactory);
 	}
 

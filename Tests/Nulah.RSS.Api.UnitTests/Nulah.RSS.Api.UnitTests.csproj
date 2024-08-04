@@ -38,6 +38,12 @@
       <None Update="TestFiles\SampleRssFeeds\WebToonsTowerOfGod.rss">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="TestFiles\SampleRssFeeds\Images\cropped-ars-logo-512_480-32x32.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="TestFiles\SampleRssFeeds\Images\7TowerOfGod_thumbnail_desktop.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>

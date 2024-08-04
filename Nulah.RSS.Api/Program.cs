@@ -43,6 +43,7 @@ public class Program
 		builder.Services.AddTransient<IFeedReader, FeedReader>();
 		builder.Services.AddTransient<IFeedManager, FeedManager>();
 		builder.Services.AddTransient<IFeedStorage, FeedStorage>();
+		builder.Services.AddHttpClient();
 
 		var app = builder.Build();
 
