@@ -20,4 +20,5 @@ public class FeedDetail
 
 	public DateTimeOffset CreatedUtc { get; set; }
 	public DateTimeOffset UpdatedUtc { get; set; }
+	public byte[]? ImageBlob { get; set; }
 }

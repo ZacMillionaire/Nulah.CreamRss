@@ -4,17 +4,19 @@ namespace Nulah.RSS.Core.UnitTests.StaticFeedTests;
 
 public class LoadFeedItemsTests
 {
+	private readonly HttpClient _client = new ();
+	
 	[Fact]
 	public void Load_BlankRssLocation_Should_ThrowException()
 	{
-		var rssReader = new FeedReader();
+		var rssReader = new FeedReader(_client);
 		Assert.Throws<ArgumentNullException>(() => rssReader.ParseFeedItems(""));
 	}
 
 	[Fact]
 	public void Load_ArsTechnicaFeedItems_Should_HaveAllProperties()
 	{
-		var rssReader = new FeedReader();
+		var rssReader = new FeedReader(_client);
 		var rssItems = rssReader.ParseFeedItems("./TestFiles/SampleRssFeeds/ArsTechnicaAllContent.rss");
 		Assert.NotNull(rssItems);
 		Assert.Equal(20, rssItems.Count);
@@ -24,7 +26,7 @@ public class LoadFeedItemsTests
 	[Fact]
 	public void Load_GitHubFeedItems_Should_HaveAllProperties_Except_Summary()
 	{
-		var rssReader = new FeedReader();
+		var rssReader = new FeedReader(_client);
 		var rssItems = rssReader.ParseFeedItems("./TestFiles/SampleRssFeeds/GitHubZacMillionaire.atom");
 		Assert.NotNull(rssItems);
 		Assert.Equal(6, rssItems.Count);
@@ -44,7 +46,7 @@ public class LoadFeedItemsTests
 	[Fact]
 	public void Load_DevToFeedItems_Should_HaveAllProperties()
 	{
-		var rssReader = new FeedReader();
+		var rssReader = new FeedReader(_client);
 		var rssItems = rssReader.ParseFeedItems("./TestFiles/SampleRssFeeds/DevTo.rss");
 		Assert.NotNull(rssItems);
 		Assert.Equal(12, rssItems.Count);
@@ -54,7 +56,7 @@ public class LoadFeedItemsTests
 	[Fact]
 	public void Load_WebToonsTowerOfGodFeedItems_Should_HaveAllProperties()
 	{
-		var rssReader = new FeedReader();
+		var rssReader = new FeedReader(_client);
 		var rssItems = rssReader.ParseFeedItems("./TestFiles/SampleRssFeeds/WebToonsTowerOfGod.rss");
 		Assert.NotNull(rssItems);
 		Assert.Equal(20, rssItems.Count);

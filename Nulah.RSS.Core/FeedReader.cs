@@ -7,6 +7,13 @@ namespace Nulah.RSS.Core;
 
 public class FeedReader : IFeedReader
 {
+	private readonly HttpClient _client;
+
+	public FeedReader(HttpClient client)
+	{
+		_client = client;
+	}
+
 	/// <summary>
 	/// Attempts to parse the feed located at the given location. The location can be a remote URL or locally accessible file.
 	/// <para>
@@ -21,7 +28,7 @@ public class FeedReader : IFeedReader
 	/// <returns></returns>
 	public FeedDetail ParseFeedDetails(string? feedLocation)
 	{
-		return LoadFeedDetail(feedLocation);
+		return LoadFeedDetail(feedLocation, _client);
 	}
 
 	/// <summary>
@@ -127,9 +134,10 @@ public class FeedReader : IFeedReader
 	/// Retrieves the feed from the given location and returns the details if successful. Throws any exceptions otherwise.
 	/// </summary>
 	/// <param name="feedLocation"></param>
+	/// <param name="client"></param>
 	/// <returns></returns>
 	/// <exception cref="ArgumentNullException">Thrown if <see cref="feedLocation"/> is null or empty</exception>
-	private static FeedDetail LoadFeedDetail(string? feedLocation)
+	private static FeedDetail LoadFeedDetail(string? feedLocation, HttpClient client)
 	{
 		// Shortcut any checks done by XmlReader and fail early if we don't have a location
 		if (string.IsNullOrWhiteSpace(feedLocation))
@@ -145,8 +153,22 @@ public class FeedReader : IFeedReader
 		{
 			Title = syndicationFeed.Title?.Text.Trim() ?? "TITLE MISSING",
 			ImageUrl = syndicationFeed.ImageUrl?.AbsoluteUri,
+			ImageBlob = LoadRemoteImage(syndicationFeed.ImageUrl?.AbsoluteUri, client).Result,
 			Description = syndicationFeed.Description?.Text.Trim(),
 			Location = feedLocation
 		};
+	}
+
+	private static async Task<byte[]?> LoadRemoteImage(string? remoteImageAddress, HttpClient client)
+	{
+		if (!string.IsNullOrWhiteSpace(remoteImageAddress)
+		    && XmlResolver.FileSystemResolver.ResolveUri(null, remoteImageAddress) is { IsFile: false })
+		{
+			var imageStream = await client.GetByteArrayAsync(remoteImageAddress);
+			return imageStream;
+		}
+
+		// File based image addresses are always null for image blobs
+		return null;
 	}
 }
