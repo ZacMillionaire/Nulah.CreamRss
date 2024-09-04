@@ -27,5 +27,12 @@ public class FeedDetail
 
 	public DateTimeOffset CreatedUtc { get; set; }
 	public DateTimeOffset UpdatedUtc { get; set; }
+	/// <summary>
+	/// Header image for the feed (if any)
+	/// </summary>
 	public byte[]? ImageBlob { get; set; }
+	/// <summary>
+	/// The favicon (if any)
+	/// </summary>
+	public byte[]? Favicon { get; set; }
 }
