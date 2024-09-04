@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Nulah.RSS.Data;
 
@@ -10,9 +11,11 @@ using Nulah.RSS.Data;
 namespace Nulah.RSS.Data.Migrations
 {
     [DbContext(typeof(FeedContext))]
-    partial class FeedContextModelSnapshot : ModelSnapshot
+    [Migration("20240904040404_Favicon")]
+    partial class Favicon
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.7");

@@ -29,6 +29,11 @@ public class FeedContext : DbContext
 		_timeProvider = timeProvider;
 	}
 
+	public static DbContextOptions<FeedContext> BuildOptionsFromConnectionString(string connectionString)
+	{
+		return new DbContextOptionsBuilder<FeedContext>().UseSqlite(connectionString).Options;
+	}
+
 	public override int SaveChanges()
 	{
 		SetCreatedUpdatedForSavingEntities();
