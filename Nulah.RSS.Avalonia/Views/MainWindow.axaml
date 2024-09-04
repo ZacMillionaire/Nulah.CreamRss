@@ -5,7 +5,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:Nulah.RSS.Avalonia.Views"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d"
+        d:DesignWidth="800" d:DesignHeight="600"
+        Width="800" Height="600"
+        MinWidth="800" MinHeight="600"
         x:Class="Nulah.RSS.Avalonia.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
@@ -23,34 +26,45 @@
 
     <DockPanel>
         <Rectangle Fill="Gray" Height="25" DockPanel.Dock="Top" />
-        <!-- <Rectangle Fill="Gray" Width="100" DockPanel.Dock="Left" /> -->
-        <ListBox ItemsSource="{Binding Feeds}" Width="150"
-                 DockPanel.Dock="Left"
-                 ScrollViewer.VerticalScrollBarVisibility="Visible"
-                 ScrollViewer.AllowAutoHide="True">
-            <ListBox.Styles>
-                <Style Selector="ListBoxItem">
-                    <Setter Property="Padding" Value="5" />
-                </Style>
-                <Style Selector="ListBoxItem:pointerover">
-                    <Setter Property="Padding" Value="10,5,5,5" />
-                </Style>
-                <Style Selector="ListBoxItem:selected">
-                    <Setter Property="Padding" Value="15,5,5,5" />
-                </Style>
-                <Style Selector="ListBoxItem:selected TextBlock">
-                    <Setter Property="FontWeight" Value="Bold" />
-                </Style>
-            </ListBox.Styles>
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Margin="0,0,5,0" Source="{Binding  ImageBlob, Converter={StaticResource ByteArrayToImageConverter}}" />
-                        <TextBlock Text="{Binding Title}" TextTrimming="{x:Static TextTrimming.CharacterEllipsis}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <Border Width="150" DockPanel.Dock="Left" BorderBrush="Aqua" BorderThickness="0,0,1,0">
+            <StackPanel>
+                <ListBox ItemsSource="{Binding Feeds}"
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"
+                         ScrollViewer.AllowAutoHide="True"
+                         IsVisible="{Binding !!Feeds.Count}">
+                    <ListBox.Styles>
+                        <Style Selector="ListBoxItem">
+                            <Setter Property="Padding" Value="5" />
+                        </Style>
+                        <Style Selector="ListBoxItem:pointerover">
+                            <Setter Property="Padding" Value="10,5,5,5" />
+                        </Style>
+                        <Style Selector="ListBoxItem:selected">
+                            <Setter Property="Padding" Value="15,5,5,5" />
+                        </Style>
+                        <Style Selector="ListBoxItem:selected TextBlock">
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Style>
+                        <Style Selector="ListBox">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Style>
+                    </ListBox.Styles>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="0,0,5,0"
+                                       Source="{Binding  ImageBlob, Converter={StaticResource ByteArrayToImageConverter}}" />
+                                <TextBlock Text="{Binding Title}"
+                                           TextTrimming="{x:Static TextTrimming.CharacterEllipsis}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <TextBlock Text="No feeds stored"
+                           IsVisible="{Binding !Feeds.Count}">
+                </TextBlock>
+            </StackPanel>
+        </Border>
         <TextBlock Text="\{Binding Greeting\}" />
     </DockPanel>
 
