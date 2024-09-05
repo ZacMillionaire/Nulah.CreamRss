@@ -153,7 +153,12 @@ public class FeedReader : IFeedReader
 		{
 			Title = syndicationFeed.Title?.Text.Trim() ?? "TITLE MISSING",
 			ImageUrl = syndicationFeed.ImageUrl?.AbsoluteUri,
+			// TODO: remove the .Result and await on this as intended.
+			// No idea why I made this forced synchronous to begin with and I was just lucky it happened to never get
+			// into a wait lock because I never ran it in a single threaded (eg - desktop app) world.
 			ImageBlob = LoadRemoteImage(syndicationFeed.ImageUrl?.AbsoluteUri, client).Result,
+			// TODO: also duplicate implementation of LoadRemoteImage to load a favicon into this property
+			// Favicon = TODO
 			Description = syndicationFeed.Description?.Text.Trim(),
 			Location = feedLocation
 		};
