@@ -11,5 +11,6 @@
   
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="Controls/ByteArrayImage.axaml"></StyleInclude>
     </Application.Styles>
 </Application>

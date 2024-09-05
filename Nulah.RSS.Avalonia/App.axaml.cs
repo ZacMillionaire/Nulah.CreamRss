@@ -30,10 +30,9 @@ public partial class App : Application
 	{
 		if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
 		{
-			desktop.MainWindow = new MainWindow
-			{
-				DataContext = new MainWindowViewModel(),
-			};
+			var mainWindow = new MainWindow();
+			mainWindow.DataContext = new MainWindowViewModel(owner: mainWindow);
+			desktop.MainWindow = mainWindow;
 		}
 
 		base.OnFrameworkInitializationCompleted();
@@ -48,6 +47,7 @@ public partial class App : Application
 		}));
 		Locator.CurrentMutable.Register<IFeedManager>(() => new FeedManager(Locator.Current.GetService<FeedContext>()!));
 		Locator.CurrentMutable.Register<IFeedStorage>(() => new FeedStorage(Locator.Current.GetService<IFeedManager>()!));
+		Locator.CurrentMutable.Register<IFeedReader>(() => new FeedReader(Locator.Current.GetService<HttpClient>()!));
 
 		var ctx = Locator.Current.GetService<FeedContext>();
 		ctx?.EnsureExists();

@@ -1,0 +1,57 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Nulah.RSS.Avalonia.ViewModels"
+             xmlns:dvm="using:Nulah.RSS.Avalonia.ViewModels.DesignTime"
+             xmlns:controls="clr-namespace:Nulah.RSS.Avalonia.Controls"
+             xmlns:controls1="clr-namespace:HeroIconsAvalonia.Controls;assembly=HeroIconsAvalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:AddEditFeedViewModel"
+             x:Class="Nulah.RSS.Avalonia.Views.AddEditFeedView">
+    <Design.DataContext>
+        <dvm:AddEditFeedDesignViewModel />
+    </Design.DataContext>
+    <StackPanel>
+        <!-- <StackPanel IsVisible="{Binding FeedDetail, Converter={x:Static ObjectConverters.IsNotNull}}" -->
+        <!--             Orientation="Horizontal" -->
+        <!--             Spacing="5"> -->
+        <Grid IsVisible="{Binding FeedDetail, 
+            Converter={x:Static ObjectConverters.IsNotNull}
+        }">
+            <Grid.ColumnDefinitions>
+                100,*
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0"
+                    Margin="0,0,5,0"
+                    BorderThickness="5"
+                    BorderBrush="Aquamarine"
+                    CornerRadius="53"
+                    ClipToBounds="True">
+                <Border CornerRadius="50"
+                        ClipToBounds="True">
+                    <controls:ByteArrayImage
+                        ByteArray="{Binding FeedDetail.ImageBlob}" />
+                </Border>
+            </Border>
+            <StackPanel Grid.Column="1" Orientation="Vertical"
+                        Spacing="5">
+                <TextBlock FontSize="24"
+                           Text="{Binding FeedDetail.Title}" />
+                <TextBlock Text="{Binding FeedDetail.Description}" TextWrapping="WrapWithOverflow" />
+            </StackPanel>
+        </Grid>
+        <!-- </StackPanel> -->
+        <StackPanel IsVisible="{Binding FeedDetail, Converter={x:Static ObjectConverters.IsNull}}">
+            <TextBox Watermark="Feed Source" UseFloatingWatermark="True"
+                     Text="{Binding FeedUri}" />
+            <!-- TODO: style this later -->
+            <Button Command="{Binding LoadAndSaveFeedDetailsCommand}">
+                <StackPanel Orientation="Horizontal" Spacing="5">
+                    <controls1:HeroIcon Foreground="#452200" Type="PlusCircle" Min="True" />
+                    <TextBlock VerticalAlignment="Center">Save Feed</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

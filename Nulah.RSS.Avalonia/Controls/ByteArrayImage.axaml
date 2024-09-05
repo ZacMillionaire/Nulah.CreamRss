@@ -1,0 +1,23 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Nulah.RSS.Avalonia.Controls"
+        xmlns:views="clr-namespace:Nulah.RSS.Avalonia.Views">
+    <Design.PreviewWith>
+        <controls:ByteArrayImage />
+    </Design.PreviewWith>
+
+    <Styles.Resources>
+        <views:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter" />
+    </Styles.Resources>
+
+    <Style Selector="controls|ByteArrayImage">
+        <!-- Set Defaults -->
+        <Setter Property="ByteArray" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Image Stretch="UniformToFill"
+                       Source="{TemplateBinding ByteArray, Converter={StaticResource ByteArrayToImageConverter}}" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

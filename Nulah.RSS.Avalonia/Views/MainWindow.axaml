@@ -5,6 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:Nulah.RSS.Avalonia.Views"
+        xmlns:heroicons="clr-namespace:HeroIconsAvalonia.Controls;assembly=HeroIconsAvalonia"
+        xmlns:controls="clr-namespace:Nulah.RSS.Avalonia.Controls"
         mc:Ignorable="d"
         d:DesignWidth="800" d:DesignHeight="600"
         Width="800" Height="600"
@@ -20,13 +22,29 @@
         <dvm:MainWindowDesignViewModel />
     </Design.DataContext>
 
-    <Window.Resources>
-        <views:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter" />
-    </Window.Resources>
+    <Window.Styles>
+        <Style Selector="Window">
+            <Setter Property="Background" Value="rgb(255, 249, 235)" />
+        </Style>
+        <Style Selector="Border">
+            <Setter Property="BorderBrush" Value="rgb(166, 121, 69)" />
+        </Style>
+    </Window.Styles>
 
     <DockPanel>
-        <Rectangle Fill="Gray" Height="25" DockPanel.Dock="Top" />
-        <Border Width="150" DockPanel.Dock="Left" BorderBrush="Aqua" BorderThickness="0,0,1,0">
+        <Border DockPanel.Dock="Top" BorderThickness="0,0,0,2" Padding="5">
+            <StackPanel Orientation="Horizontal">
+                <!-- TODO: style this later -->
+                <Button Command="{Binding OpenAddEditFeedWindowCommand}">
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <heroicons:HeroIcon Foreground="#452200" Type="PlusCircle" Min="True" />
+                        <TextBlock VerticalAlignment="Center">Add Feed</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+        <Border Width="200" DockPanel.Dock="Left" BorderThickness="0,0,2,0"
+                Background="rgb(255, 234, 208)">
             <StackPanel>
                 <ListBox ItemsSource="{Binding Feeds}"
                          ScrollViewer.VerticalScrollBarVisibility="Visible"
@@ -52,9 +70,11 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Image Margin="0,0,5,0"
-                                       Source="{Binding  ImageBlob, Converter={StaticResource ByteArrayToImageConverter}}" />
+                                <controls:ByteArrayImage Margin="0,0,5,0"
+                                                          ByteArray="{Binding  ImageBlob}"
+                                                          MaxHeight="15"/>
                                 <TextBlock Text="{Binding Title}"
+                                           Foreground="#452200"
                                            TextTrimming="{x:Static TextTrimming.CharacterEllipsis}" />
                             </StackPanel>
                         </DataTemplate>
@@ -65,7 +85,19 @@
                 </TextBlock>
             </StackPanel>
         </Border>
-        <TextBlock Text="\{Binding Greeting\}" />
+        <ContentControl Content="{Binding WindowContent}">
+            <ContentControl.DataTemplates>
+                <DataTemplate DataType="{x:Type vm:AddEditFeedViewModel}">
+                    <views:AddEditFeedView DataContext="{Binding }" />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:FeedViewModel}">
+                    <TextBlock Text="viewing a feed goes here" />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:ViewModelBase}">
+                    <TextBlock Text="fall back missing content view here" />
+                </DataTemplate>
+            </ContentControl.DataTemplates>
+        </ContentControl>
     </DockPanel>
 
 </Window>
