@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Avalonia.Controls;
 using Avalonia.Threading;
@@ -23,12 +24,16 @@ public class AddEditFeedViewModel : ViewModelBase
 		set => this.RaiseAndSetIfChanged(ref _feedDetail, value);
 	}
 
-
 	public string? FeedUri
 	{
 		get => _feedUri;
 		set => this.RaiseAndSetIfChanged(ref _feedUri, value);
 	}
+
+	/// <summary>
+	/// Method to be called when feeds update
+	/// </summary>
+	public Action? FeedListUpdate { get; init; }
 
 	public AddEditFeedViewModel(IFeedManager? feedManager = null, IFeedReader? feedReader = null)
 	{
@@ -62,6 +67,7 @@ public class AddEditFeedViewModel : ViewModelBase
 						// Naturally, of course, saving the FeedDetail is async, but we still need to keep this wrapped in
 						// a Task.Run to make ParseFeedDetails behave nicely
 						FeedDetail = await _feedManager!.CreateFeedDetail(parsedFeed);
+						FeedListUpdate?.Invoke();
 					}
 				});
 			});

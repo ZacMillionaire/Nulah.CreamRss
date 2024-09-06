@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+using System.Reactive.Linq;
 using System.Windows.Input;
-using Avalonia.Controls;
-using Avalonia.Platform;
 using Avalonia.Threading;
-using Nulah.RSS.Avalonia.Views;
 using Nulah.RSS.Domain.Interfaces;
 using Nulah.RSS.Domain.Models;
 using ReactiveUI;
@@ -18,8 +14,8 @@ public class MainWindowViewModel : ViewModelBase
 {
 	private readonly IFeedManager? _feedManager;
 	private List<FeedDetail> _feeds = new();
-	private Window? _owner;
 	private ViewModelBase? _windowContent;
+	private FeedDetail? _selectedFeedDetail;
 
 	public ICommand OpenAddEditFeedWindowCommand { get; }
 
@@ -35,11 +31,19 @@ public class MainWindowViewModel : ViewModelBase
 		set => this.RaiseAndSetIfChanged(ref _windowContent, value);
 	}
 
-	public MainWindowViewModel(IFeedManager? feedManager = null, Window? owner = null)
+	public FeedDetail? SelectedFeedDetail
+	{
+		get => _selectedFeedDetail;
+		set => this.RaiseAndSetIfChanged(ref _selectedFeedDetail, value);
+	}
+
+	public MainWindowViewModel(IFeedManager? feedManager = null)
 	{
 		_feedManager = feedManager ?? Locator.Current.GetService<IFeedManager>();
-		_owner = owner;
-		OpenAddEditFeedWindowCommand = ReactiveCommand.Create(OpenAddEditFeedWindow);
+		OpenAddEditFeedWindowCommand = ReactiveCommand.Create(() => OpenAddEditFeedWindow());
+		this.WhenAnyValue(x => x.SelectedFeedDetail)
+			.Where(x => x != null)
+			.Subscribe(x => OpenAddEditFeedWindow(x));
 
 		Dispatcher.UIThread.InvokeAsync(async () =>
 		{
@@ -47,13 +51,42 @@ public class MainWindowViewModel : ViewModelBase
 		});
 	}
 
-	private void OpenAddEditFeedWindow()
+	private void OpenAddEditFeedWindow(FeedDetail? feedDetail = null)
 	{
-		WindowContent = new AddEditFeedViewModel();
-		// if (_owner != null)
-		// {
-		// 	var edit = new AddEditFeedWindow();
-		// 	edit.ShowDialog(_owner);
-		// }
+		// If the incoming feedDetail is null, we've most likely clicked the add feed button (or some other event source
+		// has called a similar behaviour).
+		// In these instances we want to deselect any previously selected list item from the main feed list
+		if (feedDetail == null)
+		{
+			SelectedFeedDetail = null;
+		}
+
+		if (WindowContent is not AddEditFeedViewModel addEditFeedViewModel)
+		{
+			WindowContent = new AddEditFeedViewModel()
+			{
+				// Not sure if this creates a leak the same way failing to unbind an event does, but seeing as its a property
+				// reference to a method here, it _should_ clean up correctly, but I've honestly never investigated it
+				// and unsure of if it'll actually be a problem.
+				// I'm juust doing it this way because I really _cannot_ be fucked doing event unbinds (-=) for future
+				// content models I may want to add and maintaining that sounds worse than any potential leaks that may
+				// be created here.
+				// I also don't intend this to be multicast and this can only be set in init
+				FeedListUpdate = OnFeedListUpdated,
+				FeedDetail = feedDetail
+			};
+		}
+		else
+		{
+			addEditFeedViewModel.FeedDetail = feedDetail;
+		}
+	}
+
+	private void OnFeedListUpdated()
+	{
+		Dispatcher.UIThread.InvokeAsync(async () =>
+		{
+			Feeds = await _feedManager!.GetFeedDetails();
+		});
 	}
 }

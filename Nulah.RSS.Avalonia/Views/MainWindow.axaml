@@ -43,61 +43,74 @@
                 </Button>
             </StackPanel>
         </Border>
-        <Border Width="200" DockPanel.Dock="Left" BorderThickness="0,0,2,0"
-                Background="rgb(255, 234, 208)">
-            <StackPanel>
-                <ListBox ItemsSource="{Binding Feeds}"
-                         ScrollViewer.VerticalScrollBarVisibility="Visible"
-                         ScrollViewer.AllowAutoHide="True"
-                         IsVisible="{Binding !!Feeds.Count}">
-                    <ListBox.Styles>
-                        <Style Selector="ListBoxItem">
-                            <Setter Property="Padding" Value="5" />
-                        </Style>
-                        <Style Selector="ListBoxItem:pointerover">
-                            <Setter Property="Padding" Value="10,5,5,5" />
-                        </Style>
-                        <Style Selector="ListBoxItem:selected">
-                            <Setter Property="Padding" Value="15,5,5,5" />
-                        </Style>
-                        <Style Selector="ListBoxItem:selected TextBlock">
-                            <Setter Property="FontWeight" Value="Bold" />
-                        </Style>
-                        <Style Selector="ListBox">
-                            <Setter Property="Background" Value="Transparent" />
-                        </Style>
-                    </ListBox.Styles>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <controls:ByteArrayImage Margin="0,0,5,0"
-                                                          ByteArray="{Binding  ImageBlob}"
-                                                          MaxHeight="15"/>
-                                <TextBlock Text="{Binding Title}"
-                                           Foreground="#452200"
-                                           TextTrimming="{x:Static TextTrimming.CharacterEllipsis}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-                <TextBlock Text="No feeds stored"
-                           IsVisible="{Binding !Feeds.Count}">
-                </TextBlock>
-            </StackPanel>
-        </Border>
-        <ContentControl Content="{Binding WindowContent}">
-            <ContentControl.DataTemplates>
-                <DataTemplate DataType="{x:Type vm:AddEditFeedViewModel}">
-                    <views:AddEditFeedView DataContext="{Binding }" />
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type vm:FeedViewModel}">
-                    <TextBlock Text="viewing a feed goes here" />
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type vm:ViewModelBase}">
-                    <TextBlock Text="fall back missing content view here" />
-                </DataTemplate>
-            </ContentControl.DataTemplates>
-        </ContentControl>
+        <Grid DockPanel.Dock="Left">
+            <Grid.ColumnDefinitions>200,2,*</Grid.ColumnDefinitions>
+            <Border
+                BorderThickness="0,0,2,0"
+                BorderBrush="rgb(166, 121, 69)"
+                Grid.Column="0">
+                <StackPanel
+                    Background="rgb(255, 234, 208)">
+                    <ListBox ItemsSource="{Binding Feeds}"
+                             ScrollViewer.VerticalScrollBarVisibility="Visible"
+                             ScrollViewer.AllowAutoHide="True"
+                             SelectedItem="{Binding SelectedFeedDetail}"
+                             IsVisible="{Binding !!Feeds.Count}">
+                        <ListBox.Styles>
+                            <Style Selector="ListBoxItem">
+                                <Setter Property="Padding" Value="5" />
+                            </Style>
+                            <Style Selector="ListBoxItem:pointerover">
+                                <Setter Property="Padding" Value="10,5,5,5" />
+                            </Style>
+                            <Style Selector="ListBoxItem:selected">
+                                <Setter Property="Padding" Value="15,5,5,5" />
+                            </Style>
+                            <Style Selector="ListBoxItem:selected TextBlock">
+                                <Setter Property="FontWeight" Value="Bold" />
+                            </Style>
+                            <Style Selector="ListBox">
+                                <Setter Property="Background" Value="Transparent" />
+                            </Style>
+                        </ListBox.Styles>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>auto,*</Grid.ColumnDefinitions>
+                                    <controls:ByteArrayImage
+                                        Grid.Column="0"
+                                        Margin="0,0,5,0"
+                                        ByteArray="{Binding  ImageBlob}"
+                                        MaxHeight="15" />
+                                    <TextBlock Grid.Column="1"
+                                               Text="{Binding Title}"
+                                               Foreground="#452200"
+                                               TextTrimming="{x:Static TextTrimming.CharacterEllipsis}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <TextBlock Text="No feeds stored"
+                               IsVisible="{Binding !Feeds.Count}">
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+            <GridSplitter Grid.Column="1" Background="Transparent" ResizeDirection="Columns" />
+            <ContentControl Grid.Column="2"
+                            Content="{Binding WindowContent}">
+                <ContentControl.DataTemplates>
+                    <DataTemplate DataType="{x:Type vm:AddEditFeedViewModel}">
+                        <views:AddEditFeedView DataContext="{Binding}" />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:FeedViewModel}">
+                        <TextBlock Text="viewing a feed goes here" />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:ViewModelBase}">
+                        <TextBlock Text="fall back missing content view here" />
+                    </DataTemplate>
+                </ContentControl.DataTemplates>
+            </ContentControl>
+        </Grid>
     </DockPanel>
 
 </Window>

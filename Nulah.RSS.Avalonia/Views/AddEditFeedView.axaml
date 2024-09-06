@@ -13,9 +13,6 @@
         <dvm:AddEditFeedDesignViewModel />
     </Design.DataContext>
     <StackPanel>
-        <!-- <StackPanel IsVisible="{Binding FeedDetail, Converter={x:Static ObjectConverters.IsNotNull}}" -->
-        <!--             Orientation="Horizontal" -->
-        <!--             Spacing="5"> -->
         <Grid IsVisible="{Binding FeedDetail, 
             Converter={x:Static ObjectConverters.IsNotNull}
         }">
@@ -23,11 +20,15 @@
                 100,*
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
                     Margin="0,0,5,0"
                     BorderThickness="5"
                     BorderBrush="Aquamarine"
                     CornerRadius="53"
-                    ClipToBounds="True">
+                    ClipToBounds="True"
+                    Height="100"
+                    Width="100">
                 <Border CornerRadius="50"
                         ClipToBounds="True">
                     <controls:ByteArrayImage
@@ -37,11 +38,10 @@
             <StackPanel Grid.Column="1" Orientation="Vertical"
                         Spacing="5">
                 <TextBlock FontSize="24"
-                           Text="{Binding FeedDetail.Title}" />
+                           Text="{Binding FeedDetail.Title}" TextWrapping="WrapWithOverflow" />
                 <TextBlock Text="{Binding FeedDetail.Description}" TextWrapping="WrapWithOverflow" />
             </StackPanel>
         </Grid>
-        <!-- </StackPanel> -->
         <StackPanel IsVisible="{Binding FeedDetail, Converter={x:Static ObjectConverters.IsNull}}">
             <TextBox Watermark="Feed Source" UseFloatingWatermark="True"
                      Text="{Binding FeedUri}" />

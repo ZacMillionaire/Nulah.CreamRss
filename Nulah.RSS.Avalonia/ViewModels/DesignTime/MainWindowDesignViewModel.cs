@@ -15,7 +15,7 @@ public class MainWindowDesignViewModel : MainWindowViewModel
 		Feeds = Enumerable.Range(0, 10)
 			.Select(x => new FeedDetail()
 			{
-				Title = $"RSS Feed Item {x}"
+				Title = $"RSS Feed Item {x} asdf asdf asdf asdfasf asf "
 			})
 			.ToList();
 	}
