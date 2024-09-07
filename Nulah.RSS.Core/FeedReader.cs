@@ -26,9 +26,9 @@ public class FeedReader : IFeedReader
 	/// </summary>
 	/// <param name="feedLocation">Remote URL or file path</param>
 	/// <returns></returns>
-	public FeedDetail ParseFeedDetails(string? feedLocation)
+	public async Task<FeedDetail> ParseFeedDetails(string? feedLocation)
 	{
-		return LoadFeedDetail(feedLocation, _client);
+		return await LoadFeedDetail(feedLocation, _client);
 	}
 
 	/// <summary>
@@ -137,7 +137,7 @@ public class FeedReader : IFeedReader
 	/// <param name="client"></param>
 	/// <returns></returns>
 	/// <exception cref="ArgumentNullException">Thrown if <see cref="feedLocation"/> is null or empty</exception>
-	private static FeedDetail LoadFeedDetail(string? feedLocation, HttpClient client)
+	private static async Task<FeedDetail> LoadFeedDetail(string? feedLocation, HttpClient client)
 	{
 		// Shortcut any checks done by XmlReader and fail early if we don't have a location
 		if (string.IsNullOrWhiteSpace(feedLocation))
@@ -153,10 +153,7 @@ public class FeedReader : IFeedReader
 		{
 			Title = syndicationFeed.Title?.Text.Trim() ?? "TITLE MISSING",
 			ImageUrl = syndicationFeed.ImageUrl?.AbsoluteUri,
-			// TODO: remove the .Result and await on this as intended.
-			// No idea why I made this forced synchronous to begin with and I was just lucky it happened to never get
-			// into a wait lock because I never ran it in a single threaded (eg - desktop app) world.
-			ImageBlob = LoadRemoteImage(syndicationFeed.ImageUrl?.AbsoluteUri, client).Result,
+			ImageBlob = await LoadRemoteImage(syndicationFeed.ImageUrl?.AbsoluteUri, client),
 			// TODO: also duplicate implementation of LoadRemoteImage to load a favicon into this property
 			// Favicon = TODO
 			Description = syndicationFeed.Description?.Text.Trim(),

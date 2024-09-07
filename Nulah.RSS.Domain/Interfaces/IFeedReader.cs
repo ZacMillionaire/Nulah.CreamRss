@@ -13,7 +13,7 @@ public interface IFeedReader
 	/// </summary>
 	/// <param name="feedLocation">Remote URL or file path</param>
 	/// <returns></returns>
-	FeedDetail ParseFeedDetails(string? feedLocation);
+	Task<FeedDetail> ParseFeedDetails(string? feedLocation);
 
 	/// <summary>
 	/// Returns all <see cref="FeedItem"/> for a feed by given location. Empty or null values will throw an exception.

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Input;
 using Avalonia.Controls;
 using Avalonia.Threading;
@@ -53,7 +53,7 @@ public class AddEditFeedViewModel : ViewModelBase
 			// otherwise I'll never get this fucking thing finished.
 			Dispatcher.UIThread.InvokeAsync(async () =>
 			{
-				await Task.Run(async () =>
+				try
 				{
 					// If we've already added this source, set and forget. Feeds are distinct by feed location
 					if (await _feedManager!.GetFeedDetail(_feedUri) is { } existingFeed)
@@ -63,13 +63,21 @@ public class AddEditFeedViewModel : ViewModelBase
 					else
 					{
 						// Otherwise parse the source and off we go
-						var parsedFeed = _feedReader!.ParseFeedDetails(_feedUri);
+						var parsedFeed = await _feedReader!.ParseFeedDetails(_feedUri);
 						// Naturally, of course, saving the FeedDetail is async, but we still need to keep this wrapped in
 						// a Task.Run to make ParseFeedDetails behave nicely
 						FeedDetail = await _feedManager!.CreateFeedDetail(parsedFeed);
 						FeedListUpdate?.Invoke();
 					}
-				});
+				}
+				catch (Exception ex)
+				{
+					await File.AppendAllTextAsync("./fucked.log", ex.Message);
+				}
+				finally
+				{
+					await File.AppendAllTextAsync("./fucked.log", "done lol");
+				}
 			});
 		}
 	}

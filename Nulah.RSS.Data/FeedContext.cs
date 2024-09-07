@@ -56,9 +56,16 @@ public class FeedContext : DbContext
 	/// This method ensures that migrations exist for debug as a convenience for devs (me) who are too lazy to create
 	/// an sqlite database and drop it into the right place or do some post build rubbish to copy over a file.
 	///
+	/// It also exists for desktop applications to ensure the database is kept up to date.
+	///
 	/// I don't want to maintain things like that and I have 0 problem with improving dev experience like this.
 	/// </summary>
-	[Conditional("DEBUG")]
+	// commented out conditional for now as I'm not 100% convinced I want this to happen in releases,
+	// but when it comes to updating in the future.
+	// When it comes to that point and it's not just me using this I'll revist this and probably add in backing up
+	// the previous database so no data is lost. If the migration fails then the original database won't be lost and I'll
+	// just throw an exception to get on top of the failed migration asap
+	//[Conditional("DEBUG")]
 	public void EnsureExists()
 	{
 		// Ensure migrations are applied so any sql scripts are run

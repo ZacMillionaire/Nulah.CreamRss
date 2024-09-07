@@ -18,5 +18,6 @@ public class MainWindowDesignViewModel : MainWindowViewModel
 				Title = $"RSS Feed Item {x} asdf asdf asdf asdfasf asf "
 			})
 			.ToList();
+		FeedListAvailable = true;
 	}
 }

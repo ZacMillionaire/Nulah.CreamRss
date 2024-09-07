@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Windows.Input;
+using Avalonia.Controls;
 using Avalonia.Threading;
 using Nulah.RSS.Domain.Interfaces;
 using Nulah.RSS.Domain.Models;
@@ -16,6 +17,7 @@ public class MainWindowViewModel : ViewModelBase
 	private List<FeedDetail> _feeds = new();
 	private ViewModelBase? _windowContent;
 	private FeedDetail? _selectedFeedDetail;
+	private bool _feedListAvailable;
 
 	public ICommand OpenAddEditFeedWindowCommand { get; }
 
@@ -37,18 +39,28 @@ public class MainWindowViewModel : ViewModelBase
 		set => this.RaiseAndSetIfChanged(ref _selectedFeedDetail, value);
 	}
 
+	/// <summary>
+	/// Indicates if the feed list is loaded and ready for interaction
+	/// </summary>
+	public bool FeedListAvailable
+	{
+		get => _feedListAvailable;
+		set => this.RaiseAndSetIfChanged(ref _feedListAvailable, value);
+	}
+
 	public MainWindowViewModel(IFeedManager? feedManager = null)
 	{
 		_feedManager = feedManager ?? Locator.Current.GetService<IFeedManager>();
+
 		OpenAddEditFeedWindowCommand = ReactiveCommand.Create(() => OpenAddEditFeedWindow());
+
 		this.WhenAnyValue(x => x.SelectedFeedDetail)
 			.Where(x => x != null)
-			.Subscribe(x => OpenAddEditFeedWindow(x));
+			.Subscribe(OpenAddEditFeedWindow);
 
-		Dispatcher.UIThread.InvokeAsync(async () =>
-		{
-			Feeds = await _feedManager!.GetFeedDetails();
-		});
+		// Avoid any runtime specific code such as loading feeds if we're in the editor
+		if (Design.IsDesignMode) return;
+		OnFeedListUpdated();
 	}
 
 	private void OpenAddEditFeedWindow(FeedDetail? feedDetail = null)
@@ -86,7 +98,9 @@ public class MainWindowViewModel : ViewModelBase
 	{
 		Dispatcher.UIThread.InvokeAsync(async () =>
 		{
+			FeedListAvailable = false;
 			Feeds = await _feedManager!.GetFeedDetails();
+			FeedListAvailable = true;
 		});
 	}
 }

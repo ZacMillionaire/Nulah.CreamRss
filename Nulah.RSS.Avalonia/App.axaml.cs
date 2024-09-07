@@ -1,10 +1,10 @@
 using System;
+using System.IO;
 using System.Net.Http;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Microsoft.EntityFrameworkCore;
 using Nulah.RSS.Avalonia.ViewModels;
 using Nulah.RSS.Avalonia.Views;
 using Nulah.RSS.Core;
@@ -41,7 +41,7 @@ public partial class App : Application
 
 	private static void AddCommonServices()
 	{
-		Locator.CurrentMutable.RegisterConstant<FeedContext>(new FeedContext(FeedContext.BuildOptionsFromConnectionString($"Data Source={AppContext.BaseDirectory}/nulah.rss.db")));
+		Locator.CurrentMutable.RegisterConstant<FeedContext>(new FeedContext(FeedContext.BuildOptionsFromConnectionString($"Data Source={AppContext.BaseDirectory}/data/nulah.rss.db")));
 		Locator.CurrentMutable.RegisterConstant<HttpClient>(new HttpClient(new SocketsHttpHandler
 		{
 			PooledConnectionLifetime = TimeSpan.FromMinutes(15) // Recreate every 15 minutes
@@ -50,17 +50,10 @@ public partial class App : Application
 		Locator.CurrentMutable.Register<IFeedStorage>(() => new FeedStorage(Locator.Current.GetService<IFeedManager>()!));
 		Locator.CurrentMutable.Register<IFeedReader>(() => new FeedReader(Locator.Current.GetService<HttpClient>()!));
 
+		// Ensure the data directory exists before attempting to create a database
+		Directory.CreateDirectory($"{AppContext.BaseDirectory}/data");
+
 		var ctx = Locator.Current.GetService<FeedContext>();
 		ctx?.EnsureExists();
-
-		// Locator.CurrentMutable.Register(() => new MainWindowViewModel());
-		// Locator.CurrentMutable.Register(() =>
-		// 	new MastodonApiClient(
-		// 		// Indicate not null as if these _are_ null, something is wrong above
-		// 		Locator.Current.GetService<HttpClient>()!,
-		// 		Locator.Current.GetService<IDataContext>()!
-		// 	)
-		// );
-		// Locator.CurrentMutable.Register(() => new MastodonLoginWindowViewModel(Locator.Current.GetService<MastodonApiClient>()));
 	}
 }
