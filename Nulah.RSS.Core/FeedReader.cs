@@ -1,5 +1,6 @@
 ﻿using System.ServiceModel.Syndication;
 using System.Xml;
+using HtmlAgilityPack;
 using Nulah.RSS.Domain.Interfaces;
 using Nulah.RSS.Domain.Models;
 
@@ -154,8 +155,13 @@ public class FeedReader : IFeedReader
 			Title = syndicationFeed.Title?.Text.Trim() ?? "TITLE MISSING",
 			ImageUrl = syndicationFeed.ImageUrl?.AbsoluteUri,
 			ImageBlob = await LoadRemoteImage(syndicationFeed.ImageUrl?.AbsoluteUri, client),
-			// TODO: also duplicate implementation of LoadRemoteImage to load a favicon into this property
-			// Favicon = TODO
+			// We attempt to load the favicon from the alternative link resolved from a feed (if it exists)
+			// we do this because sometimes a feed may be located under a subdomain (eg, ArsTechnica), and attempting to
+			// resolve the favicon from the html header in these cases will fail, as more often than not these locations
+			// are 404 pages. We also can't just go from the base address because I cannot be bothered removing all the subdomains,
+			// and a subdomain may have its own fav-icon and I'd rather go from the alternative (full page for the feed generally),
+			// instead of guessing like other feed readers might.
+			Favicon = await RetrieveFavicon(syndicationFeed.Links.FirstOrDefault(x => x.RelationshipType == "alternate")?.Uri, client),
 			Description = syndicationFeed.Description?.Text.Trim(),
 			Location = feedLocation
 		};
@@ -164,6 +170,8 @@ public class FeedReader : IFeedReader
 	private static async Task<byte[]?> LoadRemoteImage(string? remoteImageAddress, HttpClient client)
 	{
 		if (!string.IsNullOrWhiteSpace(remoteImageAddress)
+		    // resolveuri takes the address last instead of converting it to a uri as it should be an absolute
+		    // path, either remotre or filesystem local
 		    && XmlResolver.FileSystemResolver.ResolveUri(null, remoteImageAddress) is { IsFile: false })
 		{
 			var imageStream = await client.GetByteArrayAsync(remoteImageAddress);
@@ -171,6 +179,84 @@ public class FeedReader : IFeedReader
 		}
 
 		// File based image addresses are always null for image blobs
+		return null;
+	}
+
+	/// <summary>
+	/// Attempts to retrieve the RSS icon for a feed by locating the favicon from the websites authoritive location -
+	/// basically from the http(s) to the end of the .tld. and parsing the html header for 'icon' or 'shortcut icon'
+	/// </summary>
+	/// <param name="feedLocation"></param>
+	/// <param name="client"></param>
+	/// <returns></returns>
+	private static async Task<byte[]?> RetrieveFavicon(string feedLocation, HttpClient client)
+	{
+		if (!string.IsNullOrWhiteSpace(feedLocation)
+		    && XmlResolver.FileSystemResolver.ResolveUri(null, feedLocation) is { IsFile: false })
+		{
+			return await RetrieveFavicon(new Uri(feedLocation), client);
+		}
+
+		return null;
+	}
+
+	/// <summary>
+	/// Attempts to retrieve the RSS icon for a feed by locating the favicon from the websites authoritive location -
+	/// basically from the http(s) to the end of the .tld. and parsing the html header for 'icon' or 'shortcut icon'
+	/// </summary>
+	/// <param name="feedLocation"></param>
+	/// <param name="client"></param>
+	/// <returns></returns>
+	private static async Task<byte[]?> RetrieveFavicon(Uri? feedLocation, HttpClient client)
+	{
+		// What I thought would be trivial to do I quickly realised it wasn't.
+		// What the _fuck_ favicons why are you such a wide range of guessing to know what to display, no wonder webdev
+		// is a mess of, "well it could be any 16 of these things and it's up to the browser to know what to do lol!".
+		// At least the websites I make aren't trying to cover for 200 different standards and I can just pick one and
+		// if others don't support it then lol.
+		// wait shit that's probably why this method is what it is, because that's what everyone else is doing.
+		if (feedLocation != null
+		    && XmlResolver.FileSystemResolver.ResolveUri(feedLocation, null) is { IsFile: false })
+		{
+			var web = new HtmlWeb();
+			// we use GetLeftPart here to get the scheme and authority of the uri, or in human words: we get the https part + everything up to the end of the tld.
+			// we can't use .Path because htmlagility cannot handle such a complex task of missing the scheme fragment 🙃
+			// TODO: handle cases with subdomains and strip them out
+			var htmlDoc = await web.LoadFromWebAsync(feedLocation.GetLeftPart(UriPartial.Authority));
+			// Find all nodes that in the head of the document with a rel of either 'icon' or 'shortcut icon', both of which can refer to the favicon source
+			var faviconNodes = htmlDoc.DocumentNode.SelectNodes("/html/head/link[@rel='icon' or @rel='shortcut icon' or @rel='alternate icon' and @href]");
+
+			// TODO: honestly this sucks, I should first find the link with icon, then if that doesn't exist (or its an svg), check each successive type
+			if (faviconNodes is { Count: not 0 })
+			{
+				// Loop over any we found, and return the first _non_ svg icon. Special shout outs to GitHub for making me
+				// learn that image/svg+xml is a valid favicon source.
+				// Why are we excluding svg icons? Because there's no trivial way to display or render these in a desktop
+				// application.
+				// Yeah web apps can but I also don't want to store an svg as these can be significantly larger than
+				// other icon formats.
+				foreach (var faviconNode in faviconNodes)
+				{
+					// Skip over this node if it's an svg - we can't display them currently
+					if (faviconNode.Attributes.Contains("type")
+					    && faviconNode.Attributes["type"].Value.Contains("svg"))
+					{
+						continue;
+					}
+					// There's a risk we just skipped over a potential svg because we were counting on the link to have a
+					// type attribute that isn't lying to us.
+					// ArsTechnica is guilty of this, but at least in their case I know its not an svg. For others I'm
+					// basically just guessing
+
+					var favIcon = faviconNode.Attributes["href"].Value;
+					// We should probably check that its an image, but eh, I'll regret not doing that when it becomes a problem.
+					// Or if I come back to this TODO to check the favicon is actually an image and not something malicious
+					var imageStream = await client.GetByteArrayAsync(favIcon);
+					return imageStream;
+				}
+			}
+		}
+
 		return null;
 	}
 }

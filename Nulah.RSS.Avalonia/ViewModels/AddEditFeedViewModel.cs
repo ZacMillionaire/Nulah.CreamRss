@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Input;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Threading;
 using Nulah.RSS.Domain.Interfaces;
 using Nulah.RSS.Domain.Models;
@@ -42,6 +43,15 @@ public class AddEditFeedViewModel : ViewModelBase
 		LoadAndSaveFeedDetailsCommand = ReactiveCommand.Create(LoadAndSaveFeedDetails);
 	}
 
+	public void HandleFeedUriKeyEvent(KeyEventArgs arg)
+	{
+		// Load and save feed details if the user hit enter. Same behaviour as if they clicked the save button
+		if (arg.Key == Key.Enter)
+		{
+			LoadAndSaveFeedDetails();
+		}
+	}
+
 	private void LoadAndSaveFeedDetails()
 	{
 		if (!Design.IsDesignMode)
@@ -72,11 +82,13 @@ public class AddEditFeedViewModel : ViewModelBase
 				}
 				catch (Exception ex)
 				{
-					await File.AppendAllTextAsync("./fucked.log", ex.Message);
+					await File.AppendAllTextAsync("./app.log", ex.Message);
 				}
 				finally
 				{
-					await File.AppendAllTextAsync("./fucked.log", "done lol");
+					await File.AppendAllTextAsync("./app.log", "done lol");
+					// clear the feed uri value on success
+					FeedUri = null;
 				}
 			});
 		}

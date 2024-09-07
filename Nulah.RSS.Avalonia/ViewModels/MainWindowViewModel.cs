@@ -91,6 +91,8 @@ public class MainWindowViewModel : ViewModelBase
 		else
 		{
 			addEditFeedViewModel.FeedDetail = feedDetail;
+			// Reset the feeduri as well
+			addEditFeedViewModel.FeedUri = null;
 		}
 	}
 

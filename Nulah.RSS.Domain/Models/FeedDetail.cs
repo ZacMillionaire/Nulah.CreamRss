@@ -15,6 +15,7 @@ public class FeedDetail
 	/// <summary>
 	/// Data image representation of the ImageUrl
 	/// </summary>
+	[Obsolete("Display images using ImageBlob. This property will not be available in future versions")]
 	public string? ImageData { get; set; }
 
 	public string? Description { get; set; }

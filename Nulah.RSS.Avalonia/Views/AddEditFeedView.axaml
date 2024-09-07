@@ -44,6 +44,7 @@
         </Grid>
         <StackPanel IsVisible="{Binding FeedDetail, Converter={x:Static ObjectConverters.IsNull}}">
             <TextBox Watermark="Feed Source" UseFloatingWatermark="True"
+                     KeyDown="HandleFeedUriKeyEvent"
                      Text="{Binding FeedUri}" />
             <!-- TODO: style this later -->
             <Button Command="{Binding LoadAndSaveFeedDetailsCommand}">
