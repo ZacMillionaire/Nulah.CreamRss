@@ -16,4 +16,8 @@
       <ProjectReference Include="..\Nulah.RSS.Domain\Nulah.RSS.Domain.csproj" />
     </ItemGroup>
 
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <DebugSymbols>False</DebugSymbols>
+        <DebugType>None</DebugType>
+    </PropertyGroup>
 </Project>

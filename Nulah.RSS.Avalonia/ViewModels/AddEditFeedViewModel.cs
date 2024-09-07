@@ -15,6 +15,7 @@ public class AddEditFeedViewModel : ViewModelBase
 {
 	private FeedDetail? _feedDetail;
 	private string? _feedUri;
+	private bool _isLoadingFeed;
 	public ICommand LoadAndSaveFeedDetailsCommand { get; }
 	private readonly IFeedManager? _feedManager;
 	private readonly IFeedReader? _feedReader;
@@ -29,6 +30,12 @@ public class AddEditFeedViewModel : ViewModelBase
 	{
 		get => _feedUri;
 		set => this.RaiseAndSetIfChanged(ref _feedUri, value);
+	}
+
+	public bool IsLoadingFeed
+	{
+		get => _isLoadingFeed;
+		set => this.RaiseAndSetIfChanged(ref _isLoadingFeed, value);
 	}
 
 	/// <summary>
@@ -56,15 +63,11 @@ public class AddEditFeedViewModel : ViewModelBase
 	{
 		if (!Design.IsDesignMode)
 		{
-			// This is some messy code to make ParseFeedDetails pretend its async.
-			// Under the current implementation there's a messy forced synchronous .Result on something
-			// that should instead be awaited, and the method change should be made to support async.
-			// It's an easy update and I've validated it to work, I just don't want to update the tests for it
-			// otherwise I'll never get this fucking thing finished.
 			Dispatcher.UIThread.InvokeAsync(async () =>
 			{
 				try
 				{
+					IsLoadingFeed = true;
 					// If we've already added this source, set and forget. Feeds are distinct by feed location
 					if (await _feedManager!.GetFeedDetail(_feedUri) is { } existingFeed)
 					{
@@ -74,8 +77,6 @@ public class AddEditFeedViewModel : ViewModelBase
 					{
 						// Otherwise parse the source and off we go
 						var parsedFeed = await _feedReader!.ParseFeedDetails(_feedUri);
-						// Naturally, of course, saving the FeedDetail is async, but we still need to keep this wrapped in
-						// a Task.Run to make ParseFeedDetails behave nicely
 						FeedDetail = await _feedManager!.CreateFeedDetail(parsedFeed);
 						FeedListUpdate?.Invoke();
 					}
@@ -87,8 +88,9 @@ public class AddEditFeedViewModel : ViewModelBase
 				finally
 				{
 					await File.AppendAllTextAsync("./app.log", "done lol");
-					// clear the feed uri value on success
+					// ensure the FeedUri value is empty
 					FeedUri = null;
+					IsLoadingFeed = false;
 				}
 			});
 		}

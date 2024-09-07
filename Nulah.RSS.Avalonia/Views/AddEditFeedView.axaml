@@ -13,6 +13,8 @@
         <dvm:AddEditFeedDesignViewModel />
     </Design.DataContext>
     <StackPanel>
+        <!-- loaded feed view (to be made its own control) -->
+        <!-- I think I'll change this view to be add only -->
         <Grid IsVisible="{Binding FeedDetail, 
             Converter={x:Static ObjectConverters.IsNotNull}
         }">
@@ -42,7 +44,8 @@
                 <TextBlock Text="{Binding FeedDetail.Description}" TextWrapping="WrapWithOverflow" />
             </StackPanel>
         </Grid>
-        <StackPanel IsVisible="{Binding FeedDetail, Converter={x:Static ObjectConverters.IsNull}}">
+        <StackPanel IsVisible="{Binding FeedDetail, Converter={x:Static ObjectConverters.IsNull}}"
+                    IsEnabled="{Binding IsLoadingFeed, Converter={x:Static BoolConverters.Not}}">
             <TextBox Watermark="Feed Source" UseFloatingWatermark="True"
                      KeyDown="HandleFeedUriKeyEvent"
                      Text="{Binding FeedUri}" />
